@@ -9,7 +9,9 @@ A aplicação é estática: HTML, CSS e módulos JavaScript executam no navegado
 | Parte | Arquivos | Responsabilidade |
 | --- | --- | --- |
 | Estrutura e estilo | `web/index.html`, `web/styles.css` | Conteúdo inicial, controles, diálogos, responsividade e identidade visual |
-| Coordenação da interface | `web/js/app.js` | Estado, eventos, renderização, URL e seleção de fichas/abas |
+| Coordenação da interface | `web/js/app.js` | Estado, eventos, URL e coordenação de fichas/abas |
+| Apresentação | `presentation.js`, `detail-panels.js` | Componentes compartilhados e HTML das seis abas |
+| Seleção e imagens | `detail-selection.js`, `images.js` | Seletores dependentes, sprites, legendas e fallback |
 | Domínio | `web/js/domain.js` | Filtros, ordenação, tipos, favoritos, lotes e condições de evolução |
 | Dados | `web/js/data.js` | Fetch, cache de promessas, recuperação e seleção de imagens |
 | Snapshot | `web/data/` | Catálogo, referências, fichas e manifesto |
@@ -33,7 +35,7 @@ flowchart TD
 3. `filterCatalog()` seleciona e ordena registros; a interface renderiza os primeiros 24.
 4. `openDetail()` resolve o ID da forma no catálogo.
 5. `loadSpecies()` calcula o lote da espécie e reutiliza a promessa de carga.
-6. `currentPokemon()` encontra a variedade pelo campo `pokemon` da forma.
+6. O painel encontra a variedade pelo campo `pokemon` da forma.
 7. A aba escolhida transforma os dados em elementos de interface.
 
 A ficha não consulta uma API remota de atributos a cada clique: ela lê o JSON servido junto da aplicação. A aba Evoluções pode carregar lotes adicionais para reunir a família.
@@ -65,7 +67,7 @@ O cache vive na memória da página. Recarregar inicia uma nova sessão de requi
 
 O diálogo usa `dialog`. Abas expõem seleção e associação ao painel; setas, Home e End permitem navegação. Há foco visível, rótulos e preferência de movimento reduzido no CSS. Tabelas e abas rolam dentro de suas áreas em telas estreitas. Esses recursos foram conferidos em Chromium; não constituem uma auditoria completa de acessibilidade em todos os leitores e dispositivos.
 
-Textos usados em HTML passam por `escapeHTML()`. A carga de sprites de formas aceita URLs HTTPS de `raw.githubusercontent.com`. A aplicação não possui login próprio nem requer segredos no frontend. A hospedagem pode acrescentar seu próprio controle de acesso.
+Textos usados em HTML passam por `escapeHTML()` em `presentation.js`. A carga de sprites de formas aceita URLs HTTPS de `raw.githubusercontent.com`. A aplicação não possui login próprio nem requer segredos no frontend. A hospedagem pode acrescentar seu próprio controle de acesso.
 
 ## Como localizar uma alteração
 
@@ -74,7 +76,7 @@ Textos usados em HTML passam por `escapeHTML()`. A carga de sprites de formas ac
 | Textos fixos, título ou rodapé | `web/index.html` | Navegador e links da página |
 | Layout e badges de tipos | `web/styles.css` | Desktop, celular, foco e contraste |
 | Busca ou multiplicadores | `web/js/domain.js` | Testes de domínio e exemplos de referência |
-| Uma aba da ficha | `web/js/app.js` | Forma padrão/alternativa e ausência de dados |
+| Uma aba da ficha | `web/js/detail-panels.js` e coordenação em `app.js` | Forma padrão/alternativa e ausência de dados |
 | Cache ou imagens shiny | `web/js/data.js` | Testes de imagens e alternância rápida |
 | Campos da base | `scripts/import-data.py` | Snapshot, manifesto, referências e contagens |
 
@@ -87,3 +89,7 @@ Módulos nativos e ferramentas pequenas reduzem a preparação do ambiente. JSON
 Não há framework, banco de dados, service worker, instalação PWA, sincronização em nuvem ou simulador de batalhas nesta implementação. Possíveis extensões precisam de projeto e validação próprios.
 
 [Regras de tipos em detalhe](tipos/README.md) · [Dados e importação](../dados/README.md) · [Publicação](../publicacao/README.md).
+
+## Convenções de manutenção
+
+A refatoração 1.1.2 aplica responsabilidades menores, nomes descritivos, constantes para valores repetidos e comentários em português. Consulte o [guia de código limpo](clean-code/README.md) e o [mapa completo dos módulos](../../web/js/README.md).

@@ -19,10 +19,16 @@ Execute os comandos na raiz do repositório. Node.js 20+ atende ao aplicativo e 
 
 ## Build e verificação
 
-O build apaga e recria **somente a saída `dist/`**. Não há minificação ou instalação de dependências. `npm run check` usa `node --check`, confere referências `./` no HTML, a contagem de espécies e o uso de execução dinâmica na interface. Ele não é um validador geral de Markdown, CSS, acessibilidade ou comportamento no navegador.
+O build apaga e recria **somente a saída `dist/`**. Não há minificação ou instalação de dependências. `npm run check` usa `node --check`, confere referências `./` no HTML, a contagem de espécies e o uso de execução dinâmica em todos os módulos JavaScript da interface. Ele não é um validador geral de Markdown, CSS, acessibilidade ou comportamento no navegador.
 
 ## Importador
 
 A primeira execução baixa CSVs públicos; as seguintes reutilizam `.cache/<SHA>/`. O importador tenta cada download até quatro vezes e grava arquivos por substituição a partir de temporários. `POKEAPI_REVISION` seleciona outra revisão; seu uso exige revisar e versionar o resultado de forma coerente.
 
 Não execute `data:refresh` só para abrir o site. Para uma atualização real, siga o [procedimento de dados](../docs/dados/README.md) e não publique uma geração interrompida.
+
+## Organização do importador
+
+`import_data()` coordena etapas nomeadas: `build_species`, `build_varieties`, preenchimento de descrições/aprendizados/encontros, `build_catalog`, `build_reference`, `validate_snapshot` e `write_snapshot`. Docstrings em português registram os contratos. A revisão, o tamanho dos lotes e os parâmetros de download têm constantes próprias.
+
+A refatoração foi comparada ao snapshot existente: os 24 JSONs gerados, inclusive o manifesto, permaneceram idênticos em bytes. Não é necessário baixar a base novamente para usar o site.

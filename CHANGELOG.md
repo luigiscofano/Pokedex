@@ -1,5 +1,14 @@
 # Histórico de mudanças
 
+## 1.1.2 — 2026-11-02
+
+- Refatoração de JavaScript, HTML/CSS, ferramentas Node/Python, testes e exercício Java, com comentários explicativos em português.
+- Separação dos painéis, seleção, apresentação e tratamento de imagens em módulos próprios; handlers de eventos nomeados.
+- Filtros, ordenação e cache organizados em funções com responsabilidades definidas.
+- Importador dividido em etapas, preservando os 24 JSONs byte por byte; base e regras mantidas.
+- Dez novos testes de carregamento, seleção e apresentação; total de 29 testes.
+- Convenções de edição e formatação, documentação técnica revisada e demonstração Java sem a coleção não utilizada.
+
 ## Documentação ampliada — 2026-11-02
 
 - README inicial com apresentação, oito capturas, exemplos de uso, execução, decisões técnicas e mapa de guias.
