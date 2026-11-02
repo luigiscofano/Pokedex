@@ -1,5 +1,13 @@
 # Histórico de mudanças
 
+## Documentação ampliada — 2026-11-02
+
+- README inicial com apresentação, oito capturas, exemplos de uso, execução, decisões técnicas e mapa de guias.
+- Documentação por público: catálogo, fichas, formas/shiny, favoritos/links, arquitetura, tipos, dados, Java, testes, contribuição e publicação.
+- Seis novas capturas reais e galeria com contexto e versão das nove imagens.
+- Dicionário de dados, limites de validação e instruções de solução de problemas revisados.
+- Organização em cinco entregas temáticas por branch e PR; versão do aplicativo mantida em 1.1.1.
+
 ## 1.1.1 — 2026-11-02
 
 - Chamada principal “Temos que pegar!”, mantendo a descrição sobre explorar espécies e formas.
