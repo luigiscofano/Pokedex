@@ -1,42 +1,29 @@
-# Guia de uso
+# Guia de uso da Pokédex
 
-## Encontrar uma espécie
+[Início](../../README.md) · [Mapa da documentação](../README.md)
 
-Digite o nome ou número na busca. `25`, `025` e `#0025` encontram Pikachu. A busca ignora acentos: `flabebe` encontra Flabébé. Use `/` para focar o campo quando não estiver digitando em outro controle.
+Uma Pokédex de fã, feita por **Luigi Scofano de Araujo** para outros fãs de Pokémon. Este guia explica os controles e como interpretar as fichas. Para instalar, siga [Como executar](../../README.md#como-executar).
 
-Selecione uma geração na lateral, um tipo ou a categoria lendário/mítico. Os filtros são combinados: se não aparecer um resultado, limpe os filtros antes de concluir que a espécie está ausente.
+## Primeira exploração
 
-## Consultar formas
+1. Abra o site ou inicie `npm run dev` na raiz do projeto e acesse `http://localhost:3000`.
+2. Pesquise `charizard`. Clique no cartão para abrir a ficha.
+3. Em **Tipos e vantagens**, observe Pedra em 4× e Terra em 0× na forma padrão.
+4. No seletor de forma, escolha **Mega Charizard X**: os tipos passam a Fogo/Dragão.
+5. Alterne **Normal / ✦ Shiny**. A aparência muda; os atributos da forma continuam iguais.
+6. Feche a ficha com Escape e experimente outra espécie.
 
-Ative **Incluir formas** para listar formas adicionais. Uma forma também pode ser escolhida dentro da ficha. Número nacional identifica a espécie; uma forma pode ter outro ID interno. Formas cosméticas podem compartilhar atributos. Megas e outras formas de batalha têm sinalização própria.
+## Escolha seu assunto
 
-## Visualizar Pokémon shiny
-
-Ative **✦ Shiny** ao lado dos filtros ou use **Normal / ✦ Shiny** dentro da ficha. A escolha vale para catálogo, destaque, ficha e evoluções, sem mudar os atributos ou duplicar espécies e favoritos. Os links preservam essa escolha com `shiny=1`.
-
-As imagens vêm da PokéAPI. Se a ilustração shiny faltar, a aplicação tenta o sprite shiny; se ambos estiverem ausentes, mostra **Imagem shiny indisponível**. Formas cosméticas usam o sprite shiny específico, quando disponível. A imagem não indica que a forma shiny pode ser obtida em determinado jogo.
-
-## Ler a ficha
-
-| Aba | O que consultar |
+| Quero… | Guia |
 | --- | --- |
-| Visão geral | Dimensões, tipos, habilidades, atributos base, EVs e reprodução |
-| Tipos e vantagens | Fraquezas, resistências, imunidades e cobertura ofensiva dos tipos próprios |
-| Textos dos jogos | Entradas da Pokédex por jogo e idioma disponíveis |
-| Evoluções | Membros da família e condições registradas |
-| Onde encontrar | Locais e condições de encontros; números em Pokédex regionais |
-| Golpes | Repertório por grupo de versões e método de aprendizado |
+| Encontrar espécies, filtrar e ordenar | [Catálogo e pesquisa](catalogo/README.md) |
+| Entender as seis abas de uma ficha | [Fichas, tipos e registros dos jogos](fichas/README.md) |
+| Comparar Megas, formas cosméticas e shiny | [Formas e aparência](formas-e-shiny/README.md) |
+| Guardar favoritos e compartilhar uma consulta | [Favoritos, links e teclado](favoritos-e-links/README.md) |
 
-Fraqueza **4×** significa que os dois tipos defensivos são fracos ao tipo do golpe. **0×** é imunidade por tipo. A análise não considera habilidades, itens ou contexto de batalha. Na análise ofensiva, o alvo tem um único tipo.
+## O que significam os números
 
-A taxa de captura de uma espécie, por exemplo 45, é um parâmetro da fórmula do jogo, e não 45%. A chance de um encontro é a raridade de um slot sob determinadas condições; não some slots com condições diferentes.
+**1.025** é a quantidade de espécies nacionais; **1.579** é a quantidade de entradas de formas da cópia de dados utilizada. Ativar shiny não aumenta essas contagens. Descrições, encontros e golpes têm múltiplos registros por jogo, idioma, método ou condição.
 
-## Guardar e compartilhar
-
-O coração salva uma forma nos favoritos deste navegador. A limpeza dos dados do site remove a lista. O botão **Copiar link** copia a ficha selecionada; o destinatário precisa ter acesso à instalação onde o aplicativo está hospedado.
-
-Use Tab para navegar, setas esquerda/direita para trocar abas e Escape para fechar a ficha. Em celular, as abas e tabelas podem ser deslizadas horizontalmente sem mover toda a página.
-
-## Dados ou imagens ausentes
-
-Use **Tentar novamente** em erros de carga. Uma descrição, localização ou imagem ausente é uma limitação da fonte ou da conexão, não uma informação inventada. A interface mantém o idioma original das descrições e identifica quando usa uma imagem de referência no lugar do sprite específico.
+A interface é em português. Nomes de golpes, locais, descrições e efeitos preservam os idiomas disponíveis na fonte. Ausência de um registro não é prova de ausência no jogo: leia os avisos da ficha e o [guia de dados](../dados/README.md).
