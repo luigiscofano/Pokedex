@@ -58,3 +58,9 @@ Descreva o problema, o resultado final, arquivos/áreas relevantes, validação 
 Confira o diff antes de enviar. Exclua caches, saídas de build, credenciais, tokens e dados pessoais. Mantenha autoria e créditos de recursos externos. O repositório não concede uma nova licença geral sobre materiais da franquia.
 
 Após o CI e a revisão, integre pelo PR. Não é necessário multiplicar branches para mudanças inseparáveis; use a divisão para tornar cada entrega compreensível e rastreável.
+
+## Legibilidade e comentários
+
+Siga o [guia de código limpo](docs/desenvolvimento/clean-code/README.md). Preserve funções com responsabilidade definida, nomes que indiquem a entidade correta e blocos explícitos. Use comentários em português para explicar decisões, contratos, seções e limites; evite repetir literalmente a linha seguinte.
+
+`.editorconfig` padroniza a edição. `.prettierrc.json` e `.prettierignore` orientam a formatação opcional e protegem os JSONs gerados. Formatar não substitui revisão de comportamento nem os testes.

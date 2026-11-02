@@ -2,10 +2,11 @@
 
 [Início](../../README.md) · [Guia de uso](../usuario/README.md) · [Validação](../VALIDACAO.md)
 
-Estas imagens foram capturadas no navegador em **2 de novembro de 2026**. Mostram o produto implementado, sem mockups ou reconstruções geradas. As novas capturas documentam a versão 1.1.1; duas imagens anteriores são identificadas abaixo.
+Estas imagens foram capturadas no navegador em **2 de novembro de 2026**. Mostram o produto implementado, sem mockups ou reconstruções geradas. A captura da refatoração documenta a versão 1.1.2 no preview local. As demais registram as versões anteriores, identificadas abaixo.
 
 | Arquivo | Versão | Conteúdo e contexto |
 | --- | --- | --- |
+| [pokedex-refatoracao.jpg](pokedex-refatoracao.jpg) | 1.1.2 | Página inicial após a refatoração, conferida no preview local; aparência preservada |
 | [pokedex-inicio.jpg](pokedex-inicio.jpg) | 1.1.1 | Página inicial com “Temos que pegar!” e catálogo |
 | [pokedex-formas.jpg](pokedex-formas.jpg) | 1.1.1 | Busca Charizard, inclusão de formas e modo Shiny; quatro cartões |
 | [pokedex-tipos.jpg](pokedex-tipos.jpg) | 1.1.1 | Tipos de Charizard padrão, defesa e melhores eficácias ofensivas |

@@ -2,9 +2,24 @@
 
 [Início](../README.md) · [Suíte e roteiro manual](../tests/README.md) · [Galeria](imagens/README.md)
 
-Este registro distingue resultados observados, verificações automatizadas e limites. A aplicação permanece na versão **1.1.1**; a ampliação documental de 2 de novembro de 2026 não altera suas regras, dados ou interface.
+Este registro distingue resultados observados, verificações automatizadas e limites. A aplicação está na versão **1.1.2**. A refatoração reorganiza o código, preservando os dados, o visual e os contratos existentes.
 
-## Verificações locais da revisão documental
+## Refatoração 1.1.2 — 2026-11-02
+
+| Verificação | Resultado |
+| --- | --- |
+| Sintaxe, referências HTML e manifesto | `npm run check` aprovado; execução dinâmica verificada em todos os módulos JS |
+| Suíte permanente | 29 testes aprovados, incluindo dez novos casos de carregamento e painéis |
+| Filtros | 504 cenários comparados com a versão anterior, com resultados idênticos |
+| Apresentação | 11.058 comparações de HTML/imagens, sem diferenças de saída |
+| Importador | 24 JSONs reconstruídos com os CSVs da mesma revisão, idênticos em bytes |
+| Navegador | Catálogo, formas, shiny, textos, golpes, favoritos, links, teclado e família de Eevee conferidos em Chromium |
+| Geometria inicial | Dimensões e posições do hero, título, ilustração, pesquisa e cartões iguais à referência anterior no mesmo viewport |
+| Java | Compilação e execução delegadas ao job JDK 17 do CI; compilador indisponível localmente |
+
+As comparações diferenciais e a reconstrução com CSVs em cache são verificações pontuais da entrega. A suíte permanente e os checks de cada PR ficam no GitHub. A conferência visual desta revisão foi em desktop; as regras responsivas foram preservadas, sem uma nova rodada em aparelhos físicos.
+
+## Verificações locais da revisão documental anterior (1.1.1)
 
 | Verificação | Resultado |
 | --- | --- |

@@ -209,11 +209,11 @@ O [manifesto](web/data/manifest.json) registra a revisão `e5b79b2e15d7c50735a94
 
 ### Tecnologias e decisões
 
-HTML, CSS e JavaScript com módulos nativos sustentam a interface. `app.js` coordena estado e renderização; `domain.js` concentra regras testáveis; `data.js` cuida de cargas, cache e imagens. Node.js executa ferramentas pequenas e testes; Python importa os CSVs. Java permanece como módulo didático independente.
+HTML, CSS e JavaScript com módulos nativos sustentam a interface. `app.js` coordena estado e renderização; `domain.js` concentra regras testáveis; `data.js` cuida de cargas, cache e URLs de imagens. Módulos menores separam apresentação, painéis, seleção de dados e tratamento de imagens no navegador. Node.js executa ferramentas pequenas e testes; Python importa os CSVs. Java permanece como módulo didático independente.
 
 O projeto não usa framework, bundler, banco de dados ou backend de contas. A base versionada facilita auditoria e execução, mas aumenta o tamanho do repositório. O carregamento de fichas por lote e a paginação limitam a quantidade de conteúdo construída de uma vez.
 
-[Arquitetura, fluxo e concorrência](docs/desenvolvimento/README.md)
+[Arquitetura, fluxo e concorrência](docs/desenvolvimento/README.md) · [Organização e comentários do código](docs/desenvolvimento/clean-code/README.md)
 
 ## O que desenvolvi e aprendi
 
@@ -240,7 +240,7 @@ npm test
 npm run build
 ```
 
-São **19 testes automatizados**: 8 de domínio, 6 de integridade da base e 5 de seleção/cache de imagens. A suíte não exige rede nem navegador. A verificação estática confere sintaxe JavaScript, referências locais do HTML e invariantes básicos. O build recria `dist/` a partir de `web/`.
+São **29 testes automatizados**: 8 de domínio, 6 de integridade da base, 5 de imagens, 3 de carregamento e 7 de painéis/seleção. A suíte não exige rede nem navegador. A verificação estática confere sintaxe JavaScript, referências locais do HTML e invariantes básicos. O build recria `dist/` a partir de `web/`.
 
 O GitHub Actions roda os comandos web com Node.js 22 e compila/executa o Java com JDK 17. O CI não faz deploy automático e não substitui revisão visual, testes físicos de dispositivos ou auditoria completa de acessibilidade.
 

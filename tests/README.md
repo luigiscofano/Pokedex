@@ -17,8 +17,10 @@ npm run build
 | [domain.test.mjs](domain.test.mjs) | 8 | Catálogo padrão, busca, filtros, favoritos, armazenamento bloqueado, lotes, eficácia e condições de evolução |
 | [data.test.mjs](data.test.mjs) | 6 | Hashes, vínculos de todas as formas, atributos, 324 relações de tipos, referências, contagens e famílias |
 | [images.test.mjs](images.test.mjs) | 5 | URLs normal/shiny, IDs de variedade, cache de formas, ausência de shiny, rejeição de URLs inválidas e nova tentativa |
+| [loading.test.mjs](loading.test.mjs) | 3 | Cargas concorrentes, recuperação de erros HTTP/JSON e fichas por lote |
+| [panels.test.mjs](panels.test.mjs) | 7 | Seleção, conteúdo das fichas, ausência de registros, escape HTML e família de Eevee |
 
-**Total: 19 testes.** Eles rodam sem navegador e sem depender da rede. Os testes de imagens simulam respostas; não garantem que um servidor externo esteja disponível no momento de uso. A suíte de dados percorre a base versionada, incluindo referências de golpes, habilidades, descrições e encontros.
+**Total: 29 testes.** Eles rodam sem navegador e sem depender da rede. Os testes de imagens simulam respostas; não garantem que um servidor externo esteja disponível no momento de uso. A suíte de dados percorre a base versionada, incluindo referências de golpes, habilidades, descrições e encontros.
 
 Para executar apenas uma área:
 
@@ -59,3 +61,7 @@ Use Tab, atalho `/`, setas/Home/End nas abas e Escape no diálogo. Confirme foco
 O [workflow](../.github/workflows/ci.yml) usa Node.js 22 e um job separado com JDK 17 para compilar e executar o [Java original](../src/README.md). A execução de `Main` é um teste básico de compilação e funcionamento; não é uma suíte unitária completa da classe `Pokemon`.
 
 Ao mudar comportamento, prefira uma asserção que detecte o problema real. Não acrescente testes que apenas repitam literalmente a implementação. Registre no PR o que foi executado, o resultado e o que ficou fora da validação.
+
+## Comparação durante a refatoração 1.1.2
+
+Além da suíte permanente, a revisão comparou a versão anterior com a refatorada em 504 combinações de filtros e 11.058 resultados de HTML/imagens. O importador foi executado com os CSVs da revisão já disponíveis, gerando 24 JSONs idênticos em bytes. Essas comparações pontuais não são testes de navegador nem uma etapa automática do CI.
