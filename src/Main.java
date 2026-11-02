@@ -4,29 +4,25 @@ import model.enums.Tipo;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Demonstra construção, cópia, alteração de estado e coleção de objetos. */
 public class Main {
     public static void main(String[] args) {
-        Pokemon p1 = new Pokemon("Infernape", Tipo.FOGO, Tipo.LUTADOR, "Ash", 200);
-        Pokemon p2 = new Pokemon("Torterra", Tipo.GRAMA, Tipo.TERRA, "Ash", 300);
-        Pokemon p3 = new Pokemon("Starmie", Tipo.AGUA, 160);
-        Pokemon p4 = new Pokemon(p3);
+        // Os construtores completos informam os dois tipos e o treinador.
+        Pokemon infernape = new Pokemon("Infernape", Tipo.FOGO, Tipo.LUTADOR, "Ash", 200);
+        Pokemon torterra = new Pokemon("Torterra", Tipo.GRAMA, Tipo.TERRA, "Ash", 300);
+        Pokemon starmie = new Pokemon("Starmie", Tipo.AGUA, 160);
 
-        p4.setEspecie("Empoleon");
-        p4.setTipoSecundario(Tipo.METAL);
+        // A cópia é outro objeto; mudar seus campos não altera Starmie.
+        Pokemon empoleon = new Pokemon(starmie);
+        empoleon.setEspecie("Empoleon");
+        empoleon.setTipoSecundario(Tipo.METAL);
+        empoleon.receberDano(50);
 
-        p4.receberDano(50);
+        // O método retorna uma razão: 110 / 160 = 0,6875, equivalente a 68,75%.
+        System.out.println(empoleon.porcentagemVida());
+        System.out.println(empoleon.getVidaAtual());
 
-        System.out.println(p4.porcentagemVida());
-        System.out.println(p4.getVidaAtual());
-
-        List<Pokemon> pokedex = new ArrayList<>();
-        pokedex.add(p1);
-        pokedex.add(p2);
-        pokedex.add(p3);
-        pokedex.add(p4);
-
-        List<Integer> inteiros = new ArrayList<>(List.of(1,2,3,4)); // copy constructor
-
-        pokedex.forEach(p -> System.out.println(p));
+        List<Pokemon> pokedex = new ArrayList<>(List.of(infernape, torterra, starmie, empoleon));
+        pokedex.forEach(System.out::println);
     }
 }

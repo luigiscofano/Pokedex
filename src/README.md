@@ -2,7 +2,7 @@
 
 [Início](../README.md) · [Documentação](../docs/README.md) · [Modelo Pokémon](model/README.md) · [Tipos](model/enums/README.md)
 
-Este é o exercício Java que deu origem ao repositório em 2023. Ele demonstra criação de objetos, sobrecarga de construtores, encapsulamento, enumeração, cópia e coleções. Está preservado como parte da trajetória do projeto.
+Este é o exercício Java que deu origem ao repositório em 2023. Ele demonstra criação de objetos, sobrecarga de construtores, encapsulamento, enumeração, cópia e coleções. Seus contratos e sua saída estão preservados; a versão 1.1.2 reorganiza a escrita e acrescenta comentários em português.
 
 **O site não depende deste Java para funcionar.** A aplicação web lê os JSONs de `web/data/`; as classes desta pasta executam uma demonstração independente no terminal, sem interface gráfica, integração com a PokéAPI ou entrada interativa.
 
@@ -38,13 +38,13 @@ Espécie: Empoleon - AGUA + METAL
 | [model/Pokemon.java](model/Pokemon.java) | Campos privados, três construtores, getters, setters e métodos de instância |
 | [model/enums/Tipo.java](model/enums/Tipo.java) | Conjunto fixo de valores do tipo `Tipo` |
 
-1. `p1` e `p2` são criados com dois tipos e treinador.
-2. `p3` usa o construtor simplificado para Starmie, com 160 de vida.
-3. `p4` é outro objeto, construído a partir de `p3`, e recebe o nome Empoleon e tipo secundário Metal.
-4. O dano de 50 altera `p4` para 110 de vida; não altera `p3`.
+1. `infernape` e `torterra` são criados com dois tipos e treinador.
+2. `starmie` usa o construtor simplificado para Starmie, com 160 de vida.
+3. `empoleon` é outro objeto, construído a partir de `starmie`, e recebe o nome Empoleon e tipo secundário Metal.
+4. O dano de 50 altera `empoleon` para 110 de vida; não altera `starmie`.
 5. A lista reúne os quatro objetos e imprime `toString()` de cada um.
 
-Há ainda uma lista de inteiros construída a partir de `List.of(1,2,3,4)`. Ela ilustra construção de uma coleção a partir de outra e não participa da saída.
+A coleção é construída com `new ArrayList<>(List.of(...))`, preservando a ordem dos quatro objetos. A antiga lista de inteiros sem uso foi removida na limpeza do exemplo.
 
 ## O que o exercício ensina
 
@@ -52,7 +52,7 @@ Há ainda uma lista de inteiros construída a partir de `List.of(1,2,3,4)`. Ela 
 | --- | --- | --- |
 | Encapsulamento | Campos privados e métodos públicos | Qual estado pode ser alterado por um setter? |
 | Sobrecarga | Construtores com assinaturas diferentes | Quais campos ficam sem valor no construtor curto? |
-| Identidade e cópia | `new Pokemon(p3)` | Alterar a cópia modifica o objeto original? |
+| Identidade e cópia | `new Pokemon(starmie)` | Alterar a cópia modifica o objeto original? |
 | Enumeração | `Tipo` | Como o compilador impede um valor textual arbitrário? |
 | Coleções e generics | `List<Pokemon>` | Quais elementos essa lista aceita? |
 | Representação textual | `toString()` | Por que o tipo ausente aparece como `null`? |
