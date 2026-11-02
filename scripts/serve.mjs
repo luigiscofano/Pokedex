@@ -4,7 +4,8 @@ import { resolve, extname, sep } from 'node:path';
 
 const root = resolve('web');
 const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png' };
-const port = Number(process.env.PORT || 3000);
+const portArgument = process.argv.indexOf('--port');
+const port = Number(portArgument >= 0 ? process.argv[portArgument + 1] : process.env.PORT || 3000);
 http.createServer(async (request, response) => {
   try {
     const path = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
