@@ -1,0 +1,25 @@
+name: Verificação
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run check
+      - run: npm test
+      - run: npm run build
+  java-original:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: javac -encoding UTF-8 -d build/classes -sourcepath src src/Main.java
+      - run: java -cp build/classes Main

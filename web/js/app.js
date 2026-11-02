@@ -18,7 +18,7 @@ function toast(message) {
   toastTimer = setTimeout(() => $('#toast').classList.remove('show'), 3500);
 }
 
-function badges(types) { return types.map(type => `<span class="badge type-${type}">${TYPE_NAMES[type]}</span>`).join(''); }
+function badges(types) { return types.map(type => `<span class="badge type-${type}">${TYPE_NAMES[type] || ({ 10001: '???', 10002: 'Shadow' })[type] || 'Especial'}</span>`).join(''); }
 function imageMarkup(form, className = '', eager = false) {
   return `<img class="${className}" src="${artwork(form)}" data-pokemon="${form.pokemon}" alt="${escapeHTML(form.label)}" width="280" height="280" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 }
@@ -141,6 +141,7 @@ function overviewPanel() {
 
 function matchupGroup(title, values) { return `<div class="match-group"><h4>${title}</h4><div class="matchups">${values.length ? values.map(v => `<span class="matchup">${badges([v.type])}<strong>${String(v.multiplier).replace('.', ',')}×</strong></span>`).join('') : '<span class="note">Nenhum tipo nesta categoria.</span>'}</div></div>`; }
 function typesPanel() {
+  if (state.form.types.some(type => !TYPE_NAMES[type])) return '<div class="empty-state"><h3>Forma com tipo especial histórico.</h3><p>A fonte registra esta forma com tipo “???”. Ela não participa da tabela moderna de 18 tipos, por isso não são calculadas vantagens ou fraquezas para ela.</p></div>';
   const defensive = defenseMatchups(state.form.types, state.reference.efficacy);
   const offensive = offenseMatchups(state.form.types, state.reference.efficacy);
   return `<div class="two-column"><section class="panel"><h3>Quando recebe um golpe</h3>${matchupGroup('Fraquezas', defensive.filter(v => v.multiplier > 1))}${matchupGroup('Resistências', defensive.filter(v => v.multiplier > 0 && v.multiplier < 1))}${matchupGroup('Imunidades', defensive.filter(v => v.multiplier === 0))}${matchupGroup('Dano neutro', defensive.filter(v => v.multiplier === 1))}</section><section class="panel"><h3>Vantagens ao atacar</h3>${matchupGroup('Super eficaz contra', offensive.filter(v => v.multiplier > 1))}${matchupGroup('Melhor opção neutra', offensive.filter(v => v.multiplier === 1))}${matchupGroup('Ambos os tipos têm dificuldade contra', offensive.filter(v => v.multiplier < 1))}<p class="note">Mostra a melhor eficácia entre os tipos próprios de ${escapeHTML(state.form.name)} contra um alvo de tipo único. Não inclui todos os golpes que ele pode aprender, STAB ou alvos com dois tipos.</p></section></div><p class="note">Regras modernas (a partir da geração VI). Os fatores dos dois tipos defensivos são multiplicados: 2 × 2 = 4×; 2 × 0,5 = 1×. Habilidades como Levitate, itens, clima e Terastalização não entram neste cálculo.</p>`;

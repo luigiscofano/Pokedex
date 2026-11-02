@@ -18,9 +18,11 @@ export function filterCatalog(catalog, filters) {
   return result.sort((a, b) => filters.sort === 'name' ? a.name.localeCompare(b.name) || a.id - b.id : filters.sort === 'total' ? totalStats(b) - totalStats(a) || a.species - b.species : a.species - b.species || Number(b.default) - Number(a.default) || a.id - b.id);
 }
 export function defenseMatchups(types, efficacy) {
+  if (!types.length || types.some(type => !TYPE_NAMES[type])) throw new RangeError('Tipo especial sem tabela de eficácia moderna');
   return Object.keys(TYPE_NAMES).map(Number).map(type => ({ type, multiplier: types.reduce((product, target) => product * (efficacy[`${type}/${target}`] ?? 1), 1) }));
 }
 export function offenseMatchups(types, efficacy) {
+  if (!types.length || types.some(type => !TYPE_NAMES[type])) throw new RangeError('Tipo especial sem tabela de eficácia moderna');
   // Melhor golpe de um dos tipos próprios contra um alvo de tipo único.
   return Object.keys(TYPE_NAMES).map(Number).map(type => ({ type, multiplier: Math.max(...types.map(attack => efficacy[`${attack}/${type}`] ?? 1)) }));
 }
