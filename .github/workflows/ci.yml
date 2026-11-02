@@ -1,8 +1,10 @@
+# Verifica a aplicação e o exercício Java sem publicar o site.
 name: Verificação
 on: [push, pull_request]
 permissions:
   contents: read
 jobs:
+  # Regras, integridade dos dados e geração estática.
   web:
     runs-on: ubuntu-latest
     steps:
@@ -13,6 +15,7 @@ jobs:
       - run: npm run check
       - run: npm test
       - run: npm run build
+  # Mantém a demonstração Java compilável no ambiente de referência.
   java-original:
     runs-on: ubuntu-latest
     steps:

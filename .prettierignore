@@ -1,0 +1,6 @@
+# Dados gerados permanecem compactos e protegidos pelos hashes do manifesto.
+web/data/**/*.json
+dist/
+build/
+.cache/
+node_modules/
