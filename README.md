@@ -2,7 +2,7 @@
 
 **Uma enciclopédia navegável com as 1.025 espécies da Pokédex Nacional e 1.579 formas registradas**, criada a partir do meu primeiro projeto Java de orientação a objetos.
 
-A aplicação permite pesquisar Pokémon, consultar formas alternativas, entender tipos e fraquezas, acompanhar famílias evolutivas e explorar descrições, golpes e encontros por jogo. O exercício Java original está preservado em [`src/`](src/README.md) e no histórico do repositório.
+Feita por **Luigi Scofano de Araujo**, de fã para outros fãs de Pokémon. A aplicação permite pesquisar Pokémon, consultar formas alternativas, entender tipos e fraquezas, acompanhar famílias evolutivas e explorar descrições, golpes e encontros por jogo. O exercício Java original está preservado em [`src/`](src/README.md) e no histórico do repositório.
 
 [Abrir versão hospedada](https://pokedex-luigi-explorer.luigiscofano.chatgpt.site) · [Código no GitHub](https://github.com/luigiscofano/Pokedex)
 
