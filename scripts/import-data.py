@@ -163,6 +163,11 @@ def import_data():
     areas = {int(r['id']): {'location': location_names.get(int(r['location_id']), str(r['location_id'])), 'area': area_names.get(int(r['id'])) or r['identifier'].replace('-', ' ')} for r in rows('location_areas')}
     version_names = localized('version_names', 'version_id')
     versions = {int(r['id']): {'name': version_names.get(int(r['id']), r['identifier']), 'group': int(r['version_group_id'])} for r in rows('versions')}
+    counts = {}
+    for value in versions.values(): counts[value['name']] = counts.get(value['name'], 0) + 1
+    for r in rows('versions'):
+        vid = int(r['id'])
+        if counts[versions[vid]['name']] > 1: versions[vid]['name'] += ' · ' + r['identifier']
     version_groups = {int(r['id']): {'name': r['identifier'].replace('-', ' ').title(), 'generation': int(r['generation_id']), 'order': int(r['order'])} for r in rows('version_groups')}
     types = {int(r['id']): r['identifier'] for r in rows('types') if int(r['id']) <= 18}
     efficacy = {f"{r['damage_type_id']}/{r['target_type_id']}": int(r['damage_factor']) / 100 for r in rows('type_efficacy') if int(r['damage_type_id']) <= 18 and int(r['target_type_id']) <= 18}

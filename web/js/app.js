@@ -1,5 +1,5 @@
 import { TYPE_NAMES, GENERATIONS, STAT_NAMES, normalize, dexNumber, totalStats, filterCatalog, defenseMatchups, offenseMatchups, readFavorites, writeFavorites, evolutionConditions } from './domain.js';
-import { loadJSON, loadSpecies, artwork, sprite } from './data.js';
+import { loadJSON, loadSpecies, loadFormSprite, artwork, sprite } from './data.js';
 
 const $ = selector => document.querySelector(selector);
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -20,8 +20,21 @@ function toast(message) {
 
 function badges(types) { return types.map(type => `<span class="badge type-${type}">${TYPE_NAMES[type] || ({ 10001: '???', 10002: 'Shadow' })[type] || 'Especial'}</span>`).join(''); }
 function imageMarkup(form, className = '', eager = false) {
-  return `<img class="${className}" src="${artwork(form)}" data-pokemon="${form.pokemon}" alt="${escapeHTML(form.label)}" width="280" height="280" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+  const cosmetic = !form.default && state.catalog.some(p => p.pokemon === form.pokemon && p.id !== form.id);
+  return `<img class="${className}" src="${artwork(form)}" data-pokemon="${form.pokemon}" ${cosmetic ? `data-form-image="${form.id}"` : ''} alt="${escapeHTML(cosmetic ? 'Referência da variedade: ' + form.label : form.label)}" width="280" height="280" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 }
+
+const imageObserver = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    const img = entry.target;
+    imageObserver.unobserve(img);
+    loadFormSprite(Number(img.dataset.formImage)).then(source => {
+      if (source && img.isConnected) { img.src = source; img.alt = img.alt.replace('Referência da variedade: ', ''); }
+      else if (img.isConnected) img.title = 'Sprite desta forma indisponível. Ilustração de referência da variedade.';
+    });
+  }
+}, { rootMargin: '100px' });
 
 function card(form) {
   const saved = state.favorites.includes(form.id);
@@ -42,6 +55,8 @@ function syncURL() {
 function renderCatalog() {
   const list = filterCatalog(state.catalog, state);
   $('#pokemon-grid').innerHTML = list.length ? list.slice(0, state.limit).map(card).join('') : '<div class="empty-state"><h3>Nenhum Pokémon por aqui.</h3><p>Tente outro nome ou ajuste os filtros. Para procurar uma forma alternativa, ative “Incluir formas”.</p><button data-reset>Limpar filtros</button></div>';
+  imageObserver.disconnect();
+  document.querySelectorAll('#pokemon-grid [data-form-image]').forEach(img => imageObserver.observe(img));
   $('#result-count').textContent = `${formatNumber(list.length)} ${state.forms ? 'formas' : 'Pokémon'} encontrados`;
   $('#page-count').textContent = list.length ? `Mostrando ${Math.min(state.limit, list.length)} de ${formatNumber(list.length)}` : '';
   $('#load-more').hidden = list.length <= state.limit;
@@ -117,13 +132,11 @@ async function resolveCosmeticImage(form) {
   if (form.default || shared.length < 2) return;
   $('#form-image-caption').textContent = 'Buscando sprite específico desta forma…';
   try {
-    const response = await fetch(`https://raw.githubusercontent.com/PokeAPI/api-data/master/data/api/v2/pokemon-form/${form.id}/index.json`);
-    if (!response.ok) throw Error('Sprite indisponível');
-    const data = await response.json();
+    const source = await loadFormSprite(form.id);
     if (state.form?.id !== form.id || !$('#pokemon-dialog').open) return;
-    const source = data.sprites?.front_default;
     if (source && new URL(source).hostname === 'raw.githubusercontent.com') {
       $('.detail-image').src = source;
+      $('.detail-image').alt = form.label;
       $('#form-image-caption').textContent = 'Sprite da forma selecionada';
     } else $('#form-image-caption').textContent = 'Ilustração de referência da variedade; sprite desta forma indisponível.';
   } catch {
@@ -135,7 +148,7 @@ function facts(items) { return `<dl class="facts">${items.map(([label, value]) =
 
 function overviewPanel() {
   const p = currentPokemon(), s = state.species;
-  const gender = s.genderRate === -1 ? 'Sem gênero' : `${s.genderRate / 8 * 100}% ♀`;
+  const gender = s.genderRate === -1 ? 'Sem gênero' : `${(s.genderRate / 8 * 100).toLocaleString('pt-BR')}% ♀`;
   return `<div class="two-column"><div><section class="panel"><h3>Conheça ${escapeHTML(s.name)}</h3>${facts([['Altura', `${p.height.toLocaleString('pt-BR')} m`], ['Peso', `${p.weight.toLocaleString('pt-BR')} kg`], ['Experiência base', p.experience ?? 'Sem dado'], ['Taxa de captura', s.captureRate], ['Amizade base', s.baseHappiness ?? 'Sem dado'], ['Gênero', gender]])}<p class="note">Taxa de captura é um parâmetro de 0 a 255, não uma porcentagem. Gênero e reprodução são informações da espécie.</p></section><section class="panel"><h3>Habilidades</h3>${p.abilities.map(([id, hidden]) => { const a = state.reference.abilities[id]; return `<div class="ability"><strong>${escapeHTML(a?.name || id)}${hidden ? ' <span class="badge">Oculta</span>' : ''}</strong><p>${escapeHTML(a?.effect || 'Descrição não disponível na fonte.')}</p></div>`; }).join('')}<p class="note">Descrições de habilidades no idioma da fonte (inglês).</p></section></div><div><section class="panel"><h3>Atributos base</h3>${p.stats.map((value, i) => `<div class="stat-row"><span>${STAT_NAMES[i]}</span><strong>${value}</strong><div class="stat-track"><div class="stat-fill" style="width:${Math.min(100, value / 255 * 100)}%"></div></div></div>`).join('')}<div class="stat-total"><span>Total</span><strong>${totalStats(p)}</strong></div><p class="note">Valores base da variedade selecionada; não são os atributos finais de um Pokémon treinado.</p></section><section class="panel"><h3>Criação e treinamento</h3>${facts([['Grupos de ovos', s.eggGroups.map(id => humanize(state.reference.eggGroups[id])).join(' / ') || 'Sem dado'], ['Ciclos de eclosão', s.hatchCounter ?? 'Sem dado'], ['EVs concedidos', p.effort.map((n, i) => n ? `${n} ${STAT_NAMES[i]}` : '').filter(Boolean).join(', ') || '0']])}</section></div></div>`;
 }
 
@@ -163,7 +176,7 @@ async function evolutionPanel(token) {
   const details = await Promise.all(chain.map(p => loadSpecies(p.species)));
   if (token !== state.tabRequest || state.tab !== 'evolution') return;
   const parentName = id => details.find(s => s.id === id)?.name || `#${id}`;
-  $('#detail-panel').innerHTML = `<h3>Família evolutiva</h3><p class="note">Condições preservadas por grupo de versões. Ramos diferentes são alternativas; regras específicas de forma aparecem nos requisitos. Formas Mega e outras transformações de batalha ficam no seletor de formas, pois não são evoluções permanentes.</p><div class="evolution-tree">${details.map(s => {
+  $('#detail-panel').innerHTML = `<h3>Família evolutiva</h3><p class="note">Os jogos indicados identificam os registros da fonte, não uma lista exaustiva de versões compatíveis. Ramos diferentes são alternativas; regras específicas de forma aparecem nos requisitos. Formas Mega e outras transformações de batalha ficam no seletor de formas, pois não são evoluções permanentes.</p><div class="evolution-tree">${details.map(s => {
     const form = chain.find(p => p.species === s.id);
     const rules = s.evolutions;
     const grouped = new Map();
@@ -187,14 +200,14 @@ function encountersPanel() {
   return title + `<div class="table-filters"><label>Jogo<select id="encounter-version"><option value="">Todos os jogos com registros</option>${versions.map(id => `<option value="${id}" ${Number(state.encounterVersion) === id ? 'selected' : ''}>${escapeHTML(state.reference.versions[id]?.name || id)}</option>`).join('')}</select></label></div><div class="table-wrap"><table><thead><tr><th>Jogo e localização</th><th>Método e condições</th><th>Níveis</th><th>Slot</th></tr></thead><tbody>${selected.slice(0, state.rows).map(e => { const area = state.reference.areas[e[1]]; return `<tr><td><strong>${escapeHTML(area?.location || e[1])}</strong><p>${escapeHTML(area?.area || '')}<br>Pokémon ${escapeHTML(state.reference.versions[e[0]]?.name || e[0])}</p></td><td>${escapeHTML(state.reference.encounterMethods[e[2]] || e[2])}<p>${escapeHTML(e[6].map(id => state.reference.encounterConditions[id] || id).join(' · ') || 'Sem condição adicional registrada')}</p></td><td>${e[3]}–${e[4]}</td><td>${e[5] === null ? '—' : e[5] + '%'}</td></tr>`; }).join('')}</tbody></table></div><p class="note">Mostrando ${Math.min(state.rows, selected.length)} de ${formatNumber(selected.length)} registros. Nomes de áreas e condições preservados em inglês.</p>${selected.length > state.rows ? '<button class="secondary" data-more-rows>Mostrar mais registros ↓</button>' : ''}` + dexes;
 }
 
-const moveMethodNames = { 'level-up': 'Nível', egg: 'Ovo', tutor: 'Tutor', machine: 'Máquina', 'stadium-surfing-pikachu': 'Evento Stadium', 'light-ball-egg': 'Ovo com Light Ball', 'colosseum-purification': 'Purificação', 'xd-shadow': 'Shadow (XD)', 'xd-purification': 'Purificação (XD)', 'form-change': 'Mudança de forma', 'zygarde-cube': 'Zygarde Cube' };
+const moveMethodNames = { 'level-up': 'Nível', egg: 'Ovo', tutor: 'Tutor', machine: 'Máquina', 'stadium-surfing-pikachu': 'Evento Stadium', 'light-ball-egg': 'Ovo com Light Ball', 'colosseum-purification': 'Purificação', 'xd-shadow': 'Shadow (XD)', 'xd-purification': 'Purificação (XD)', 'form-change': 'Mudança de forma', 'zygarde-cube': 'Zygarde Cube', train: 'Treinamento' };
 function movesPanel() {
   const p = currentPokemon();
   const groups = [...new Set(p.moves.map(m => m[0]))].sort((a, b) => (state.reference.versionGroups[b]?.order || b) - (state.reference.versionGroups[a]?.order || a));
   if (!groups.length) return '<div class="empty-state">Nenhum aprendizado de golpe registrado para esta variedade.</div>';
   if (!groups.includes(Number(state.moveGroup))) state.moveGroup = groups[0];
   const list = p.moves.filter(m => m[0] === Number(state.moveGroup) && (!state.moveQuery || normalize(state.reference.moves[m[1]]?.name).includes(normalize(state.moveQuery)))).sort((a, b) => a[2] - b[2] || a[3] - b[3] || a[1] - b[1]);
-  return `<h3>Golpes e aprendizado</h3><p class="note">Escolha a versão para consultar o repertório daquela variedade. Um golpe aprendido em outro jogo não é automaticamente válido na versão selecionada.</p><div class="table-filters"><label>Versão<select id="move-group">${groups.map(id => `<option value="${id}" ${Number(state.moveGroup) === id ? 'selected' : ''}>${escapeHTML(state.reference.versionGroups[id]?.name || id)}</option>`).join('')}</select></label><label>Nome<input id="move-search" type="search" value="${escapeHTML(state.moveQuery)}" placeholder="Buscar golpe em inglês" style="padding:9px;border:1px solid var(--line);border-radius:6px;max-width:200px"></label></div><div class="table-wrap"><table><thead><tr><th>Golpe</th><th>Tipo / classe</th><th>Aprendizado</th><th>Poder</th><th>Precisão</th><th>PP</th></tr></thead><tbody>${list.slice(0, state.rows).map(m => { const move = state.reference.moves[m[1]]; if (!move) return ''; const method = state.reference.moveMethods[m[2]]; return `<tr><td><strong>${escapeHTML(move.name)}</strong><p>${escapeHTML(move.effect || 'Efeito não descrito na fonte.')}</p></td><td>${badges([move.type])}<p>${({ 1: 'Status', 2: 'Físico', 3: 'Especial' })[move.class] || '—'}</p></td><td>${escapeHTML(moveMethodNames[method] || humanize(method))}${m[2] === 1 ? ' · ' + m[3] : ''}${m[4] ? `<p>Maestria: ${m[4]}</p>` : ''}</td><td>${move.power ?? '—'}</td><td>${move.accuracy === null ? '—' : move.accuracy + '%'}</td><td>${move.pp ?? '—'}</td></tr>`; }).join('') || '<tr><td colspan="6">Nenhum golpe corresponde à busca.</td></tr>'}</tbody></table></div><p class="note">${Math.min(state.rows, list.length)} de ${formatNumber(list.length)} registros. Efeitos e atributos dos golpes usam a definição atual da fonte; alterações históricas de poder, precisão e efeitos não são reconstruídas.</p>${list.length > state.rows ? '<button class="secondary" data-more-rows>Mostrar mais golpes ↓</button>' : ''}`;
+  return `<h3>Golpes e aprendizado</h3><p class="note">Escolha a versão para consultar o repertório daquela variedade. Um golpe aprendido em outro jogo não é automaticamente válido na versão selecionada.</p><div class="table-filters"><label>Versão<select id="move-group">${groups.map(id => `<option value="${id}" ${Number(state.moveGroup) === id ? 'selected' : ''}>${escapeHTML(state.reference.versionGroups[id]?.name || id)}</option>`).join('')}</select></label><label>Nome<input id="move-search" type="search" value="${escapeHTML(state.moveQuery)}" placeholder="Buscar golpe em inglês" style="padding:9px;border:1px solid var(--line);border-radius:6px;max-width:200px"></label></div><div class="table-wrap"><table><thead><tr><th>Golpe</th><th>Tipo / classe</th><th>Aprendizado</th><th>Poder</th><th>Precisão</th><th>PP</th></tr></thead><tbody>${list.slice(0, state.rows).map(m => { const move = state.reference.moves[m[1]]; if (!move) return ''; const method = state.reference.moveMethods[m[2]]; return `<tr><td><strong>${escapeHTML(move.name)}</strong><p>${escapeHTML(move.effect || 'Efeito não descrito na fonte.')}</p></td><td>${badges([move.type])}<p>${({ 1: 'Status', 2: 'Físico', 3: 'Especial' })[move.class] || '—'}</p></td><td>${escapeHTML(moveMethodNames[method] || humanize(method))}${m[2] === 1 ? ' · ' + m[3] : ''}${m[4] ? `<p>Maestria: ${m[4]}</p>` : ''}</td><td>${move.power > 0 ? move.power : '—'}</td><td>${move.accuracy > 0 ? move.accuracy + '%' : '—'}</td><td>${move.pp ?? '—'}</td></tr>`; }).join('') || '<tr><td colspan="6">Nenhum golpe corresponde à busca.</td></tr>'}</tbody></table></div><p class="note">${Math.min(state.rows, list.length)} de ${formatNumber(list.length)} registros. Efeitos e atributos dos golpes usam a definição atual da fonte; alterações históricas de poder, precisão e efeitos não são reconstruídas.</p>${list.length > state.rows ? '<button class="secondary" data-more-rows>Mostrar mais golpes ↓</button>' : ''}`;
 }
 
 async function renderPanel() {
