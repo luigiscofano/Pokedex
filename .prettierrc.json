@@ -1,0 +1,5 @@
+{
+  "singleQuote": true,
+  "htmlWhitespaceSensitivity": "strict",
+  "overrides": [{ "files": "*.svg", "options": { "parser": "html" } }]
+}

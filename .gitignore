@@ -33,3 +33,7 @@ build/
 node_modules/
 *.log
 .openai/local/
+
+# Arquivos temporários do compilador Python.
+__pycache__/
+*.pyc
