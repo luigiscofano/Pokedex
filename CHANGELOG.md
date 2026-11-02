@@ -1,5 +1,12 @@
 # Histórico de mudanças
 
+## 1.1.0 — 2026-11-02
+
+- Alternância Normal/Shiny no catálogo e nas fichas, aplicada também ao destaque e às evoluções.
+- Preferência shiny preservada nos links, sprites específicos de formas cosméticas e aviso explícito quando a imagem está ausente.
+- Contornos na cor de cada tipo e texto mais contrastante nos badges.
+- Cinco testes de seleção, cache e recuperação de imagens; documentação de uso atualizada.
+
 ## 1.0.0 — 2026-11-02
 
 - Aplicação web com catálogo de 1.025 espécies e 1.579 formas da base versionada.

@@ -475,6 +475,9 @@ select {
   height:22px;
   opacity:0
 }
+.shiny-switch {
+  margin-left:0
+}
 .switch {
   width:29px;
   height:17px;
@@ -614,6 +617,11 @@ select {
   font-size:9px;
   font-weight:600;
   margin-right:4px
+}
+.badge[class*="type-"] {
+  border:1.5px solid color-mix(in srgb,var(--type-color) 78%,#20251c);
+  color:color-mix(in srgb,var(--type-color) 44%,#10140e);
+  font-weight:700
 }
 .type-1 {
   --type-color:#8f9584
@@ -832,6 +840,27 @@ dialog::backdrop {
   display:flex;
   gap:12px;
   margin-top:18px
+}
+.appearance-control {
+  display:inline-flex;
+  gap:3px;
+  padding:3px;
+  border:1px solid #9ca58e;
+  border-radius:8px;
+  background:#ffffff90
+}
+.appearance-control button {
+  border:1px solid transparent;
+  border-radius:5px;
+  padding:7px 14px;
+  font-size:11px;
+  font-weight:600;
+  background:transparent
+}
+.appearance-control button[aria-pressed="true"] {
+  background:var(--ink);
+  color:#fff;
+  border-color:var(--ink)
 }
 .detail-actions button {
   font-size:11px;
@@ -1152,6 +1181,18 @@ tr:last-child td {
   position:absolute;
   bottom:8px;
   text-align:center
+}
+.image-unavailable:empty {
+  display:none
+}
+.card-art .image-unavailable {
+  left:8px;
+  right:8px;
+  line-height:1.4
+}
+.evolution-pokemon .image-unavailable {
+  position:static;
+  display:block
 }
 .sr-only {
   position:absolute;
