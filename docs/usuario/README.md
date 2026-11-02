@@ -10,6 +10,12 @@ Selecione uma geração na lateral, um tipo ou a categoria lendário/mítico. Os
 
 Ative **Incluir formas** para listar formas adicionais. Uma forma também pode ser escolhida dentro da ficha. Número nacional identifica a espécie; uma forma pode ter outro ID interno. Formas cosméticas podem compartilhar atributos. Megas e outras formas de batalha têm sinalização própria.
 
+## Visualizar Pokémon shiny
+
+Ative **✦ Shiny** ao lado dos filtros ou use **Normal / ✦ Shiny** dentro da ficha. A escolha vale para catálogo, destaque, ficha e evoluções, sem mudar os atributos ou duplicar espécies e favoritos. Os links preservam essa escolha com `shiny=1`.
+
+As imagens vêm da PokéAPI. Se a ilustração shiny faltar, a aplicação tenta o sprite shiny; se ambos estiverem ausentes, mostra **Imagem shiny indisponível**. Formas cosméticas usam o sprite shiny específico, quando disponível. A imagem não indica que a forma shiny pode ser obtida em determinado jogo.
+
 ## Ler a ficha
 
 | Aba | O que consultar |

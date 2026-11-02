@@ -8,7 +8,7 @@ const formatNumber = value => Number(value).toLocaleString('pt-BR');
 const languages = { 1: 'Japonês (kana)', 2: 'Japonês romanizado', 3: 'Coreano', 4: 'Chinês tradicional', 5: 'Francês', 6: 'Alemão', 7: 'Espanhol', 8: 'Italiano', 9: 'Inglês', 11: 'Japonês', 12: 'Chinês simplificado', 14: 'Espanhol latino-americano' };
 let storage;
 try { storage = window.localStorage; } catch { storage = { getItem: () => null, setItem: () => { throw Error('Armazenamento indisponível'); } }; }
-const state = { catalog: [], reference: {}, manifest: {}, query: '', generation: 0, type: 0, kind: '', sort: 'number', forms: false, favoritesOnly: false, favorites: readFavorites(storage), limit: 24, form: null, species: null, tab: 'overview', detailRequest: 0, tabRequest: 0, language: 9, entryVersion: null, encounterVersion: '', moveGroup: '', moveQuery: '', rows: 80 };
+const state = { catalog: [], reference: {}, manifest: {}, query: '', generation: 0, type: 0, kind: '', sort: 'number', forms: false, shiny: false, favoritesOnly: false, favorites: readFavorites(storage), limit: 24, form: null, species: null, tab: 'overview', detailRequest: 0, tabRequest: 0, language: 9, entryVersion: null, encounterVersion: '', moveGroup: '', moveQuery: '', rows: 80 };
 let toastTimer;
 
 function toast(message) {
@@ -19,20 +19,53 @@ function toast(message) {
 }
 
 function badges(types) { return types.map(type => `<span class="badge type-${type}">${TYPE_NAMES[type] || ({ 10001: '???', 10002: 'Shadow' })[type] || 'Especial'}</span>`).join(''); }
+const placeholder = new URL('../icon.svg', import.meta.url).href;
 function imageMarkup(form, className = '', eager = false) {
   const cosmetic = !form.default && state.catalog.some(p => p.pokemon === form.pokemon && p.id !== form.id);
-  return `<img class="${className}" src="${artwork(form)}" data-pokemon="${form.pokemon}" ${cosmetic ? `data-form-image="${form.id}"` : ''} alt="${escapeHTML(cosmetic ? 'Referência da variedade: ' + form.label : form.label)}" width="280" height="280" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+  const pending = cosmetic && state.shiny;
+  const label = `${form.label}${state.shiny ? ' shiny' : ''}`;
+  return `<img class="${className}" src="${pending ? placeholder : artwork(form, state.shiny)}" data-pokemon="${form.pokemon}" data-shiny="${Number(state.shiny)}" data-image-label="${escapeHTML(label)}" ${cosmetic ? `data-form-image="${form.id}"` : ''} alt="${escapeHTML(pending ? 'Carregando ' + label : cosmetic ? 'Referência da variedade: ' + label : label)}" ${pending ? 'style="opacity:.25"' : ''} width="280" height="280" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">${pending && !className ? '<span class="image-unavailable">Carregando shiny…</span>' : ''}`;
+}
+
+function imageCaption(img, message) {
+  let caption = img.parentElement.querySelector('.image-caption, .image-unavailable');
+  if (!caption) {
+    caption = document.createElement('span');
+    caption.className = 'image-unavailable';
+    img.after(caption);
+  }
+  caption.textContent = message;
+}
+
+function unavailableImage(img) {
+  const message = img.dataset.shiny === '1' ? 'Imagem shiny indisponível' : 'Imagem indisponível';
+  img.dataset.fallback = '2';
+  img.src = placeholder;
+  img.alt = message;
+  img.style.opacity = '.25';
+  imageCaption(img, message);
+}
+
+async function resolveFormImage(img) {
+  const shiny = img.dataset.shiny === '1';
+  const source = await loadFormSprite(Number(img.dataset.formImage), shiny);
+  if (!img.isConnected) return;
+  if (source) {
+    img.dataset.exactForm = '1';
+    delete img.dataset.fallback;
+    img.style.opacity = '';
+    img.alt = img.dataset.imageLabel;
+    img.src = source;
+    imageCaption(img, img.classList.contains('detail-image') ? `Sprite da forma selecionada${shiny ? ' · Shiny' : ''}` : '');
+  } else if (shiny) unavailableImage(img);
+  else imageCaption(img, 'Referência da variedade; sprite desta forma indisponível.');
 }
 
 const imageObserver = new IntersectionObserver(entries => {
   for (const entry of entries) {
     if (!entry.isIntersecting) continue;
-    const img = entry.target;
-    imageObserver.unobserve(img);
-    loadFormSprite(Number(img.dataset.formImage)).then(source => {
-      if (source && img.isConnected) { img.src = source; img.alt = img.alt.replace('Referência da variedade: ', ''); }
-      else if (img.isConnected) img.title = 'Sprite desta forma indisponível. Ilustração de referência da variedade.';
-    });
+    imageObserver.unobserve(entry.target);
+    resolveFormImage(entry.target);
   }
 }, { rootMargin: '100px' });
 
@@ -47,6 +80,7 @@ function syncURL() {
   if (state.generation) params.set('gen', state.generation);
   if (state.type) params.set('type', state.type);
   if (state.forms) params.set('forms', '1');
+  if (state.shiny) params.set('shiny', '1');
   if (state.form && $('#pokemon-dialog').open) params.set('pokemon', state.form.id);
   const query = params.toString();
   history.replaceState(null, '', `${location.pathname}${query ? '?' + query : ''}${location.hash}`);
@@ -76,6 +110,30 @@ function resetFilters() {
   Object.assign(state, { query: '', generation: 0, type: 0, kind: '', sort: 'number', forms: false, favoritesOnly: false, limit: 24 });
   $('#search').value = ''; $('#type-filter').value = '0'; $('#kind-filter').value = ''; $('#sort-filter').value = 'number'; $('#forms-filter').checked = false;
   renderCatalog();
+}
+
+function updateShinyControls() {
+  $('#shiny-filter').checked = state.shiny;
+  const hero = $('#hero-image');
+  const next = hero.cloneNode(false);
+  next.dataset.shiny = String(Number(state.shiny));
+  delete next.dataset.fallback;
+  next.style.opacity = '';
+  next.src = artwork({ pokemon: 6 }, state.shiny);
+  next.alt = `Ilustração de Charizard${state.shiny ? ' shiny' : ''}`;
+  hero.parentElement.querySelector('.image-unavailable')?.remove();
+  hero.replaceWith(next);
+}
+
+function setShiny(shiny) {
+  if (state.shiny === shiny) return;
+  state.shiny = shiny;
+  updateShinyControls();
+  renderCatalog();
+  if ($('#pokemon-dialog').open && $('.detail-image')) {
+    renderDetail();
+    $(`[data-shiny-mode="${Number(shiny)}"]`).focus({ preventScroll: true });
+  }
 }
 
 function toggleFavorite(id) {
@@ -122,25 +180,12 @@ function renderDetail() {
   const f = state.form, s = state.species;
   const forms = state.catalog.filter(p => p.species === f.species);
   const tabs = [['overview', 'Visão geral'], ['types', 'Tipos e vantagens'], ['entries', 'Textos dos jogos'], ['evolution', 'Evoluções'], ['encounters', 'Onde encontrar'], ['moves', 'Golpes']];
-  $('#detail-content').innerHTML = `<div class="detail-top type-${f.types[0]}"><div class="detail-art">${imageMarkup(f, 'detail-image', true)}<span class="image-caption" id="form-image-caption"></span></div><div class="detail-heading"><div class="eyebrow">${dexNumber(f.species)} · GERAÇÃO ${f.generation}${f.legendary ? ' · LENDÁRIO' : f.mythical ? ' · MÍTICO' : ''}</div><h2 id="detail-title">${escapeHTML(f.name)}</h2><div>${badges(f.types)}</div><p class="detail-genus">${escapeHTML(s.genus)}${f.battleOnly ? ' · Forma de batalha' : ''}</p><label class="detail-form-select">Forma (${forms.length} disponíveis)<select id="detail-form">${forms.map(p => `<option value="${p.id}" ${p.id === f.id ? 'selected' : ''}>${escapeHTML(p.form || 'Forma padrão')}</option>`).join('')}</select></label><div class="detail-actions"><button data-favorite="${f.id}" aria-pressed="${state.favorites.includes(f.id)}">${state.favorites.includes(f.id) ? '♥ Favoritado' : '♡ Salvar favorito'}</button><button id="copy-link">Copiar link ↗</button></div></div></div><div class="detail-tabs" role="tablist" aria-label="Seções da ficha">${tabs.map(([id, label]) => `<button role="tab" aria-controls="detail-panel" id="tab-${id}" data-tab="${id}" aria-selected="${state.tab === id}" tabindex="${state.tab === id ? 0 : -1}" class="${state.tab === id ? 'active' : ''}">${label}</button>`).join('')}</div><div class="detail-body" id="detail-panel" role="tabpanel" aria-labelledby="tab-${state.tab}"></div>`;
+  $('#detail-content').innerHTML = `<div class="detail-top type-${f.types[0]}"><div class="detail-art">${imageMarkup(f, 'detail-image', true)}<span class="image-caption" id="form-image-caption"></span></div><div class="detail-heading"><div class="eyebrow">${dexNumber(f.species)} · GERAÇÃO ${f.generation}${f.legendary ? ' · LENDÁRIO' : f.mythical ? ' · MÍTICO' : ''}</div><h2 id="detail-title">${escapeHTML(f.name)}</h2><div>${badges(f.types)}</div><p class="detail-genus">${escapeHTML(s.genus)}${f.battleOnly ? ' · Forma de batalha' : ''}</p><label class="detail-form-select">Forma (${forms.length} disponíveis)<select id="detail-form">${forms.map(p => `<option value="${p.id}" ${p.id === f.id ? 'selected' : ''}>${escapeHTML(p.form || 'Forma padrão')}</option>`).join('')}</select></label><div class="appearance-control" role="group" aria-label="Aparência do Pokémon"><button data-shiny-mode="0" aria-pressed="${!state.shiny}">Normal</button><button data-shiny-mode="1" aria-pressed="${state.shiny}"><span aria-hidden="true">✦</span> Shiny</button></div><div class="detail-actions"><button data-favorite="${f.id}" aria-pressed="${state.favorites.includes(f.id)}">${state.favorites.includes(f.id) ? '♥ Favoritado' : '♡ Salvar favorito'}</button><button id="copy-link">Copiar link ↗</button></div></div></div><div class="detail-tabs" role="tablist" aria-label="Seções da ficha">${tabs.map(([id, label]) => `<button role="tab" aria-controls="detail-panel" id="tab-${id}" data-tab="${id}" aria-selected="${state.tab === id}" tabindex="${state.tab === id ? 0 : -1}" class="${state.tab === id ? 'active' : ''}">${label}</button>`).join('')}</div><div class="detail-body" id="detail-panel" role="tabpanel" aria-labelledby="tab-${state.tab}"></div>`;
   renderPanel();
-  resolveCosmeticImage(f);
-}
-
-async function resolveCosmeticImage(form) {
-  const shared = state.catalog.filter(p => p.pokemon === form.pokemon);
-  if (form.default || shared.length < 2) return;
-  $('#form-image-caption').textContent = 'Buscando sprite específico desta forma…';
-  try {
-    const source = await loadFormSprite(form.id);
-    if (state.form?.id !== form.id || !$('#pokemon-dialog').open) return;
-    if (source && new URL(source).hostname === 'raw.githubusercontent.com') {
-      $('.detail-image').src = source;
-      $('.detail-image').alt = form.label;
-      $('#form-image-caption').textContent = 'Sprite da forma selecionada';
-    } else $('#form-image-caption').textContent = 'Ilustração de referência da variedade; sprite desta forma indisponível.';
-  } catch {
-    if (state.form?.id === form.id && $('#form-image-caption')) $('#form-image-caption').textContent = 'Ilustração de referência da variedade; sprite desta forma indisponível.';
+  const img = $('.detail-image');
+  if (img.dataset.formImage) {
+    imageCaption(img, 'Buscando sprite específico desta forma…');
+    resolveFormImage(img);
   }
 }
 
@@ -245,6 +290,7 @@ function installEvents() {
   $('#kind-filter').addEventListener('change', event => applyFilter('kind', event.target.value));
   $('#sort-filter').addEventListener('change', event => applyFilter('sort', event.target.value));
   $('#forms-filter').addEventListener('change', event => applyFilter('forms', event.target.checked));
+  $('#shiny-filter').addEventListener('change', event => setShiny(event.target.checked));
   $('#load-more').addEventListener('click', () => {
     state.limit += 24;
     renderCatalog();
@@ -259,7 +305,8 @@ function installEvents() {
   document.addEventListener('click', async event => {
     const button = event.target.closest('button');
     if (!button) return;
-    if (button.dataset.open) openDetail(button.dataset.open);
+    if (button.dataset.shinyMode !== undefined) setShiny(button.dataset.shinyMode === '1');
+    else if (button.dataset.open) openDetail(button.dataset.open);
     else if (button.dataset.favorite) toggleFavorite(Number(button.dataset.favorite));
     else if (button.dataset.generation !== undefined) applyFilter('generation', Number(button.dataset.generation));
     else if (button.hasAttribute('data-reset')) resetFilters();
@@ -302,8 +349,10 @@ function installEvents() {
   document.addEventListener('error', event => {
     const img = event.target;
     if (!(img instanceof HTMLImageElement) || !img.dataset.pokemon) return;
-    if (!img.dataset.fallback) { img.dataset.fallback = '1'; img.src = sprite({ pokemon: img.dataset.pokemon }); }
-    else if (img.dataset.fallback === '1') { img.dataset.fallback = '2'; img.src = new URL('../icon.svg', import.meta.url).href; img.alt = 'Imagem indisponível'; img.style.opacity = '.25'; }
+    if (img.dataset.fallback === '2') return;
+    if (img.dataset.shiny === '1' && img.dataset.exactForm) unavailableImage(img);
+    else if (!img.dataset.fallback) { img.dataset.fallback = '1'; img.src = sprite({ pokemon: img.dataset.pokemon }, img.dataset.shiny === '1'); }
+    else unavailableImage(img);
   }, true);
 }
 
@@ -315,6 +364,7 @@ async function init() {
     state.generation = Math.min(9, Math.max(0, Number(params.get('gen')) || 0));
     state.type = TYPE_NAMES[params.get('type')] ? Number(params.get('type')) : 0;
     state.forms = params.get('forms') === '1';
+    state.shiny = params.get('shiny') === '1';
     $('#search').value = state.query;
     $('#forms-filter').checked = state.forms;
     $('#type-filter').innerHTML += Object.entries(TYPE_NAMES).map(([id, name]) => `<option value="${id}">${name}</option>`).join('');
@@ -324,6 +374,7 @@ async function init() {
     $('#source-summary').innerHTML = facts([['Espécies', formatNumber(state.manifest.speciesCount)], ['Formas', formatNumber(state.manifest.formCount)], ['Textos dos jogos', formatNumber(state.manifest.descriptionCount)]]) + `<p>Revisão da fonte: <a href="https://github.com/PokeAPI/pokeapi/tree/${state.manifest.revision}" target="_blank" rel="noreferrer">${state.manifest.revision.slice(0, 12)} ↗</a>. Encontros e golpes são registros por versão, método e condição.</p>`;
     const deepLink = params.get('pokemon');
     installEvents();
+    updateShinyControls();
     renderCatalog();
     if (deepLink) openDetail(deepLink);
   } catch (error) {

@@ -22,6 +22,8 @@ Informações sobre uma espécie costumam ficar separadas entre jogos, formas, t
 | --- | --- |
 | Catálogo nacional | 1.025 espécies, de Bulbasaur a Pecharunt, em ordem nacional |
 | Formas alternativas | 1.579 entradas de formas da fonte, incluindo regionais, Mega, Gigantamax, variações de aparência e formas de batalha |
+| Aparência shiny | Alternância no catálogo e nas fichas, preservada nos links; imagens ausentes são sinalizadas |
+| Tipos com contorno | Bordas na cor de cada tipo, com texto mais contrastante |
 | Pesquisa | Nome, número com ou sem `#` e zeros à esquerda, nome da forma e busca sem acentos |
 | Filtros | Geração da espécie, tipo, lendários, míticos e inclusão de formas |
 | Ordenação | Número nacional, nome e soma dos atributos base |
@@ -37,7 +39,7 @@ Informações sobre uma espécie costumam ficar separadas entre jogos, formas, t
 | Navegação acessível | Foco visível, diálogo nativo, abas com teclado, Escape e atalho `/` para pesquisar |
 | Celular e computador | Layout responsivo com tabelas e abas roláveis dentro de suas áreas |
 
-![Ficha de Charizard, com atributos e informações gerais](docs/imagens/pokedex-ficha.jpg)
+![Ficha de Charizard shiny, com tipos contornados e atributos](docs/imagens/pokedex-shiny.jpg)
 
 ## Executar em 3 passos
 
@@ -124,7 +126,7 @@ npm test
 npm run build
 ```
 
-São **14 testes automatizados** cobrindo cálculos de tipos, busca, filtros, favoritos, fronteiras de lotes, condições de evolução, contagem de espécies, todas as referências da base e hashes dos arquivos. O workflow de CI executa essas verificações e, em um job separado, compila e executa o Java original.
+São **19 testes automatizados** cobrindo cálculos de tipos, busca, filtros, favoritos, fronteiras de lotes, condições de evolução, contagem de espécies, todas as referências da base hashes dos arquivos e seleção de imagens normais/shiny. O workflow de CI executa essas verificações e, em um job separado, compila e executa o Java original.
 
 A interface também foi conferida no navegador em desktop e em uma área de visualização de celular, incluindo pesquisa, formas, descrições, evoluções, encontros e golpes. Consulte o [roteiro de testes](tests/README.md).
 
