@@ -1,5 +1,11 @@
 # Histórico de mudanças
 
+## 1.1.1 — 2026-11-02
+
+- Chamada principal “Temos que pegar!”, mantendo a descrição sobre explorar espécies e formas.
+- Apresentação como uma Pokédex de fã, feita por Luigi Scofano de Araujo para outros fãs de Pokémon, no rodapé e em Sobre.
+- Remoção de “De Bulbasaur a Pecharunt.” e “EXPLORE O EXTRAORDINÁRIO”.
+
 ## 1.1.0 — 2026-11-02
 
 - Alternância Normal/Shiny no catálogo e nas fichas, aplicada também ao destaque e às evoluções.
