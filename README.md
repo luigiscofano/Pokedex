@@ -4,6 +4,10 @@
 
 A aplicação permite pesquisar Pokémon, consultar formas alternativas, entender tipos e fraquezas, acompanhar famílias evolutivas e explorar descrições, golpes e encontros por jogo. O exercício Java original está preservado em [`src/`](src/README.md) e no histórico do repositório.
 
+[Abrir versão hospedada](https://pokedex-luigi-explorer.luigiscofano.chatgpt.site) · [Código no GitHub](https://github.com/luigiscofano/Pokedex)
+
+A instalação hospedada tem acesso controlado pela plataforma; o código público pode ser executado localmente seguindo as instruções abaixo.
+
 [Começar](#executar-em-3-passos) · [Funcionalidades](#o-que-esta-versão-faz) · [Dados](#cobertura-real-dos-dados) · [Arquitetura](#como-o-projeto-está-organizado) · [Testes](#validação) · [Guias](#documentação)
 
 ![Página inicial da Pokédex](docs/imagens/pokedex-inicio.jpg)
