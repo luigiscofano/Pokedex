@@ -6,11 +6,11 @@ Explore espécies, descubra formas e conheça cada detalhe da sua próxima avent
 
 [![Verificação](https://github.com/luigiscofano/Pokedex/actions/workflows/ci.yml/badge.svg)](https://github.com/luigiscofano/Pokedex/actions/workflows/ci.yml)
 
-[Explorar o site](https://pokedex-luigi-explorer.luigiscofano.chatgpt.site) · [Como executar](#como-executar) · [Funcionalidades](#funcionalidades-em-imagens) · [Documentação](docs/README.md) · [Contribuir](CONTRIBUTING.md)
+[Explorar no navegador · acesso público](https://pokedex-luigi-explorer.luigiscofano.chatgpt.site) · [Como executar](#como-executar) · [Funcionalidades](#funcionalidades-em-imagens) · [Documentação](docs/README.md) · [Contribuir](CONTRIBUTING.md)
 
 ![Página inicial da Pokédex com a chamada Temos que pegar e o catálogo nacional](docs/imagens/pokedex-inicio.jpg)
 
-*Página inicial da versão 1.1.1, capturada no aplicativo real. A instalação hospedada tem audiência controlada pela plataforma; o código público também pode ser executado localmente.*
+*Página inicial da versão 1.1.1, capturada no aplicativo real. O site está aberto ao público desde 03/11/2026; o código também pode ser executado localmente.*
 
 ## O que este projeto faz
 
@@ -250,7 +250,7 @@ O GitHub Actions roda os comandos web com Node.js 22 e compila/executa o Java co
 
 `npm run build` gera `dist/`. Publique o conteúdo dessa pasta em uma hospedagem estática, incluindo módulos e todos os JSONs. Não publique caches, saídas Java ou credenciais. Preserve caminhos relativos, MIME adequado e query strings.
 
-O código no GitHub e a versão hospedada são entregas distintas. A audiência da instalação em Sites é controlada pela plataforma. Alterações somente de documentação não exigem republicar o site.
+O código no GitHub e a versão hospedada são entregas distintas. A instalação em Sites está configurada para acesso público: qualquer pessoa com o link pode explorar a Pokédex. Alterações somente de documentação não exigem republicar o site.
 
 [Guia completo de publicação](docs/publicacao/README.md)
 

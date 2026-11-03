@@ -38,7 +38,7 @@ Não há rotas de SPA como `/pokemon/6`; a ficha é selecionada na query string.
 
 Quando presente, `.openai/hosting.json` registra a identidade da instalação e `dist` é o diretório estático configurado. Use a identidade existente ao atualizar esta instalação; outra instalação independente deve ter identidade própria.
 
-O pacote publicado deve corresponder ao commit escolhido. Código no GitHub, aprovação de PR e publicação hospedada são etapas distintas. A audiência de Sites é configurada na plataforma e não muda por editar o README ou tornar um repositório público.
+O pacote publicado deve corresponder ao commit escolhido. Código no GitHub, aprovação de PR e publicação hospedada são etapas distintas. Esta instalação está configurada para **acesso público desde 03/11/2026**, no endereço https://pokedex-luigi-explorer.luigiscofano.chatgpt.site. A audiência é configurada na plataforma e não muda por editar o README ou tornar um repositório público.
 
 O [CI](../../.github/workflows/ci.yml) apenas verifica, testa, compila Java e gera o build. Ele não recebe credenciais de hospedagem e **não faz deploy automático**.
 
