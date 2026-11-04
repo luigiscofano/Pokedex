@@ -10,7 +10,9 @@ Explore espécies, descubra formas e conheça cada detalhe da sua próxima avent
 
 ![Página inicial da Pokédex com a chamada Temos que pegar e o catálogo nacional](docs/imagens/pokedex-inicio.jpg)
 
-*Página inicial da versão 1.2.0, capturada no aplicativo real. O site está aberto ao público desde 03/11/2026; o código também pode ser executado localmente.*
+*Página inicial da versão 1.2.1, capturada no aplicativo real. O site está aberto ao público desde 03/11/2026; o código também pode ser executado localmente.*
+
+A interface usa **Chakra Petch nos títulos e na marca** e **Barlow nos textos, controles e rótulos de tipos**. As capturas abaixo mostram essa identidade; a fonte do texto Markdown no GitHub é definida pela própria plataforma.
 
 ## O que este projeto faz
 
@@ -46,7 +48,7 @@ A seleção de forma muda o registro consultado. A alternância **Normal/Shiny**
 
 ![Charizard shiny na visão geral, com símbolos vetoriais dos tipos e atributos](docs/imagens/pokedex-shiny.jpg)
 
-*Captura da versão 1.2.0: shiny e faixas com ícones vetoriais, cores vivas e nomes legíveis.*
+*Captura da versão 1.2.1: shiny e faixas com ícones vetoriais, cores vivas e nomes legíveis.*
 
 Formas cosméticas usam sprites específicos quando disponíveis. Se a fonte não fornece uma imagem shiny utilizável, a interface avisa; não apresenta a imagem normal como se fosse shiny.
 
@@ -240,7 +242,7 @@ npm test
 npm run build
 ```
 
-São **33 testes automatizados**: 8 de domínio, 6 de integridade da base, 5 de imagens, 3 de carregamento, 7 de painéis/seleção e 4 de apresentação vetorial dos tipos. A suíte não exige rede nem navegador. A verificação estática confere sintaxe JavaScript, referências locais do HTML e invariantes básicos. O build recria `dist/` a partir de `web/`.
+São **34 testes automatizados**: 8 de domínio, 6 de integridade da base, 5 de imagens, 3 de carregamento, 7 de painéis/seleção e 5 de apresentação visual e tipografia. A suíte não exige rede nem navegador. A verificação estática confere sintaxe JavaScript, referências locais do HTML e invariantes básicos. O build recria `dist/` a partir de `web/`.
 
 O GitHub Actions roda os comandos web com Node.js 22 e compila/executa o Java com JDK 17. O CI não faz deploy automático e não substitui revisão visual, testes físicos de dispositivos ou auditoria completa de acessibilidade.
 

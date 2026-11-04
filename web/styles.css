@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Chakra+Petch:wght@400;500;600;700&display=swap');
 /* Identidade visual: cores, tipografia e espaçamentos compartilhados. */
 :root {
   --paper: #faf9f5;
@@ -9,7 +9,9 @@
   --green: #687558;
   --soft: #eff1e7;
   --radius: 18px;
-  font-family: 'DM Sans', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+  --font-heading: 'Chakra Petch', sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
   background: var(--paper);
   font-synthesis: none;
@@ -68,8 +70,11 @@ p {
 h1,
 h2,
 h3,
+h4,
+h5,
+h6,
 .brand {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-heading);
 }
 h2 {
   font-size: 34px;
@@ -90,7 +95,7 @@ h3 {
 }
 .brand {
   font-size: 29px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -1.8px;
   display: flex;
   align-items: center;
@@ -139,7 +144,7 @@ h3 {
   gap: 30px;
   align-items: center;
   font-size: 13px;
-  font-weight: 550;
+  font-weight: 500;
 }
 .topbar nav a,
 .topbar nav button {
@@ -193,7 +198,7 @@ h3 {
 }
 h1 {
   font-size: clamp(42px, 4.3vw, 68px);
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.1;
   letter-spacing: -3.5px;
   margin: 23px 0 19px;
@@ -217,7 +222,7 @@ h1 em {
   border-radius: 8px;
   padding: 15px 21px;
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 600;
   margin-top: 26px;
   transition: background 0.2s;
 }
@@ -240,8 +245,7 @@ h1 em {
 }
 .hero-numbers strong {
   font:
-    750 25px 'Manrope',
-    sans-serif;
+    700 25px var(--font-heading);
   letter-spacing: -1px;
 }
 .hero-numbers span {
@@ -285,7 +289,7 @@ h1 em {
   position: absolute;
   right: 0;
   top: 30px;
-  font: 800 120px 'Manrope';
+  font: 700 120px var(--font-heading);
   color: #d9ddcc;
   letter-spacing: -6px;
 }
@@ -316,7 +320,7 @@ h1 em {
 }
 .featured-label strong {
   display: block;
-  font: 750 27px 'Manrope';
+  font: 700 27px var(--font-heading);
   letter-spacing: -1px;
   margin: 4px 0 8px;
 }
@@ -384,7 +388,7 @@ h1 em {
 .region.active {
   background: #f9e8df;
   color: #c24535;
-  font-weight: 650;
+  font-weight: 600;
 }
 .sidebar-note {
   margin-top: 36px;
@@ -650,9 +654,8 @@ select {
   border-radius: 0;
   background: #414b50;
   color: #fff;
-  font-family: 'Arial Narrow', 'Liberation Sans Narrow', 'Roboto Condensed', sans-serif;
+  font-family: var(--font-body);
   font-size: 11px;
-  font-stretch: condensed;
   font-weight: 700;
   line-height: 1;
   text-transform: uppercase;
@@ -1100,7 +1103,7 @@ dialog::backdrop {
   max-width: 300px;
 }
 .flavor-text {
-  font: 500 23px/1.65 'Manrope';
+  font: 500 23px/1.65 var(--font-body);
   letter-spacing: -0.4px;
   padding: 25px;
   border-left: 3px solid var(--red);

@@ -4,6 +4,13 @@
 
 A interface, organização, importador, regras de consulta e testes desta versão foram desenvolvidos para o projeto de **Luigi Scofano de Araujo**. O exercício Java original de 2023 está preservado em `src/` e no histórico Git.
 
+## Tipografia
+
+- [Chakra Petch](https://fonts.google.com/specimen/Chakra+Petch): títulos, marca e números de destaque.
+- [Barlow](https://fonts.google.com/specimen/Barlow): textos, controles e rótulos.
+
+As famílias são carregadas pelo Google Fonts; sem rede, o navegador usa a alternativa sans-serif.
+
 ## Base e imagens
 
 - [PokéAPI](https://pokeapi.co/docs/v2/): modelo de dados e documentação.

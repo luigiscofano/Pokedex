@@ -2,23 +2,23 @@
 
 [Início](../../README.md) · [Guia de uso](../usuario/README.md) · [Validação](../VALIDACAO.md)
 
-Estas imagens foram capturadas na aplicação real no preview local em **4 de novembro de 2026**, versão **1.2.0**, usando Chromium. As dez capturas anteriores foram substituídas para mostrar o novo visual dos tipos. As versões antigas continuam no histórico Git, não são apresentadas como o estado atual.
+Estas imagens foram capturadas na aplicação real no preview local em **4 de novembro de 2026**, versão **1.2.1**, usando Chromium. As onze capturas anteriores foram substituídas para mostrar Chakra Petch nos títulos e Barlow nos textos e rótulos de tipos. As versões antigas continuam no histórico Git, não são apresentadas como o estado atual.
 
 Os símbolos são SVG e os nomes são texto, não recortes ampliados da referência. As capturas JPEG preservam a resolução fornecida pelo navegador (aproximadamente 1.165 × 747 pixels no desktop); não foram artificialmente ampliadas.
 
 | Arquivo | Versão | Conteúdo e contexto |
 | --- | --- | --- |
-| [pokedex-refatoracao.jpg](pokedex-refatoracao.jpg) | 1.2.0 | Catálogo inicial com novos tipos; nome do arquivo preservado para links existentes |
-| [pokedex-inicio.jpg](pokedex-inicio.jpg) | 1.2.0 | Página inicial e destaque com Fogo/Voador |
-| [pokedex-formas.jpg](pokedex-formas.jpg) | 1.2.0 | Quatro formas de Charizard com Shiny |
-| [pokedex-tipos.jpg](pokedex-tipos.jpg) | 1.2.0 | Defesa e eficácia de Charizard com símbolos dos 18 tipos |
-| [pokedex-textos.jpg](pokedex-textos.jpg) | 1.2.0 | Charizard, texto em inglês para Shield |
-| [pokedex-evolucoes.jpg](pokedex-evolucoes.jpg) | 1.2.0 | Trecho de Eevee com Jolteon, Flareon e Espeon |
-| [pokedex-encontros.jpg](pokedex-encontros.jpg) | 1.2.0 | Pikachu em Red, áreas e chances por slot |
-| [pokedex-golpes.jpg](pokedex-golpes.jpg) | 1.2.0 | Charizard, Scarlet Violet, busca `flame` |
-| [pokedex-shiny.jpg](pokedex-shiny.jpg) | 1.2.0 | Ficha shiny de Charizard com os novos símbolos |
-| [pokedex-ficha.jpg](pokedex-ficha.jpg) | 1.2.0 | Ficha normal e atributos de Charizard |
-| [pokedex-mobile.jpg](pokedex-mobile.jpg) | 1.2.0 | Frames reais de 375 e 320 pixels; simulação responsiva, não dispositivo físico |
+| [pokedex-refatoracao.jpg](pokedex-refatoracao.jpg) | 1.2.1 | Catálogo inicial com novos tipos; nome do arquivo preservado para links existentes |
+| [pokedex-inicio.jpg](pokedex-inicio.jpg) | 1.2.1 | Página inicial e destaque com Fogo/Voador |
+| [pokedex-formas.jpg](pokedex-formas.jpg) | 1.2.1 | Quatro formas de Charizard com Shiny |
+| [pokedex-tipos.jpg](pokedex-tipos.jpg) | 1.2.1 | Defesa e eficácia de Charizard com símbolos dos 18 tipos |
+| [pokedex-textos.jpg](pokedex-textos.jpg) | 1.2.1 | Charizard, texto em inglês para Shield |
+| [pokedex-evolucoes.jpg](pokedex-evolucoes.jpg) | 1.2.1 | Trecho da família de Eevee com Leafeon e Glaceon |
+| [pokedex-encontros.jpg](pokedex-encontros.jpg) | 1.2.1 | Pikachu em Red, áreas e chances por slot |
+| [pokedex-golpes.jpg](pokedex-golpes.jpg) | 1.2.1 | Charizard, Scarlet Violet, busca `flame` |
+| [pokedex-shiny.jpg](pokedex-shiny.jpg) | 1.2.1 | Ficha shiny de Charizard com os novos símbolos |
+| [pokedex-ficha.jpg](pokedex-ficha.jpg) | 1.2.1 | Ficha normal e atributos de Charizard |
+| [pokedex-mobile.jpg](pokedex-mobile.jpg) | 1.2.1 | Frames reais de 375 e 320 pixels; simulação responsiva, não dispositivo físico |
 
 ## Catálogo e formas
 

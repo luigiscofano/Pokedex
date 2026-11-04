@@ -1,5 +1,12 @@
 # Histórico de mudanças
 
+## 1.2.1 — 2026-11-04
+
+- Chakra Petch aplicada a títulos, marca e números de destaque; Barlow a textos, controles, descrições e rótulos de tipos.
+- Tokens CSS centralizados e remoção de todas as famílias tipográficas anteriores.
+- Onze capturas reais renovadas, incluindo os layouts responsivos de 320 e 375 pixels.
+- Teste de regressão tipográfica adicionado; 34 testes aprovados.
+
 ## 1.2.0 — 2026-11-04
 
 - Tipos redesenhados com faixas retangulares, corte diagonal, símbolos brancos próprios de cada tipo e cores vivas, seguindo a referência visual.
