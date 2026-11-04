@@ -21,3 +21,7 @@ O catálogo inicia com 24 cartões. As fichas usam seis abas e carregamento por 
 Favoritos ficam no `localStorage` da origem. Não há backend de contas, chave de API, banco remoto, service worker ou garantia de funcionamento offline. O servidor de desenvolvimento apenas fornece os arquivos.
 
 Antes de enviar mudanças visuais, confira cartões, forma alternativa, shiny, ficha com dados ausentes, foco de teclado e tela estreita. [Validação](../tests/README.md).
+
+## Tipografia
+
+`styles.css` centraliza as famílias em `--font-heading` (Chakra Petch) e `--font-body` (Barlow). Títulos, marca e números de destaque usam a primeira; parágrafos, formulários, abas, tabelas e faixas de tipos usam a segunda. O carregamento via Google Fonts usa `display=swap`, com fallback sans-serif.

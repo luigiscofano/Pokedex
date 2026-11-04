@@ -2,7 +2,16 @@
 
 [Início](../README.md) · [Suíte e roteiro manual](../tests/README.md) · [Galeria](imagens/README.md)
 
-Este registro distingue resultados observados, verificações automatizadas e limites. A aplicação está na versão **1.2.0**. Os registros anteriores abaixo são históricos.
+Este registro distingue resultados observados, verificações automatizadas e limites. A aplicação está na versão **1.2.1**. Os registros anteriores abaixo são históricos.
+
+## Tipografia 1.2.1 — 2026-11-04
+
+- `npm test`: 34 testes aprovados; `npm run check` e `npm run build` aprovados.
+- Chromium: família computada Chakra Petch no título e Barlow no corpo e badges; sem transbordamento horizontal no documento desktop.
+- Capturas renovadas de início, catálogo, formas, ficha, shiny, tipos, textos, evoluções, encontros, golpes e frames responsivos de 320/375 pixels.
+- Layout responsivo inspecionado visualmente em frames reais, não em aparelho físico.
+- O teste de regressão impede o retorno das famílias anteriores e confere os tokens e sua aplicação em títulos, badges e descrições.
+- Java não foi alterado; validação de CI remoto deve ser consultada no commit publicado.
 
 ## Tipos vetoriais 1.2.0 — 2026-11-04
 

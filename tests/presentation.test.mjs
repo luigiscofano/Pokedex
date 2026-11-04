@@ -41,3 +41,15 @@ test('destaque usa o mesmo componente e CSS não depende de uma imagem raster', 
   assert.ok(!html.includes('class="badge'));
   assert.ok(css.includes('clip-path: polygon(0 0, 100% 0, 76% 100%, 0 100%)'));
 });
+
+test('tipografia usa Chakra Petch em títulos e Barlow em textos sem fontes antigas', async () => {
+  const css = await readFile(new URL('../web/styles.css', import.meta.url), 'utf8');
+  assert.ok(css.includes("--font-body: 'Barlow', sans-serif"));
+  assert.ok(css.includes("--font-heading: 'Chakra Petch', sans-serif"));
+  assert.ok(css.includes('family=Barlow:wght@400;500;600;700;800'));
+  assert.ok(css.includes('family=Chakra+Petch:wght@400;500;600;700'));
+  assert.ok(!/Manrope|DM[ +]Sans|Arial Narrow|Roboto Condensed|Liberation Sans/.test(css));
+  assert.match(css, /h1,\s*h2,\s*h3,\s*h4,\s*h5,\s*h6,\s*\.brand\s*\{\s*font-family: var\(--font-heading\)/);
+  assert.match(css, /\.badge\s*\{[^}]*font-family: var\(--font-body\)/);
+  assert.match(css, /\.flavor-text\s*\{\s*font: 500 23px\/1\.65 var\(--font-body\)/);
+});
