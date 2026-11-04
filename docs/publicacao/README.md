@@ -47,7 +47,7 @@ O [CI](../../.github/workflows/ci.yml) apenas verifica, testa, compila Java e ge
 - Página inicial com “Temos que pegar!”, descrição e crédito de fã para fãs.
 - Pesquisa `#0025`, seleção de forma alternativa e filtros combinados.
 - Normal/Shiny no catálogo e ficha, incluindo link recarregado com `shiny=1`.
-- Charizard: tipos com contorno e multiplicadores de referência.
+- Charizard: tipos com símbolos vetoriais e faixas coloridas e multiplicadores de referência.
 - Uma descrição, uma evolução, um encontro e um golpe carregados.
 - Favoritos na mesma origem, teclado e viewport estreito.
 - Abertura em uma sessão sem cache prévio de desenvolvimento.

@@ -7,7 +7,7 @@ Esta pasta contém o código-fonte da Pokédex que roda no navegador. Execute `n
 | Caminho | Papel |
 | --- | --- |
 | [index.html](index.html) | Cabeçalho, chamada “Temos que pegar!”, controles, rodapé e diálogos |
-| [styles.css](styles.css) | Layout, responsividade, tipos com contorno, foco e movimento reduzido |
+| [styles.css](styles.css) | Layout, responsividade, tipos com símbolos vetoriais e faixas coloridas, foco e movimento reduzido |
 | [icon.svg](icon.svg) | Ícone vetorial da interface e placeholder de imagens |
 | [js/](js/README.md) | Regras, dados e coordenação da interface |
 | [data/](data/README.md) | Snapshot local, manifesto e fichas por espécie |

@@ -19,8 +19,9 @@ npm run build
 | [images.test.mjs](images.test.mjs) | 5 | URLs normal/shiny, IDs de variedade, cache de formas, ausência de shiny, rejeição de URLs inválidas e nova tentativa |
 | [loading.test.mjs](loading.test.mjs) | 3 | Cargas concorrentes, recuperação de erros HTTP/JSON e fichas por lote |
 | [panels.test.mjs](panels.test.mjs) | 7 | Seleção, conteúdo das fichas, ausência de registros, escape HTML e família de Eevee |
+| [presentation.test.mjs](presentation.test.mjs) | 4 | Dezoito símbolos distintos, nomes acessíveis, pares ordenados, entradas especiais e componente do destaque |
 
-**Total: 29 testes.** Eles rodam sem navegador e sem depender da rede. Os testes de imagens simulam respostas; não garantem que um servidor externo esteja disponível no momento de uso. A suíte de dados percorre a base versionada, incluindo referências de golpes, habilidades, descrições e encontros.
+**Total: 33 testes.** Eles rodam sem navegador e sem depender da rede. Os testes de imagens simulam respostas; não garantem que um servidor externo esteja disponível no momento de uso. A suíte de dados percorre a base versionada, incluindo referências de golpes, habilidades, descrições e encontros.
 
 Para executar apenas uma área:
 
@@ -50,7 +51,7 @@ node --test tests/images.test.mjs
 
 ### Shiny e apresentação
 
-Confira Charizard, Mega Charizard X, uma forma cosmética como Unown B e cartões de evoluções. Uma imagem shiny ausente deve ser identificada, sem substituição silenciosa por imagem normal. Verifique contornos dos tipos em cartões, fichas e agrupamentos de eficácia.
+Confira Charizard, Mega Charizard X, uma forma cosmética como Unown B e cartões de evoluções. Uma imagem shiny ausente deve ser identificada, sem substituição silenciosa por imagem normal. Verifique símbolos e faixas dos tipos em cartões, fichas e agrupamentos de eficácia.
 
 ### Teclado e telas estreitas
 

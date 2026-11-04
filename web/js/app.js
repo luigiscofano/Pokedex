@@ -602,6 +602,7 @@ function handleDocumentKeydown(event) {
 
 // Inicialização: primeiro os dados, depois os controles, eventos e link direto.
 async function init() {
+  $('#featured-types').innerHTML = badges([10, 3]);
   try {
     [state.catalog, state.reference, state.manifest] = await Promise.all([
       loadJSON('catalog.json'),

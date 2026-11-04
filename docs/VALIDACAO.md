@@ -2,7 +2,18 @@
 
 [Início](../README.md) · [Suíte e roteiro manual](../tests/README.md) · [Galeria](imagens/README.md)
 
-Este registro distingue resultados observados, verificações automatizadas e limites. A aplicação está na versão **1.1.2**. A refatoração reorganiza o código, preservando os dados, o visual e os contratos existentes.
+Este registro distingue resultados observados, verificações automatizadas e limites. A aplicação está na versão **1.2.0**. Os registros anteriores abaixo são históricos.
+
+## Tipos vetoriais 1.2.0 — 2026-11-04
+
+- `npm run check`, `npm test` (33 casos) e `npm run build`: aprovados no Linux com Node.js 24.
+- Chromium: conferidos destaque, catálogo, ficha normal/shiny, Mega Charizard X, eficácia, textos, evoluções, encontros e golpes.
+- Charizard mantém Pedra 4×, Terra 0× e Planta 0,25×; Mega X mantém Fogo/Dragão e total 634.
+- Teclado: setas nas abas e Escape para fechar; reabertura e navegação Voltar/Avançar conferidas.
+- Layouts de 320 e 375 pixels simulados em frames reais da aplicação: nomes e símbolos legíveis, pares contíguos, sem transbordamento horizontal do documento de 320 pixels. Não é um teste em aparelho físico.
+- Dez capturas do repositório renovadas e uma responsiva adicionada, sem reconstrução ou ampliação artificial.
+- Ícones são SVG e os rótulos são texto; a referência raster não é usada como sprite ampliado.
+- Java e CI remoto devem ser consultados separadamente no resultado do commit; não são inferidos destas verificações locais.
 
 ## Refatoração 1.1.2 — 2026-11-02
 

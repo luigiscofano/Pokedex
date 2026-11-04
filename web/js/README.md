@@ -8,6 +8,7 @@ A versão 1.1.2 separa regras, apresentação e efeitos no navegador. Os módulo
 | --- | --- |
 | [domain.js](domain.js) | Busca, filtros, ordenação, tipos, favoritos, loteamento e condições de evolução |
 | [data.js](data.js) | JSONs, caches de promessas, recuperação após erro e URLs normal/shiny |
+| [type-icons.js](type-icons.js) | Símbolos SVG locais dos 18 tipos e ícone seguro para tipos especiais |
 | [presentation.js](presentation.js) | Escape de texto, formatação e pequenos componentes HTML reutilizáveis |
 | [detail-selection.js](detail-selection.js) | Ajuste explícito de jogo/idioma quando a seleção não existe na ficha |
 | [detail-panels.js](detail-panels.js) | HTML das seis abas, sem acessar o DOM ou realizar fetch |

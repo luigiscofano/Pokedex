@@ -10,7 +10,7 @@ Explore espécies, descubra formas e conheça cada detalhe da sua próxima avent
 
 ![Página inicial da Pokédex com a chamada Temos que pegar e o catálogo nacional](docs/imagens/pokedex-inicio.jpg)
 
-*Página inicial da versão 1.1.1, capturada no aplicativo real. O site está aberto ao público desde 03/11/2026; o código também pode ser executado localmente.*
+*Página inicial da versão 1.2.0, capturada no aplicativo real. O site está aberto ao público desde 03/11/2026; o código também pode ser executado localmente.*
 
 ## O que este projeto faz
 
@@ -44,9 +44,9 @@ O catálogo começa com 24 cartões e carrega mais 24 por ação. A soma de atri
 
 A seleção de forma muda o registro consultado. A alternância **Normal/Shiny** muda a aparência das imagens e acompanha catálogo, destaque, fichas e evoluções. A preferência é preservada em links e não cria um segundo favorito para a mesma forma.
 
-![Charizard shiny na visão geral, com tipos contornados e atributos](docs/imagens/pokedex-shiny.jpg)
+![Charizard shiny na visão geral, com símbolos vetoriais dos tipos e atributos](docs/imagens/pokedex-shiny.jpg)
 
-*Captura da versão 1.1.0, que introduziu shiny e o contorno dos tipos. A versão 1.1.1 mantém esses recursos.*
+*Captura da versão 1.2.0: shiny e faixas com ícones vetoriais, cores vivas e nomes legíveis.*
 
 Formas cosméticas usam sprites específicos quando disponíveis. Se a fonte não fornece uma imagem shiny utilizável, a interface avisa; não apresenta a imagem normal como se fosse shiny.
 
@@ -54,7 +54,7 @@ Formas cosméticas usam sprites específicos quando disponíveis. Se a fonte nã
 
 ### 3. Visão geral, atributos e tipos
 
-Cada ficha reúne tipos com contorno, dimensões, habilidades normais e ocultas, atributos base, EVs concedidos, grupos de ovos e parâmetros de captura/reprodução. Os valores pertencem à variedade selecionada: Mega Charizard X, por exemplo, tem Fogo/Dragão e atributos diferentes da forma padrão.
+Cada ficha reúne tipos em faixas escuras com símbolos vetoriais, cores vivas e nomes em maiúsculas, dimensões, habilidades normais e ocultas, atributos base, EVs concedidos, grupos de ovos e parâmetros de captura/reprodução. Os valores pertencem à variedade selecionada: Mega Charizard X, por exemplo, tem Fogo/Dragão e atributos diferentes da forma padrão.
 
 A aba Tipos separa fraquezas, resistências, imunidades e melhores eficácias ofensivas dos tipos próprios.
 
@@ -78,7 +78,7 @@ Consulte descrições por versão e idioma. A interface é em português, mas os
 
 Explore a família completa, incluindo ramificações e condições disponíveis na fonte: nível, itens, amizade, período, local, forma e restrições por grupo de versões, quando registradas.
 
-![Trecho da família evolutiva de Eevee com Flareon, Espeon e Umbreon](docs/imagens/pokedex-evolucoes.jpg)
+![Trecho da família evolutiva de Eevee com Jolteon, Flareon e Espeon](docs/imagens/pokedex-evolucoes.jpg)
 
 *Trecho da família de Eevee; outros ramos ficam acima e abaixo do recorte. A navegação permite abrir as espécies relacionadas.*
 
@@ -240,7 +240,7 @@ npm test
 npm run build
 ```
 
-São **29 testes automatizados**: 8 de domínio, 6 de integridade da base, 5 de imagens, 3 de carregamento e 7 de painéis/seleção. A suíte não exige rede nem navegador. A verificação estática confere sintaxe JavaScript, referências locais do HTML e invariantes básicos. O build recria `dist/` a partir de `web/`.
+São **33 testes automatizados**: 8 de domínio, 6 de integridade da base, 5 de imagens, 3 de carregamento, 7 de painéis/seleção e 4 de apresentação vetorial dos tipos. A suíte não exige rede nem navegador. A verificação estática confere sintaxe JavaScript, referências locais do HTML e invariantes básicos. O build recria `dist/` a partir de `web/`.
 
 O GitHub Actions roda os comandos web com Node.js 22 e compila/executa o Java com JDK 17. O CI não faz deploy automático e não substitui revisão visual, testes físicos de dispositivos ou auditoria completa de acessibilidade.
 
