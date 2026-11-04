@@ -1,5 +1,14 @@
 # Histórico de mudanças
 
+## 1.2.0 — 2026-11-04
+
+- Tipos redesenhados com faixas retangulares, corte diagonal, símbolos brancos próprios de cada tipo e cores vivas, seguindo a referência visual.
+- Dezoito ícones SVG locais, nítidos em telas de alta densidade e zoom, com texto acessível independente de cor.
+- Componente compartilhado no destaque, catálogo, fichas, eficácia e golpes; pares de tipos adjacentes.
+- Grade móvel ajustada para preservar pares legíveis sem cortar símbolos ou nomes.
+- Dez capturas reais substituídas e uma captura responsiva adicionada; README e guias alinhados com o novo visual.
+- Quatro testes de apresentação adicionados; total de 33 testes.
+
 ## 1.1.2 — 2026-11-02
 
 - Refatoração de JavaScript, HTML/CSS, ferramentas Node/Python, testes e exercício Java, com comentários explicativos em português.

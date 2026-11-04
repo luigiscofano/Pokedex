@@ -1,4 +1,5 @@
 import { TYPE_NAMES } from './domain.js';
+import { typeIcon } from './type-icons.js';
 
 // Texto e pequenos componentes compartilhados: nenhuma função altera o DOM.
 export const escapeHTML = (value) =>
@@ -19,10 +20,11 @@ export const formatNumber = (value) => Number(value).toLocaleString('pt-BR');
 
 export function badges(types) {
   return types
-    .map(
-      (type) =>
-        `<span class="badge type-${type}">${TYPE_NAMES[type] || { 10001: '???', 10002: 'Shadow' }[type] || 'Especial'}</span>`,
-    )
+    .map((type) => {
+      const id = Number(type);
+      const label = TYPE_NAMES[id] || { 10001: '???', 10002: 'Shadow' }[id] || 'Especial';
+      return `<span class="badge type-${Number.isInteger(id) ? id : 0}"><span class="type-icon">${typeIcon(id)}</span><span class="type-label">${label}</span></span>`;
+    })
     .join('');
 }
 

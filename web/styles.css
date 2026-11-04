@@ -635,23 +635,68 @@ select {
   margin: -3px 0 9px;
   min-height: 12px;
 }
-/* Tipos: cores e contornos mantêm a leitura sem depender somente da cor. */
+/* Faixas inspiradas na referência: símbolo colorido, corte diagonal e nome branco.
+   SVG e texto reais evitam ampliar a imagem raster de baixa resolução. */
 .badge {
+  --badge-color: #89949f;
   display: inline-flex;
   align-items: center;
-  background: color-mix(in srgb, var(--type-color) 17%, #fff);
-  color: color-mix(in srgb, var(--type-color) 68%, #10140e);
-  border-radius: 4px;
-  padding: 4px 8px;
-  font-size: 9px;
-  font-weight: 600;
-  margin-right: 4px;
-}
-.badge[class*='type-'] {
-  border: 1.5px solid color-mix(in srgb, var(--type-color) 78%, #20251c);
-  color: color-mix(in srgb, var(--type-color) 44%, #10140e);
+  vertical-align: middle;
+  height: 20px;
+  min-width: 82px;
+  padding: 0 7px 0 0;
+  margin: 2px 0;
+  border: 0;
+  border-radius: 0;
+  background: #414b50;
+  color: #fff;
+  font-family: 'Arial Narrow', 'Liberation Sans Narrow', 'Roboto Condensed', sans-serif;
+  font-size: 11px;
+  font-stretch: condensed;
   font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
+.type-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  width: 24px;
+  flex: 0 0 24px;
+  padding-right: 4px;
+  margin-right: 3px;
+  background: var(--badge-color);
+  clip-path: polygon(0 0, 100% 0, 76% 100%, 0 100%);
+}
+.type-icon svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+.type-label {
+  flex: 1;
+  text-align: center;
+}
+.badge.type-1 { --badge-color: #929da5; }
+.badge.type-2 { --badge-color: #db4173; }
+.badge.type-3 { --badge-color: #90a9dc; }
+.badge.type-4 { --badge-color: #b25cc8; }
+.badge.type-5 { --badge-color: #d47c51; }
+.badge.type-6 { --badge-color: #b9aa7b; }
+.badge.type-7 { --badge-color: #91bf23; }
+.badge.type-8 { --badge-color: #6471b3; }
+.badge.type-9 { --badge-color: #5b95a8; }
+.badge.type-10 { --badge-color: #ff914b; }
+.badge.type-11 { --badge-color: #4c93d9; }
+.badge.type-12 { --badge-color: #67bc4e; }
+.badge.type-13 { --badge-color: #f1cb32; }
+.badge.type-14 { --badge-color: #f27983; }
+.badge.type-15 { --badge-color: #65d1bf; }
+.badge.type-16 { --badge-color: #126ac1; }
+.badge.type-17 { --badge-color: #625978; }
+.badge.type-18 { --badge-color: #e585cf; }
 .type-1 {
   --type-color: #8f9584;
 }
@@ -843,8 +888,9 @@ dialog::backdrop {
   line-height: 1.15;
 }
 .detail-heading .badge {
-  font-size: 11px;
-  padding: 5px 11px;
+  height: 24px;
+  min-width: 94px;
+  font-size: 12px;
 }
 .detail-form-select {
   display: block;
@@ -1019,8 +1065,8 @@ dialog::backdrop {
 }
 .matchup .badge {
   margin-right: 7px;
-  border-radius: 4px 0 0 4px;
-  padding: 6px 8px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .match-group {
   margin-bottom: 20px;
@@ -1554,7 +1600,8 @@ tr:last-child td {
     margin: 5px 0;
   }
   .card-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* Mantém pares de tipos juntos, sem reduzir texto ou cortar símbolos. */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 172px), 1fr));
     gap: 11px;
   }
   .card-art {
@@ -1571,8 +1618,9 @@ tr:last-child td {
     font-size: 15px;
   }
   .badge {
-    font-size: 8px;
-    padding: 4px 6px;
+    min-width: 73px;
+    padding-right: 4px;
+    font-size: 10px;
   }
   .detail-top {
     display: flex;
