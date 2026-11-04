@@ -6,6 +6,7 @@ A versão 1.1.2 separa regras, apresentação e efeitos no navegador. Os módulo
 
 | Módulo | Responsabilidade |
 | --- | --- |
+| [featured.js](featured.js) | Escolha da forma em destaque, persistência local e retorno seguro ao padrão |
 | [domain.js](domain.js) | Busca, filtros, ordenação, tipos, favoritos, loteamento e condições de evolução |
 | [data.js](data.js) | JSONs, caches de promessas, recuperação após erro e URLs normal/shiny |
 | [type-icons.js](type-icons.js) | Símbolos SVG locais dos 18 tipos e ícone seguro para tipos especiais |

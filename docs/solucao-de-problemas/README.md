@@ -25,7 +25,12 @@ Não é necessário executar `npm install` para o código atual: não há depend
 
 **Os textos estão em inglês ou outro idioma.** A interface é em português; textos da franquia preservam os idiomas disponíveis na fonte. Escolha um idioma na aba Textos dos jogos. Não há promessa de tradução oficial em português para cada registro.
 
-## Busca, favoritos e links
+## Busca, destaque, favoritos e links
+
+**Não encontro Tornar destaque no catálogo.** Abra o cartão do Pokémon: a opção aparece somente nas ações internas da ficha, em um botão grafite com Pokébola.
+
+**O destaque voltou para Charizard.** A escolha pertence ao navegador e à origem; não sincroniza entre dispositivos. Limpar dados do site ou usar outro perfil remove a preferência. Se o armazenamento estiver bloqueado, a escolha funciona apenas nesta sessão e a aplicação avisa.
+
 
 **Não encontro uma forma alternativa.** Ative Incluir formas, retire outros filtros e pesquise a espécie. O filtro de geração usa a geração da espécie, não necessariamente a estreia da forma.
 

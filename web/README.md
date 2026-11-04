@@ -18,7 +18,7 @@ O build copia `web/` para `dist/`. Edite aqui; a próxima geração substitui a 
 
 O catálogo inicia com 24 cartões. As fichas usam seis abas e carregamento por lote. Busca, tipos, formas, shiny e favoritos são coordenados no navegador. Imagens, metadados de sprites cosméticos e fontes tipográficas são externos; os JSONs principais estão no projeto. O CSS dispõe de fontes alternativas locais se o serviço tipográfico falhar.
 
-Favoritos ficam no `localStorage` da origem. Não há backend de contas, chave de API, banco remoto, service worker ou garantia de funcionamento offline. O servidor de desenvolvimento apenas fornece os arquivos.
+Favoritos e a forma escolhida como destaque ficam no `localStorage` da origem. Não há backend de contas, chave de API, banco remoto, service worker ou garantia de funcionamento offline. O servidor de desenvolvimento apenas fornece os arquivos.
 
 Antes de enviar mudanças visuais, confira cartões, forma alternativa, shiny, ficha com dados ausentes, foco de teclado e tela estreita. [Validação](../tests/README.md).
 

@@ -6,7 +6,7 @@ import {
   writeFavorites,
   dexNumber,
 } from './domain.js';
-import { loadJSON, loadSpecies, artwork } from './data.js';
+import { loadJSON, loadSpecies } from './data.js';
 import { escapeHTML, formatNumber, badges, facts } from './presentation.js';
 import {
   imageMarkup as renderImage,
@@ -22,6 +22,7 @@ import {
   movesPanel,
   evolutionPanel,
 } from './detail-panels.js';
+import { findFeatured, readFeatured, writeFeatured } from './featured.js';
 import { updatePanelSelection } from './detail-selection.js';
 
 // Paginação e duração dos avisos são centralizadas para evitar valores dispersos.
@@ -56,6 +57,7 @@ const state = {
   shiny: false,
   favoritesOnly: false,
   favorites: readFavorites(storage),
+  featured: null,
   limit: CATALOG_PAGE_SIZE,
   form: null,
   species: null,
@@ -215,18 +217,51 @@ function resetFilters() {
   renderCatalog();
 }
 
-// Aparência: substitui a imagem para invalidar cargas e fallbacks anteriores.
+function featuredButtonContent(selected) {
+  const icon = '<svg class="featured-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 12a10 10 0 0 1 20 0Z" fill="currentColor"/><path d="M2 12h20" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.5" fill="var(--featured-background)" stroke="currentColor" stroke-width="2"/></svg>';
+  return `${icon}<span>${selected ? 'Em destaque' : 'Tornar destaque'}</span>`;
+}
+
+function featuredButton(form) {
+  const selected = state.featured === form.id;
+  return `<button class="featured-button" data-featured="${form.id}" aria-pressed="${selected}" aria-label="${selected ? 'Em destaque' : 'Tornar destaque'}: ${escapeHTML(form.label)}">${featuredButtonContent(selected)}</button>`;
+}
+
+function renderFeatured() {
+  const form = findFeatured(state.catalog, state.featured);
+  if (!form) return;
+  $('#featured-number').textContent = `EM DESTAQUE · ${dexNumber(form.species)}`;
+  $('#featured-name').textContent = form.label;
+  $('.art-number').textContent = String(form.species).padStart(3, '0');
+  $('#featured-types').innerHTML = badges(form.types);
+  $('#featured-open').setAttribute('aria-label', `Abrir ficha de ${form.label}`);
+  const hero = $('#hero-image');
+  hero.parentElement.querySelector('.image-caption, .image-unavailable')?.remove();
+  hero.outerHTML = imageMarkup(form, 'hero-image', true).replace('<img ', '<img id="hero-image" ');
+  const image = $('#hero-image');
+  if (image.dataset.formImage) resolveFormImage(image);
+}
+
+function setFeatured(id) {
+  const form = state.catalog.find((candidate) => candidate.id === id);
+  if (!form) return;
+  state.featured = id;
+  const saved = writeFeatured(storage, id);
+  renderFeatured();
+  // Atualiza os botões sem reconstruir a ficha nem perder foco/rolagem.
+  document.querySelectorAll('[data-featured]').forEach((button) => {
+    const selected = Number(button.dataset.featured) === id;
+    const candidate = state.catalog.find((item) => item.id === Number(button.dataset.featured));
+    button.setAttribute('aria-pressed', String(selected));
+    button.setAttribute('aria-label', `${selected ? 'Em destaque' : 'Tornar destaque'}: ${candidate.label}`);
+    button.innerHTML = featuredButtonContent(selected);
+  });
+  toast(saved ? `${form.label} agora é o destaque do início.` : `${form.label} é o destaque nesta sessão. Não foi possível salvar neste navegador.`);
+}
+
 function updateShinyControls() {
   $('#shiny-filter').checked = state.shiny;
-  const hero = $('#hero-image');
-  const next = hero.cloneNode(false);
-  next.dataset.shiny = String(Number(state.shiny));
-  delete next.dataset.fallback;
-  next.style.opacity = '';
-  next.src = artwork({ pokemon: 6 }, state.shiny);
-  next.alt = `Ilustração de Charizard${state.shiny ? ' shiny' : ''}`;
-  hero.parentElement.querySelector('.image-unavailable')?.remove();
-  hero.replaceWith(next);
+  renderFeatured();
 }
 
 function setShiny(shiny) {
@@ -350,6 +385,7 @@ function renderDetail() {
     `</div>`,
     `<div class="detail-actions">`,
     `<button data-favorite="${form.id}" aria-pressed="${state.favorites.includes(form.id)}">${state.favorites.includes(form.id) ? '♥ Favoritado' : '♡ Salvar favorito'}</button>`,
+    featuredButton(form),
     `<button id="copy-link">Copiar link ↗</button>`,
     `</div>`,
     `</div>`,
@@ -454,7 +490,7 @@ function installCatalogEvents() {
 function installNavigationEvents() {
   $('#featured-open').addEventListener('click', () =>
     openDetail(
-      state.catalog.find((form) => form.species === 6 && form.default)?.id,
+      state.featured,
     ),
   );
   $('#favorites-nav').addEventListener('click', () => {
@@ -511,6 +547,8 @@ async function handleDocumentClick(event) {
     setShiny(button.dataset.shinyMode === '1');
   } else if (button.dataset.open) {
     openDetail(button.dataset.open);
+  } else if (button.dataset.featured) {
+    setFeatured(Number(button.dataset.featured));
   } else if (button.dataset.favorite) {
     toggleFavorite(Number(button.dataset.favorite));
   } else if (button.dataset.generation !== undefined) {
@@ -602,13 +640,13 @@ function handleDocumentKeydown(event) {
 
 // Inicialização: primeiro os dados, depois os controles, eventos e link direto.
 async function init() {
-  $('#featured-types').innerHTML = badges([10, 3]);
   try {
     [state.catalog, state.reference, state.manifest] = await Promise.all([
       loadJSON('catalog.json'),
       loadJSON('reference.json'),
       loadJSON('manifest.json'),
     ]);
+    state.featured = readFeatured(storage, state.catalog);
     const params = new URLSearchParams(location.search);
     state.query = (params.get('q') || '').slice(0, 100);
     state.generation = Math.min(9, Math.max(0, Number(params.get('gen')) || 0));

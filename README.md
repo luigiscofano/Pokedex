@@ -10,7 +10,7 @@ Explore espécies, descubra formas e conheça cada detalhe da sua próxima avent
 
 ![Página inicial da Pokédex com a chamada Temos que pegar e o catálogo nacional](docs/imagens/pokedex-inicio.jpg)
 
-*Página inicial da versão 1.2.1, capturada no aplicativo real. O site está aberto ao público desde 03/11/2026; o código também pode ser executado localmente.*
+*Página inicial da versão 1.3.2, capturada no aplicativo real. O site está aberto ao público desde 03/11/2026; o código também pode ser executado localmente.*
 
 A interface usa **Chakra Petch nos títulos e na marca** e **Barlow nos textos, controles e rótulos de tipos**. As capturas abaixo mostram essa identidade; a fonte do texto Markdown no GitHub é definida pela própria plataforma.
 
@@ -48,7 +48,7 @@ A seleção de forma muda o registro consultado. A alternância **Normal/Shiny**
 
 ![Charizard shiny na visão geral, com símbolos vetoriais dos tipos e atributos](docs/imagens/pokedex-shiny.jpg)
 
-*Captura da versão 1.2.1: shiny e faixas com ícones vetoriais, cores vivas e nomes legíveis.*
+*Captura da versão 1.3.2: shiny e faixas com ícones vetoriais, cores vivas e nomes legíveis.*
 
 Formas cosméticas usam sprites específicos quando disponíveis. Se a fonte não fornece uma imagem shiny utilizável, a interface avisa; não apresenta a imagem normal como se fosse shiny.
 
@@ -80,7 +80,7 @@ Consulte descrições por versão e idioma. A interface é em português, mas os
 
 Explore a família completa, incluindo ramificações e condições disponíveis na fonte: nível, itens, amizade, período, local, forma e restrições por grupo de versões, quando registradas.
 
-![Trecho da família evolutiva de Eevee com Jolteon, Flareon e Espeon](docs/imagens/pokedex-evolucoes.jpg)
+![Família evolutiva de Eevee](docs/imagens/pokedex-evolucoes.jpg)
 
 *Trecho da família de Eevee; outros ramos ficam acima e abaixo do recorte. A navegação permite abrir as espécies relacionadas.*
 
@@ -106,7 +106,11 @@ Selecione o grupo de jogos e pesquise um golpe. A tabela distingue aprendizado p
 
 [Guia dos golpes](docs/usuario/fichas/README.md) · [Estruturas de aprendizado](web/data/README.md)
 
-### 8. Favoritos, links e teclado
+### 8. Destaque, favoritos, links e teclado
+
+Escolha o botão grafite com Pokébola **Tornar destaque** dentro da ficha de qualquer Pokémon para trocar o Pokémon do início. A forma escolhida fica salva neste navegador; o modo shiny continua global.
+
+![Destaque personalizável](docs/imagens/pokedex-destaque.jpg)
 
 Os favoritos guardam o ID da forma no navegador, sem conta. Os links podem preservar busca, geração, tipo, inclusão de formas, shiny e ficha selecionada. Aba, ordenação e filtros internos de jogos não são serializados.
 
@@ -242,7 +246,7 @@ npm test
 npm run build
 ```
 
-São **34 testes automatizados**: 8 de domínio, 6 de integridade da base, 5 de imagens, 3 de carregamento, 7 de painéis/seleção e 5 de apresentação visual e tipografia. A suíte não exige rede nem navegador. A verificação estática confere sintaxe JavaScript, referências locais do HTML e invariantes básicos. O build recria `dist/` a partir de `web/`.
+São **40 testes automatizados**: 8 de domínio, 6 de integridade da base, 5 de imagens, 3 de carregamento, 7 de painéis/seleção, 5 de apresentação visual e tipografia e 6 de destaque persistente e aparência do botão. A suíte não exige rede nem navegador. A verificação estática confere sintaxe JavaScript, referências locais do HTML e invariantes básicos. O build recria `dist/` a partir de `web/`.
 
 O GitHub Actions roda os comandos web com Node.js 22 e compila/executa o Java com JDK 17. O CI não faz deploy automático e não substitui revisão visual, testes físicos de dispositivos ou auditoria completa de acessibilidade.
 
@@ -260,7 +264,7 @@ O código no GitHub e a versão hospedada são entregas distintas. A instalaçã
 
 | Situação | Recursos |
 | --- | --- |
-| Implementado | Catálogo, filtros, formas, shiny, seis abas de ficha, favoritos locais e links |
+| Implementado | Catálogo, filtros, formas, shiny, seis abas de ficha, favoritos locais, destaque personalizável e links |
 | Implementado | Dados versionados, importação, testes, CI e documentação por área |
 | Preservado | Exercício Java original e histórico do projeto |
 | Fora do escopo atual | Contas, sincronização de favoritos, PWA/offline integral e simulador de batalhas |

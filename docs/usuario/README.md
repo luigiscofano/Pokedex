@@ -20,7 +20,7 @@ Uma Pokédex de fã, feita por **Luigi Scofano de Araujo** para outros fãs de P
 | Encontrar espécies, filtrar e ordenar | [Catálogo e pesquisa](catalogo/README.md) |
 | Entender as seis abas de uma ficha | [Fichas, tipos e registros dos jogos](fichas/README.md) |
 | Comparar Megas, formas cosméticas e shiny | [Formas e aparência](formas-e-shiny/README.md) |
-| Guardar favoritos e compartilhar uma consulta | [Favoritos, links e teclado](favoritos-e-links/README.md) |
+| Escolher destaque, guardar favoritos e compartilhar | [Destaque, favoritos, links e teclado](favoritos-e-links/README.md) |
 
 ## O que significam os números
 

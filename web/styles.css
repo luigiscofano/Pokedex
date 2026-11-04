@@ -918,6 +918,7 @@ dialog::backdrop {
 }
 .detail-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin-top: 18px;
 }
@@ -1728,4 +1729,35 @@ tr:last-child td {
     transition: none !important;
     animation: none !important;
   }
+}
+
+/* A escolha do destaque aparece somente nas ações da ficha. */
+.detail-actions .featured-button {
+  --featured-background: #30302f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--featured-background);
+  border-color: var(--featured-background);
+  color: #fff;
+  font-weight: 700;
+}
+.detail-actions .featured-button[aria-pressed='true'] {
+  --featured-background: #454544;
+}
+.detail-actions .featured-button:hover {
+  --featured-background: #20201f;
+}
+.featured-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+#featured-name { overflow-wrap: anywhere; }
+.featured-label {
+  max-width: calc(100% - 85px);
+  border-radius: 8px;
+  background: #f3f3e9e8;
+  padding: 6px 10px;
 }

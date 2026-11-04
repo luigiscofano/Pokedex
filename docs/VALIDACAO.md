@@ -2,7 +2,32 @@
 
 [Início](../README.md) · [Suíte e roteiro manual](../tests/README.md) · [Galeria](imagens/README.md)
 
-Este registro distingue resultados observados, verificações automatizadas e limites. A aplicação está na versão **1.2.1**. Os registros anteriores abaixo são históricos.
+Este registro distingue resultados observados, verificações automatizadas e limites. A aplicação está na versão **1.3.2**. Os registros anteriores abaixo são históricos.
+
+## Botão grafite 1.3.2 — 2026-11-04
+
+- Opção visual 5: fundo grafite, texto branco e Pokébola monocromática vetorial. Posição preservada dentro da ficha.
+- 40 testes, check e build aprovados.
+- Chromium: estado Tornar destaque, clique para Em destaque e recarga conferidos; ícone presente nos dois estados e preferência mantida.
+- Capturas de botão não selecionado e selecionado atualizadas localmente; onze capturas principais renovadas.
+- A linha de ações quebra em telas estreitas, preservando a ordem dos controles. Frames 320/375 conferidos sem corte de botões.
+
+## Destaque somente na ficha 1.3.1 — 2026-11-04
+
+- Controle removido dos cartões; permanece nas ações internas de cada ficha.
+- 39 testes, check e build aprovados; regressão confere ausência do botão na função de cartões e presença única na ficha.
+- Chromium: 0 controles de destaque nos cartões e 1 na ficha; escolha de Pikachu mantida após recarga.
+- Capturas da ficha e catálogo atualizadas. A escolha e o armazenamento local não mudaram.
+
+## Destaque personalizável 1.3.0 — 2026-11-04
+
+- `npm test`: 39 testes aprovados; `npm run check` e `npm run build` aprovados.
+- Persistência testada para todas as 1.579 formas, valores inválidos, ID ausente, armazenamento bloqueado, trocas e repetição.
+- Chromium: Bulbasaur pelo cartão, Pikachu pela ficha e cliques repetidos; recarga mantém escolha e abertura do destaque aponta para a ficha correta.
+- Mega Charizard X: nome, número nacional, tipos Fogo/Dragão, imagem shiny da variedade 10034 e abertura da ficha conferidos.
+- Frames reais de 320/375 pixels inspecionados; documento de 320 sem transbordamento horizontal. Não é teste em aparelho físico.
+- Três capturas novas: destaque desktop, ficha e responsivo. Fontes Chakra Petch/Barlow preservadas.
+- Java não alterado. Publicação e CI remoto são etapas separadas desta verificação local.
 
 ## Tipografia 1.2.1 — 2026-11-04
 

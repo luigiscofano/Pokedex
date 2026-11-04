@@ -10,7 +10,7 @@ Os guias são organizados por objetivo. O README inicial apresenta o projeto; os
 | --- | --- |
 | Abrir e explorar a Pokédex | [Executar](../README.md#como-executar) → [Primeira exploração](usuario/README.md) → [Fichas](usuario/fichas/README.md) |
 | Entender formas e shiny | [Catálogo](usuario/catalogo/README.md) → [Formas e shiny](usuario/formas-e-shiny/README.md) |
-| Guardar e compartilhar uma seleção | [Favoritos e links](usuario/favoritos-e-links/README.md) |
+| Personalizar o destaque, guardar e compartilhar | [Destaque, favoritos e links](usuario/favoritos-e-links/README.md) |
 | Alterar a interface ou uma regra | [Código limpo e comentários](desenvolvimento/clean-code/README.md) | Detalhado | Responsabilidades, convenções, contratos e verificação da refatoração |
 | [Arquitetura](desenvolvimento/README.md) → [Módulos JS](../web/js/README.md) → [Testes](../tests/README.md) |
 | Atualizar ou auditar os dados | [Origem e importação](dados/README.md) → [Esquema](../web/data/README.md) → [Fontes](FONTES.md) |
@@ -26,7 +26,7 @@ Os guias são organizados por objetivo. O README inicial apresenta o projeto; os
 | [Catálogo](usuario/catalogo/README.md) | Intermediário | Busca, filtros, ordenação e paginação |
 | [Fichas](usuario/fichas/README.md) | Detalhado | Seis abas, exemplos visuais e limites dos registros |
 | [Formas e shiny](usuario/formas-e-shiny/README.md) | Detalhado | Identidades, imagens, fallback e preferência global |
-| [Favoritos e links](usuario/favoritos-e-links/README.md) | Intermediário | Persistência, parâmetros compartilhados e teclado |
+| [Destaque, favoritos e links](usuario/favoritos-e-links/README.md) | Intermediário | Persistência, parâmetros compartilhados e teclado |
 | [Galeria](imagens/README.md) | Visual | Dez capturas, versões e contexto |
 
 ## Guias técnicos

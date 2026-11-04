@@ -4,6 +4,12 @@
 
 Clique em um cartão para abrir a ficha. Selecione a forma antes de interpretar tipos, habilidades, golpes ou encontros: algumas transformações têm dados diferentes. As abas permanecem dentro do diálogo; Escape fecha a ficha.
 
+## Ações da ficha
+
+O botão grafite com Pokébola **Tornar destaque** aparece somente dentro da ficha, ao lado dos favoritos e de Copiar link. Ele muda o Pokémon do início e passa a **Em destaque**. A escolha é salva neste navegador, incluindo a forma alternativa selecionada; veja [persistência e limites](../favoritos-e-links/README.md).
+
+![Botão de destaque dentro da ficha](../../imagens/pokedex-destaque-grafite.jpg)
+
 ## 1. Visão geral
 
 | Campo | Como interpretar |
