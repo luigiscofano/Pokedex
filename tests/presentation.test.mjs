@@ -36,7 +36,7 @@ test('destaque usa o mesmo componente e CSS não depende de uma imagem raster', 
   const app = await readFile(new URL('../web/js/app.js', import.meta.url), 'utf8');
   const html = await readFile(new URL('../web/index.html', import.meta.url), 'utf8');
   const css = await readFile(new URL('../web/styles.css', import.meta.url), 'utf8');
-  assert.ok(app.includes("$('#featured-types').innerHTML = badges([10, 3])"));
+  assert.ok(app.includes("$('#featured-types').innerHTML = badges(form.types)"));
   assert.ok(html.includes('id="featured-types"'));
   assert.ok(!html.includes('class="badge'));
   assert.ok(css.includes('clip-path: polygon(0 0, 100% 0, 76% 100%, 0 100%)'));

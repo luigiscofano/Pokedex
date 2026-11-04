@@ -1,6 +1,16 @@
-# Favoritos, links e teclado
+# Destaque, favoritos, links e teclado
 
 [Início](../../../README.md) · [Guia de uso](../README.md)
+
+## Escolher o Pokémon em destaque
+
+Clique no botão grafite com Pokébola **Tornar destaque** nas ações da ficha, depois de abrir um Pokémon. O início passa a mostrar a forma escolhida, seu número nacional e seus tipos. **Em destaque** identifica a seleção atual. O botão de abrir ficha no início acompanha essa escolha.
+
+A preferência fica neste navegador e nesta origem, separada dos favoritos. Ela é mantida ao recarregar a página, mas não sincroniza entre aparelhos e não é incluída nos links. Limpar os dados do site remove a escolha. Sem uma preferência válida, Charizard é o padrão. Se o armazenamento estiver bloqueado, a escolha funciona nesta sessão e um aviso informa que não foi salva.
+
+Formas alternativas também podem ser destaque. A opção **Shiny** continua global: muda a aparência da forma escolhida sem trocar o destaque. A disponibilidade das imagens segue as mesmas regras das fichas.
+
+![Mega Charizard X escolhido como destaque](../../imagens/pokedex-destaque.jpg)
 
 ## Guardar uma forma
 

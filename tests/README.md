@@ -14,12 +14,13 @@ npm run build
 
 | Arquivo | Testes | Cobertura |
 | --- | ---: | --- |
+| [featured.test.mjs](featured.test.mjs) | 6 | Todas as formas, persistência, dados inválidos, armazenamento bloqueado, repetição e controles acessíveis |
 | [domain.test.mjs](domain.test.mjs) | 8 | Catálogo padrão, busca, filtros, favoritos, armazenamento bloqueado, lotes, eficácia e condições de evolução |
 | [data.test.mjs](data.test.mjs) | 6 | Hashes, vínculos de todas as formas, atributos, 324 relações de tipos, referências, contagens e famílias |
 | [images.test.mjs](images.test.mjs) | 5 | URLs normal/shiny, IDs de variedade, cache de formas, ausência de shiny, rejeição de URLs inválidas e nova tentativa |
 | [loading.test.mjs](loading.test.mjs) | 3 | Cargas concorrentes, recuperação de erros HTTP/JSON e fichas por lote |
 | [panels.test.mjs](panels.test.mjs) | 7 | Seleção, conteúdo das fichas, ausência de registros, escape HTML e família de Eevee |
-| [presentation.test.mjs](presentation.test.mjs) | 4 | Dezoito símbolos distintos, nomes acessíveis, pares ordenados, entradas especiais e componente do destaque |
+| [presentation.test.mjs](presentation.test.mjs) | 5 | Dezoito símbolos distintos, nomes acessíveis, pares ordenados, entradas especiais e componente do destaque |
 
 **Total: 33 testes.** Eles rodam sem navegador e sem depender da rede. Os testes de imagens simulam respostas; não garantem que um servidor externo esteja disponível no momento de uso. A suíte de dados percorre a base versionada, incluindo referências de golpes, habilidades, descrições e encontros.
 
@@ -44,6 +45,7 @@ node --test tests/images.test.mjs
 | Evoluções | Abrir Eevee | Oito ramificações e condições disponíveis na fonte |
 | Encontros | Pikachu, jogo Red | Áreas, níveis, chances de slots e condições distinguíveis |
 | Golpes | Charizard, Scarlet Violet, busca `flame` | Apenas registros correspondentes ao grupo e ao nome |
+| Destaque | Selecionar somente pela ficha; confirmar ausência nos cartões; recarregar e abrir destaque | Forma preservada, tipos/imagem/link atualizados e favoritos independentes |
 | Favoritos | Salvar uma forma, recarregar e filtrar favoritos | Persistência na mesma origem; forma alternativa exige inclusão de formas |
 | Links | Copiar ficha shiny e abrir em outra aba | Mesma forma e aparência; filtros não serializados voltam ao padrão |
 | Concorrência | Trocar de forma/aba/aparência durante a carga | Resposta antiga não substitui a seleção atual |
