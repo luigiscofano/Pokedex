@@ -42,8 +42,12 @@
           ><p
             >Explore espécies, descubra formas e conheça cada detalhe da sua
             próxima aventura.</p
-          ><a class="primary" href="#catalog"
-            >Começar a explorar <span>↗</span></a
+          ><div class="pocket-start"
+            ><a class="primary pocket-start-button" href="#catalog"
+              >Começar a explorar <span aria-hidden="true">➜</span></a
+            ><div class="pocket-start-trim" aria-hidden="true"
+              ><span class="pocket-vents"></span><span>PRESS START</span></div
+            ></div
           ><div class="hero-numbers"
             ><div><strong>1.025</strong><span>espécies</span></div
             ><div
@@ -81,11 +85,26 @@
       <!-- Explorador: filtros, catálogo e paginação. -->
       <section class="explorer" id="catalog" aria-labelledby="catalog-title">
         <aside class="sidebar">
-          <div class="sidebar-heading">SEU GUIA DE CAMPO <span>↓</span></div
-          ><button class="region active" data-generation="0"
-            ><span>◎</span> Todas as regiões <small>1.025</small></button
-          >
-          <div class="sidebar-label">POR GERAÇÃO</div><div id="regions"></div>
+          <div class="pocket-dex" role="group" aria-labelledby="region-label">
+            <div class="pocket-dex-header" aria-hidden="true">
+              <span class="pocket-lens"></span>
+              <span class="pocket-lights"><i></i><i></i><i></i></span>
+              <span class="pocket-scan">REGION SCAN</span>
+            </div>
+            <div class="pocket-screen">
+              <div class="pocket-screen-heading" id="region-label"
+                >Selecionar região <span aria-hidden="true">●</span></div
+              ><button class="region region-all active" data-generation="0" aria-pressed="true"
+                ><span class="region-cursor" aria-hidden="true"></span>
+                <span class="region-name">Todas as regiões</span>
+                <small>1.025</small></button
+              >
+              <div class="sidebar-label">POR GERAÇÃO</div><div id="regions"></div>
+            </div>
+            <div class="pocket-dex-trim" aria-hidden="true"
+              ><span class="pocket-vents"></span><span>001—1025</span></div
+            >
+          </div>
           <div class="sidebar-note"
             ><span class="pokeball small" aria-hidden="true"></span
             ><strong>Conhecer é o começo.</strong

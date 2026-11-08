@@ -664,7 +664,7 @@ async function init() {
     $('#regions').innerHTML = GENERATIONS.slice(1)
       .map(
         (name, i) =>
-          `<button class="region" data-generation="${i + 1}"><span>◈</span>${name}<small>${String(i + 1).padStart(2, '0')}</small></button>`,
+          `<button class="region" data-generation="${i + 1}" aria-pressed="false"><span class="region-cursor" aria-hidden="true"></span><span class="region-name">${name}</span><small>${String(i + 1).padStart(2, '0')}</small></button>`,
       )
       .join('');
     $('#form-count').textContent = formatNumber(state.manifest.formCount);

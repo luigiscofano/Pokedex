@@ -229,6 +229,67 @@ h1 em {
 .primary:hover {
   background: #c5362a;
 }
+/* Botão de partida: mesma carcaça e tecla física da Pokédex de bolso. */
+.pocket-start {
+  display: inline-block;
+  max-width: 100%;
+  margin-top: 26px;
+  padding: 7px 7px 5px;
+  border: 2px solid #293330;
+  border-radius: 13px;
+  background: #d94735;
+  box-shadow: 2px 4px 0 #80382e, 3px 5px 0 1px #293330;
+}
+.pocket-start .pocket-start-button {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 48px;
+  margin: 0 0 5px;
+  padding: 12px 17px;
+  border: 2px solid #293330;
+  border-radius: 7px;
+  background: #f5dc87;
+  color: #252d2f;
+  box-shadow: 0 4px 0 #73352b;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.pocket-start-button > span {
+  font-size: 23px;
+  line-height: 1;
+}
+.pocket-start-button:hover {
+  background: #ffe6a0;
+}
+.pocket-start-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #73352b;
+}
+.pocket-start-button:focus-visible {
+  outline: 3px solid #253e4a;
+  outline-offset: 4px;
+}
+.pocket-start-trim,
+.pocket-dex-trim {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  color: #592e27;
+  font: 700 8px var(--font-heading);
+  letter-spacing: 0.7px;
+}
+.pocket-start-trim {
+  padding: 4px 7px 0;
+}
+.pocket-vents {
+  display: block;
+  width: 41px;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, #293330 0 11px, transparent 11px 15px);
+}
 .hero-numbers {
   display: flex;
   gap: 31px;
@@ -348,47 +409,142 @@ h1 em {
   padding-right: 23px;
   border-right: 1px solid var(--line);
 }
-.sidebar-heading {
-  font-size: 9px;
-  letter-spacing: 1.3px;
-  font-weight: 700;
-  display: flex;
-  justify-content: space-between;
-  margin: 7px 0 23px;
+/* Filtros preservam a coluna original dentro de uma pequena carcaça vermelha. */
+.pocket-dex {
+  padding: 10px 7px 8px;
+  border: 2px solid #293330;
+  border-radius: 19px 19px 14px 14px;
+  background: #d94735;
+  box-shadow: 3px 5px 0 #80382e, 4px 6px 0 1px #293330;
 }
-.sidebar-label {
-  font-size: 9px;
-  letter-spacing: 1.4px;
-  color: var(--muted);
-  margin: 26px 0 12px;
-}
-.region {
+.pocket-dex-header {
   display: flex;
   align-items: center;
-  gap: 11px;
-  padding: 13px 11px;
+  gap: 5px;
+  padding: 0 1px 10px;
+  margin-bottom: 11px;
+  border-bottom: 2px solid #293330;
+}
+.pocket-lens {
+  position: relative;
+  flex: 0 0 29px;
+  height: 29px;
+  border: 3px solid #f2edcf;
+  border-radius: 50%;
+  background: #50a4ac;
+  box-shadow: 0 0 0 2px #293330, inset 0 0 0 2px #293330;
+}
+.pocket-lens::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b6e3d8;
+}
+.pocket-lights {
+  display: flex;
+  gap: 3px;
+  align-self: flex-start;
+  padding: 3px 0 0 2px;
+}
+.pocket-lights i {
+  width: 6px;
+  height: 6px;
+  border: 1px solid #293330;
+  border-radius: 50%;
+  background: #9b3025;
+}
+.pocket-lights i:nth-child(2) { background: #e8c451; }
+.pocket-lights i:nth-child(3) { background: #749568; }
+.pocket-scan {
+  margin-left: auto;
+  color: #592e27;
+  font: 700 8px var(--font-heading);
+  text-align: right;
+}
+.pocket-screen {
+  padding: 8px 5px 5px;
+  border: 2px solid #293330;
+  border-radius: 7px;
+  background: #dcdec0;
+  box-shadow: 0 3px 0 #80382e;
+}
+.pocket-screen-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  margin: 0 2px 8px;
+  color: #536753;
+  font: 700 9px var(--font-heading);
+  text-transform: uppercase;
+}
+.pocket-screen-heading > span { font-size: 6px; }
+.pocket-screen .sidebar-label {
+  margin: 13px 3px 7px;
+  color: #536753;
+  font: 600 8px var(--font-heading);
+  letter-spacing: 0.8px;
+}
+.pocket-dex .region {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 44px;
+  padding: 9px 5px;
   width: 100%;
   text-align: left;
-  font-size: 12px;
-  border-radius: 7px;
-  margin: 3px 0;
-  color: #74776c;
+  border: 1px solid #8c9b7d;
+  border-radius: 2px;
+  margin: 4px 0;
+  background: #edecd0;
+  color: #415b43;
+  font: 700 11px var(--font-heading);
+  text-transform: uppercase;
+  transition: background 0.15s, color 0.15s;
 }
-.region span {
-  font-size: 15px;
+.pocket-dex .region-cursor {
+  flex: 0 0 8px;
+  visibility: hidden;
 }
-.region small {
+.region-cursor::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 6px solid currentColor;
+}
+.pocket-dex .region-name {
+  min-width: 0;
+  line-height: 1.35;
+}
+.pocket-dex .region small {
   margin-left: auto;
-  font-size: 9px;
-  opacity: 0.75;
+  font-size: 8px;
+  font-weight: 500;
 }
-.region:hover {
-  background: #f0f0e9;
+.pocket-dex .region:hover {
+  background: #c9d0ae;
 }
-.region.active {
-  background: #f9e8df;
-  color: #c24535;
-  font-weight: 600;
+.pocket-dex .region.active {
+  border-color: #334a39;
+  background: #334a39;
+  color: #f4f0cf;
+}
+.pocket-dex .region.active .region-cursor {
+  visibility: visible;
+}
+.pocket-dex .region:focus-visible {
+  outline: 2px solid #283b4a;
+  outline-offset: 2px;
+}
+.pocket-dex-trim {
+  padding: 12px 4px 0;
 }
 .sidebar-note {
   margin-top: 36px;
@@ -1429,31 +1585,48 @@ tr:last-child td {
   .sidebar {
     border: 0;
     padding: 0;
-    margin-bottom: 24px;
-    display: flex;
-    overflow-x: auto;
+    margin-bottom: 30px;
+    display: block;
+  }
+  .pocket-dex {
+    padding: 13px 12px 10px;
+  }
+  .pocket-dex-header {
+    gap: 9px;
+    margin-bottom: 12px;
+  }
+  .pocket-scan {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+  .pocket-screen {
+    padding: 10px 9px 7px;
+  }
+  .pocket-screen-heading {
+    font-size: 10px;
+  }
+  .pocket-screen #regions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 6px;
   }
-  .sidebar > #regions {
-    display: contents;
-  }
-  .sidebar-heading,
-  .sidebar-label,
   .sidebar-note {
     display: none;
   }
-  .region {
-    white-space: nowrap;
-    min-width: max-content;
-    width: auto;
+  .pocket-dex .region {
+    margin: 0;
+    padding: 10px 5px;
     font-size: 11px;
-    padding: 11px;
   }
-  .region small {
+  .pocket-dex .region-all {
+    min-height: 45px;
+    padding-left: 9px;
+  }
+  .pocket-screen .sidebar-label {
+    margin-top: 11px;
+  }
+  .pocket-dex #regions .region small {
     display: none;
-  }
-  .region span {
-    font-size: 12px;
   }
   .card-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1531,7 +1704,7 @@ tr:last-child td {
     font-size: 40px;
     margin-top: 20px;
   }
-  .hero .primary {
+  .hero .pocket-start {
     margin-top: 20px;
   }
   .hero-numbers {
