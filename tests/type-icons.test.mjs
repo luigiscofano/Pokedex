@@ -28,3 +28,13 @@ test('tipos refinados mantêm símbolo e rótulo idênticos nos badges e na efic
   }
   assert.equal(new Set(refinedTypes.map(typeIcon)).size, refinedTypes.length);
 });
+
+test('Lutador aprovado usa uma única silhueta angular, sem linhas de dedos', () => {
+  const svg = typeIcon(2);
+  assert.equal((svg.match(/<path\b/g) || []).length, 1);
+  assert.doesNotMatch(svg, /stroke=|<circle|<ellipse|<rect/);
+  const path = svg.match(/\bd="([^"]+)"/)[1];
+  assert.doesNotMatch(path, /[CcSsQqTtAa]/);
+  assert.equal((path.match(/[Mm]/g) || []).length, 1);
+  assert.match(path, /[Zz]$/);
+});
