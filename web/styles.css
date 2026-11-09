@@ -364,13 +364,19 @@ h1 em {
   padding-right: 23px;
   border-right: 1px solid var(--line);
 }
-/* Filtros preservam a coluna original dentro de uma pequena carcaça vermelha. */
+/* Carcaça discreta e controles integrados à tela, conforme a proposta aprovada. */
 .pocket-dex {
-  padding: 10px 7px 8px;
-  border: 2px solid #293330;
-  border-radius: 19px 19px 14px 14px;
-  background: #d94735;
-  box-shadow: 3px 5px 0 #80382e, 4px 6px 0 1px #293330;
+  --dex-shell: #b72e35;
+  --dex-shell-edge: #89272c;
+  --dex-screen: #eef0df;
+  --dex-ink: #203c31;
+  --dex-line: #96a58d;
+  --dex-active: #294a39;
+  padding: 11px 8px 9px;
+  border: 1.5px solid var(--dex-shell-edge);
+  border-radius: 18px 18px 15px 15px;
+  background: var(--dex-shell);
+  box-shadow: 0 3px 0 var(--dex-shell-edge), 0 7px 13px #34251e20;
 }
 .pocket-dex-header {
   display: flex;
@@ -378,7 +384,7 @@ h1 em {
   gap: 5px;
   padding: 0 1px 10px;
   margin-bottom: 11px;
-  border-bottom: 2px solid #293330;
+  border-bottom: 1.5px solid var(--dex-ink);
 }
 .pocket-lens {
   position: relative;
@@ -416,16 +422,15 @@ h1 em {
 .pocket-lights i:nth-child(3) { background: #749568; }
 .pocket-scan {
   margin-left: auto;
-  color: #592e27;
+  color: #242c26;
   font: 700 8px var(--font-heading);
   text-align: right;
 }
 .pocket-screen {
-  padding: 8px 5px 5px;
-  border: 2px solid #293330;
-  border-radius: 7px;
-  background: #dcdec0;
-  box-shadow: 0 3px 0 #80382e;
+  padding: 10px 6px 6px;
+  border: 1.5px solid #405745;
+  border-radius: 9px;
+  background: var(--dex-screen);
 }
 .pocket-screen-heading {
   display: flex;
@@ -433,14 +438,14 @@ h1 em {
   justify-content: space-between;
   gap: 4px;
   margin: 0 2px 8px;
-  color: #536753;
+  color: var(--dex-ink);
   font: 700 9px var(--font-heading);
   text-transform: uppercase;
 }
 .pocket-screen-heading > span { font-size: 6px; }
 .pocket-screen .sidebar-label {
   margin: 13px 3px 7px;
-  color: #536753;
+  color: var(--dex-ink);
   font: 600 8px var(--font-heading);
   letter-spacing: 0.8px;
 }
@@ -452,11 +457,11 @@ h1 em {
   padding: 9px 5px;
   width: 100%;
   text-align: left;
-  border: 1px solid #8c9b7d;
+  border: 1px solid var(--dex-line);
   border-radius: 2px;
   margin: 4px 0;
-  background: #edecd0;
-  color: #415b43;
+  background: transparent;
+  color: var(--dex-ink);
   font: 700 11px var(--font-heading);
   text-transform: uppercase;
   transition: background 0.15s, color 0.15s;
@@ -484,12 +489,12 @@ h1 em {
   font-weight: 500;
 }
 .pocket-dex .region:hover {
-  background: #c9d0ae;
+  background: #dce4cf;
 }
 .pocket-dex .region.active {
-  border-color: #334a39;
-  background: #334a39;
-  color: #f4f0cf;
+  border-color: var(--dex-active);
+  background: var(--dex-active);
+  color: #f5f5e7;
 }
 .pocket-dex .region.active .region-cursor {
   visibility: visible;
@@ -500,6 +505,7 @@ h1 em {
 }
 .pocket-dex-trim {
   padding: 12px 4px 0;
+  color: #242c26;
 }
 .sidebar-note {
   margin-top: 36px;
@@ -1575,6 +1581,16 @@ tr:last-child td {
     margin: 0;
     padding: 10px 5px;
     font-size: 11px;
+  }
+  .pocket-dex #regions .region {
+    position: relative;
+    justify-content: center;
+    padding-inline: 12px;
+    text-align: center;
+  }
+  .pocket-dex #regions .region-cursor {
+    position: absolute;
+    left: 4px;
   }
   .pocket-dex .region-all {
     min-height: 45px;

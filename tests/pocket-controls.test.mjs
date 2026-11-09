@@ -45,3 +45,16 @@ test('controles de bolso incluem foco, alvo de toque e grade estreita sem rolage
   assert.match(css, /\.pocket-screen #regions\s*\{[^}]*grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);
 });
+
+test('regiões ficam integradas à tela e o painel mantém um estilo próprio', () => {
+  const shell = css.match(/\.pocket-dex\s*\{([^}]+)\}/)[1];
+  const screen = css.match(/\.pocket-screen\s*\{([^}]+)\}/)[1];
+  const region = css.match(/\.pocket-dex \.region\s*\{([^}]+)\}/)[1];
+  assert.match(shell, /--dex-shell:/);
+  assert.match(shell, /--dex-screen:/);
+  assert.match(screen, /background: var\(--dex-screen\)/);
+  assert.doesNotMatch(screen, /box-shadow:/);
+  assert.match(region, /background: transparent/);
+  assert.match(css, /\.pocket-dex \.region\.active\s*\{[^}]*background: var\(--dex-active\)/);
+  assert.match(css, /\.pocket-dex #regions \.region\s*\{[^}]*justify-content: center/);
+});
