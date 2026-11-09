@@ -22,6 +22,12 @@ Favoritos e a forma escolhida como destaque ficam no `localStorage` da origem. N
 
 Antes de enviar mudanças visuais, confira cartões, forma alternativa, shiny, ficha com dados ausentes, foco de teclado e tela estreita. [Validação](../tests/README.md).
 
+## Regiões, navegação e símbolos
+
+A página começa com “Temos que pegar!” e a descrição, sem o antigo botão de partida nem o texto introdutório removido. O painel de regiões usa carcaça vermelha discreta e tela LCD; os botões filtram pela geração da espécie e ficam em três colunas em telas estreitas. `navigation.js` mantém Explorar/Favoritos coerentes com o catálogo, e o total encontrado aparece em negrito.
+
+Os tipos usam SVGs locais em `type-icons.js`, compartilhados por cartões, fichas e eficácia. Psíquico, Aço, Sombrio em eclipse e Lutador angular têm desenhos refinados sem dependência de imagens externas.
+
 ## Tipografia
 
 `styles.css` centraliza as famílias em `--font-heading` (Chakra Petch) e `--font-body` (Barlow). Títulos, marca e números de destaque usam a primeira; parágrafos, formulários, abas, tabelas e faixas de tipos usam a segunda. O carregamento via Google Fonts usa `display=swap`, com fallback sans-serif.

@@ -27,6 +27,10 @@ Não é necessário executar `npm install` para o código atual: não há depend
 
 ## Busca, destaque, favoritos e links
 
+**Não encontro Começar a explorar.** Esse botão foi removido. Use **Explorar** no menu ou role até o catálogo. A seleção de gerações fica na Pokédex de bolso.
+
+**Explorar não aparece selecionado.** Quando o catálogo mostra **Seus favoritos**, a seleção correta é **Favoritos**. Clique em Explorar para sair desse filtro; busca, região e tipo continuam valendo.
+
 **Não encontro Tornar destaque no catálogo.** Abra o cartão do Pokémon: a opção aparece somente nas ações internas da ficha, em um botão grafite com Pokébola.
 
 **O destaque voltou para Charizard.** A escolha pertence ao navegador e à origem; não sincroniza entre dispositivos. Limpar dados do site ou usar outro perfil remove a preferência. Se o armazenamento estiver bloqueado, a escolha funciona apenas nesta sessão e a aplicação avisa.

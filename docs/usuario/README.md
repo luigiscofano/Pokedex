@@ -7,11 +7,14 @@ Uma Pokédex de fã, feita por **Luigi Scofano de Araujo** para outros fãs de P
 ## Primeira exploração
 
 1. Abra o site ou inicie `npm run dev` na raiz do projeto e acesse `http://localhost:3000`.
-2. Pesquise `charizard`. Clique no cartão para abrir a ficha.
-3. Em **Tipos e vantagens**, observe Pedra em 4× e Terra em 0× na forma padrão.
-4. No seletor de forma, escolha **Mega Charizard X**: os tipos passam a Fogo/Dragão.
-5. Alterne **Normal / ✦ Shiny**. A aparência muda; os atributos da forma continuam iguais.
-6. Feche a ficha com Escape e experimente outra espécie.
+2. Use **Explorar** no menu ou role até o catálogo. Se quiser, escolha a geração na Pokédex de bolso; **Todas as regiões** remove apenas esse filtro.
+3. Com **Todas as regiões** selecionado, pesquise `charizard`. Clique no cartão para abrir a ficha.
+4. Em **Tipos e vantagens**, observe Pedra em 4× e Terra em 0× na forma padrão.
+5. No seletor de forma, escolha **Mega Charizard X**: os tipos passam a Fogo/Dragão.
+6. Alterne **Normal / ✦ Shiny**. A aparência muda; os atributos da forma continuam iguais.
+7. Feche a ficha com Escape e experimente outra espécie.
+
+A apresentação começa com **Temos que pegar!** e a descrição da aventura. O antigo botão “Começar a explorar” e o texto “Um universo de descobertas” não fazem parte da página atual.
 
 ## Escolha seu assunto
 

@@ -49,6 +49,84 @@ test('filtros são combinados, respeitam formas e favoritos', () => {
     filterCatalog(catalog, { kind: 'mythical' }).every((form) => form.mythical),
   );
 });
+
+test('buscas repetidas preservam acentos, números e filtros recebidos como texto', () => {
+  for (const query of ['#0025', '025', '00025', '  #0025  ']) {
+    assert.deepEqual(
+      filterCatalog(catalog, { query }).map((form) => form.species),
+      [25],
+    );
+  }
+  for (const query of ['flabebe', ' FLABÉBÉ ', 'flabe\u0301be\u0301']) {
+    assert.equal(filterCatalog(catalog, { query })[0].species, 669);
+  }
+  assert.deepEqual(
+    filterCatalog(catalog, { generation: '1', type: '10' }),
+    filterCatalog(catalog, { generation: 1, type: 10 }),
+  );
+});
+
+test('busca reflete mudanças nos nomes, na forma, no slug e no número nacional', () => {
+  const form = {
+    ...catalog[0],
+    name: 'NomeAntigo',
+    form: 'FormaAntiga',
+    slug: 'slug-antigo',
+  };
+  for (const [field, query, replacement] of [
+    ['name', 'nomeantigo', 'NomeNovo'],
+    ['form', 'formaantiga', 'FormaNova'],
+    ['slug', 'slug-antigo', 'slug-novo'],
+  ]) {
+    assert.deepEqual(filterCatalog([form], { query }), [form]);
+    form[field] = replacement;
+    assert.deepEqual(filterCatalog([form], { query }), []);
+    assert.deepEqual(filterCatalog([form], { query: replacement }), [form]);
+  }
+  assert.deepEqual(filterCatalog([form], { query: '#0001' }), [form]);
+  form.species = 25;
+  assert.deepEqual(filterCatalog([form], { query: '#0001' }), []);
+  assert.deepEqual(filterCatalog([form], { query: '#0025' }), [form]);
+});
+
+test('catálogos distintos com o mesmo ID não compartilham nomes em cache', () => {
+  const first = { ...catalog[0], name: 'NomePrimeiro' };
+  const second = { ...catalog[0], name: 'NomeSegundo' };
+  assert.deepEqual(filterCatalog([first], { query: 'nomeprimeiro' }), [first]);
+  assert.deepEqual(filterCatalog([second], { query: 'nomesegundo' }), [second]);
+  assert.deepEqual(filterCatalog([second], { query: 'nomeprimeiro' }), []);
+});
+
+test('favoritos são atualizados entre consultas e não confundem IDs numéricos com texto', () => {
+  const favorites = [25, 25, '1'];
+  const filters = { favoritesOnly: true, favorites };
+  assert.deepEqual(filterCatalog(catalog, filters).map((form) => form.id), [25]);
+  favorites.splice(0, favorites.length, 1);
+  assert.deepEqual(filterCatalog(catalog, filters).map((form) => form.id), [1]);
+  favorites.length = 0;
+  assert.deepEqual(filterCatalog(catalog, filters), []);
+  assert.deepEqual(filterCatalog(catalog, { favoritesOnly: true }), []);
+});
+
+test('ordenação mantém desempates e referências sem modificar entradas congeladas', () => {
+  const forms = Object.freeze([
+    Object.freeze({ ...catalog[0], id: 30, name: 'Mesmo', default: false }),
+    Object.freeze({ ...catalog[0], id: 20, name: 'Mesmo', default: true }),
+    Object.freeze({ ...catalog[0], id: 10, name: 'Mesmo', default: false }),
+  ]);
+  const expected = {
+    number: [20, 10, 30],
+    name: [10, 20, 30],
+    total: [30, 20, 10],
+  };
+  for (const [sort, ids] of Object.entries(expected)) {
+    const result = filterCatalog(forms, { query: 'mesmo', forms: true, sort });
+    assert.deepEqual(result.map((form) => form.id), ids);
+    assert.notEqual(result, forms);
+    assert.ok(result.every((form) => forms.includes(form)));
+  }
+  assert.deepEqual(forms.map((form) => form.id), [30, 20, 10]);
+});
 // Exemplos conhecidos verificam a composição dos tipos e a preservação de imunidades.
 test('Charizard tem fraqueza 4× a Pedra e imunidade a Terra', () => {
   const result = defenseMatchups([10, 3], reference.efficacy);

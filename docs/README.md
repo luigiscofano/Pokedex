@@ -11,8 +11,7 @@ Os guias são organizados por objetivo. O README inicial apresenta o projeto; os
 | Abrir e explorar a Pokédex | [Executar](../README.md#como-executar) → [Primeira exploração](usuario/README.md) → [Fichas](usuario/fichas/README.md) |
 | Entender formas e shiny | [Catálogo](usuario/catalogo/README.md) → [Formas e shiny](usuario/formas-e-shiny/README.md) |
 | Personalizar o destaque, guardar e compartilhar | [Destaque, favoritos e links](usuario/favoritos-e-links/README.md) |
-| Alterar a interface ou uma regra | [Código limpo e comentários](desenvolvimento/clean-code/README.md) | Detalhado | Responsabilidades, convenções, contratos e verificação da refatoração |
-| [Arquitetura](desenvolvimento/README.md) → [Módulos JS](../web/js/README.md) → [Testes](../tests/README.md) |
+| Alterar a interface ou uma regra | [Arquitetura](desenvolvimento/README.md) → [Código limpo](desenvolvimento/clean-code/README.md) → [Módulos JS](../web/js/README.md) → [Testes](../tests/README.md) |
 | Atualizar ou auditar os dados | [Origem e importação](dados/README.md) → [Esquema](../web/data/README.md) → [Fontes](FONTES.md) |
 | Estudar o exercício original | [Java](../src/README.md) → [Modelo](../src/model/README.md) → [Enumeração](../src/model/enums/README.md) |
 | Revisar e publicar uma entrega | [Contribuição](../CONTRIBUTING.md) → [CI](../.github/README.md) → [Publicação](publicacao/README.md) |
@@ -27,13 +26,14 @@ Os guias são organizados por objetivo. O README inicial apresenta o projeto; os
 | [Fichas](usuario/fichas/README.md) | Detalhado | Seis abas, exemplos visuais e limites dos registros |
 | [Formas e shiny](usuario/formas-e-shiny/README.md) | Detalhado | Identidades, imagens, fallback e preferência global |
 | [Destaque, favoritos e links](usuario/favoritos-e-links/README.md) | Intermediário | Persistência, parâmetros compartilhados e teclado |
-| [Galeria](imagens/README.md) | Visual | Dez capturas, versões e contexto |
+| [Galeria](imagens/README.md) | Visual | Capturas atuais e arquivo histórico, com contexto e limites |
 
 ## Guias técnicos
 
 | Documento | Profundidade | Conteúdo |
 | --- | --- | --- |
 | [Arquitetura](desenvolvimento/README.md) | Detalhado | Camadas, fluxo, concorrência, estados e decisões |
+| [Código limpo e comentários](desenvolvimento/clean-code/README.md) | Intermediário | Responsabilidades, contratos, convenções e manutenção |
 | [Eficácia de tipos](desenvolvimento/tipos/README.md) | Focado | Fórmulas, exemplos e limites |
 | [Dados e atualização](dados/README.md) | Detalhado | Snapshot, IDs, importação e auditoria |
 | [Dicionário dos JSONs](../web/data/README.md) | Referência detalhada | Campos, tuplas, unidades, dicionários e manifesto |

@@ -26,6 +26,7 @@ git switch -c docs/guia-de-favoritos
 | `test/` | Cobertura de um caso relevante | `test/limites-dos-lotes` |
 | `build/` | Ferramentas e automação | `build/verificacao-estatica` |
 | `data/` | Atualização reproduzível do snapshot | `data/revisao-pokeapi` |
+| `chore/` | Manutenção que combina código, testes e documentação | `chore/revisao-qualidade` |
 
 Esses nomes são convenções de organização, não uma configuração de proteção de branch. Separe mudanças independentes; mantenha juntos código, teste e documentação necessários para entender uma mesma alteração.
 
@@ -53,11 +54,11 @@ Para Java, preserve a independência em relação ao site. Mudanças didáticas 
 
 ## Abrir e revisar um PR
 
-Descreva o problema, o resultado final, arquivos/áreas relevantes, validação e limites. Siga o [template](.github/pull_request_template.md). Para interface, inclua capturas antes/depois quando forem úteis; para dados, informe revisão e variação das contagens.
+Abra o PR como **draft** enquanto a entrega estiver em revisão. Descreva o problema, o resultado final, arquivos/áreas relevantes, validação e limites. Siga o [template](.github/pull_request_template.md). Para interface, inclua capturas antes/depois quando forem úteis; para dados, informe revisão e variação das contagens.
 
 Confira o diff antes de enviar. Exclua caches, saídas de build, credenciais, tokens e dados pessoais. Mantenha autoria e créditos de recursos externos. O repositório não concede uma nova licença geral sobre materiais da franquia.
 
-Após o CI e a revisão, integre pelo PR. Não é necessário multiplicar branches para mudanças inseparáveis; use a divisão para tornar cada entrega compreensível e rastreável.
+Após o CI e a revisão, a integração precisa de aprovação própria. Abrir um PR não autoriza merge, auto-merge ou publicação do site. Preserve branches históricas, a menos que sua remoção seja aprovada. Não multiplique branches para mudanças inseparáveis; reúna código, testes, documentação e imagens de uma entrega coerente.
 
 ## Legibilidade e comentários
 

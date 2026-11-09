@@ -1,5 +1,40 @@
 # Histórico de mudanças
 
+## 1.3.3 — 2026-11-09
+
+Esta revisão reúne a manutenção atual e os recursos implementados após os registros abaixo. A versão do pacote e a versão publicada em Sites são identificadores independentes; publicação e integração devem ser verificadas no commit correspondente.
+
+- Seletor de regiões em Pokédex de bolso com carcaça vermelha discreta, tela LCD, seleção acessível e grade móvel de três colunas.
+- Remoção do botão “Começar a explorar” e do texto “Um universo de descobertas”; título e descrição preservados.
+- Navegação Explorar/Favoritos sincronizada com o catálogo e quantidade encontrada em negrito.
+- Ícones refinados de Psíquico, Aço, Sombrio em eclipse e Lutador em silhueta angular, compartilhados pelos componentes de tipos.
+- README, guias técnicos/de uso e distribuição da suíte alinhados ao código; correção da tabela de navegação da documentação.
+- Quatro capturas atuais e separação explícita das imagens históricas, sem remover seu arquivo.
+- Organização da revisão em uma entrega coerente, preservando o histórico de branches e PRs.
+
+- Busca do catálogo com cache de nomes normalizados e invalidação por alteração de campos; favoritos consultados por `Set`, sem mutar as entradas.
+- Consulta de golpes preparada uma vez por renderização, mantendo normalização de acentos/espaços e o grupo de versões.
+- Verificação dos destinos locais de links/imagens Markdown integrada a `check`, com comando `check:docs` e nove regressões próprias, incluindo parênteses em destinos, fechamento de blocos de código e comentários HTML.
+- Benchmark reproduzível de 6.048 combinações de filtros e consultas isoladas, sem limite de tempo usado como critério do CI.
+- Quinze regressões acrescentadas: suíte ampliada de 51 para 66 testes. Resultados da execução e limites estão no [registro de validação](docs/VALIDACAO.md).
+
+## 1.3.2 — 2026-11-04
+
+- Botão de destaque grafite, texto branco e Pokébola vetorial monocromática, nos estados Tornar destaque e Em destaque.
+- Controle mantido somente nas ações internas da ficha.
+- Registro daquela entrega: 40 testes, check e build aprovados; veja [validação histórica](docs/VALIDACAO.md).
+
+## 1.3.1 — 2026-11-04
+
+- Remoção do controle de destaque dos cartões; escolha mantida dentro da ficha, sem alterar o armazenamento local.
+- Regressão para presença na ficha e ausência nos cartões.
+
+## 1.3.0 — 2026-11-04
+
+- Forma em destaque personalizável, com número nacional, tipos, imagem e abertura da ficha correspondentes.
+- Persistência local independente dos favoritos, retorno seguro a Charizard e aviso quando a preferência não pode ser salva.
+- Modo shiny global preservado; cobertura de seleção, repetição, IDs inválidos e armazenamento bloqueado.
+
 ## 1.2.1 — 2026-11-04
 
 - Chakra Petch aplicada a títulos, marca e números de destaque; Barlow a textos, controles, descrições e rótulos de tipos.

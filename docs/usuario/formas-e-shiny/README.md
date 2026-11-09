@@ -20,7 +20,7 @@ Ative **✦ Shiny** ao lado dos filtros ou escolha **Normal / ✦ Shiny** na fic
 
 ![Charizard shiny com os controles de aparência](../../imagens/pokedex-shiny.jpg)
 
-*Charizard padrão em shiny: os mesmos tipos Fogo/Voador e os mesmos atributos base, com outra coloração.*
+*Captura histórica de Charizard padrão em shiny; controles e símbolos podem diferir da interface atual. Shiny preserva os tipos Fogo/Voador e os atributos base, com outra coloração.*
 
 Shiny é uma preferência visual: não duplica o catálogo nem cria outro favorito. O link da página conserva a escolha por `shiny=1`. Ver uma imagem shiny não garante que essa aparência seja obtível em determinado jogo ou evento.
 

@@ -8,7 +8,7 @@ Clique em um cartão para abrir a ficha. Selecione a forma antes de interpretar 
 
 O botão grafite com Pokébola **Tornar destaque** aparece somente dentro da ficha, ao lado dos favoritos e de Copiar link. Ele muda o Pokémon do início e passa a **Em destaque**. A escolha é salva neste navegador, incluindo a forma alternativa selecionada; veja [persistência e limites](../favoritos-e-links/README.md).
 
-![Botão de destaque dentro da ficha](../../imagens/pokedex-destaque-grafite.jpg)
+As capturas JPEG abaixo são históricas e exemplificam as consultas. A posição dos dados continua útil como referência, mas os controles e símbolos atuais podem ser diferentes. Veja as [capturas atuais](../../imagens/README.md#capturas-atuais).
 
 ## 1. Visão geral
 
@@ -72,7 +72,7 @@ Percentuais pertencem a slots de encontro. Não some valores de jogos, métodos 
 
 ## 6. Golpes
 
-Escolha o grupo de versões antes de procurar um golpe. A tabela mostra nome e efeito, tipo/classe, método de aprendizado, nível quando aplicável, poder, precisão e PP. A busca usa o nome do golpe em inglês.
+Escolha o grupo de versões antes de procurar um golpe. A tabela mostra nome e efeito, tipo/classe, método de aprendizado, nível quando aplicável, poder, precisão e PP. A busca usa o nome do golpe em inglês, ignorando maiúsculas, acentos e espaços nas extremidades: ` FLÁME ` encontra os mesmos registros de `flame`.
 
 ![Charizard, Scarlet Violet e busca por flame](../../imagens/pokedex-golpes.jpg)
 

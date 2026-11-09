@@ -1,6 +1,7 @@
 import { readFile, readdir, access } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
+import { checkMarkdownReferences } from './check-docs.mjs';
 
 // Mantém a verificação independente de pacotes de lint e de acesso à rede.
 const JAVASCRIPT_DIRECTORIES = ['web/js', 'scripts', 'tests'];
@@ -63,4 +64,5 @@ await checkJavaScript();
 await checkLocalHTMLReferences();
 await checkCatalogManifest();
 await checkDynamicExecution();
-console.log('Sintaxe JavaScript, referências locais e manifesto válidos.');
+const documentation = await checkMarkdownReferences();
+console.log(`Sintaxe JavaScript, referências locais e manifesto válidos. ${documentation.references} links locais da documentação conferidos.`);

@@ -2,7 +2,65 @@
 
 [Início](../README.md) · [Suíte e roteiro manual](../tests/README.md) · [Galeria](imagens/README.md)
 
-Este registro distingue resultados observados, verificações automatizadas e limites. A aplicação está na versão **1.3.2**. Os registros anteriores abaixo são históricos.
+Este registro distingue resultados observados, verificações automatizadas e limites. A versão declarada do pacote está em [package.json](../package.json); a sequência de publicações do site é independente. Os registros antigos abaixo preservam o contexto de cada entrega, sem substituir a validação do commit atual.
+
+## Revisão 1.3.3 de manutenção e documentação — 2026-11-09
+
+Base revisada: `main` no commit `efe898cda73436b125204e54cc484af0b6a97db6`. O inventário consultado antes desta revisão continha 25 branches e 24 PRs integrados, sem PR aberto. Esse estado é histórico; a lista atual fica no GitHub.
+
+### Comportamentos documentados
+
+- Regiões na Pokédex de bolso com carcaça vermelha discreta e tela LCD, seleção acessível e grade de três colunas em tela estreita.
+- Início com título e descrição, sem “Começar a explorar” ou “Um universo de descobertas”.
+- Favoritos selecionado somente enquanto a coleção é exibida; Explorar sai desse filtro. Quantidade encontrada em negrito.
+- Ícones refinados de Psíquico, Aço, Sombrio em eclipse e Lutador angular.
+- Destaque escolhido somente na ficha, persistência local e Normal/Shiny preservados.
+
+### Verificações desta revisão
+
+| Verificação | Resultado registrado |
+| --- | --- |
+| `npm run check` | Aprovado: sintaxe JavaScript, referências locais de HTML/Markdown e invariantes do manifesto |
+| `npm test` | **66 testes aprovados**, sem falhas |
+| `npm run build` | Aprovado: saída estática gerada em `dist/` |
+| `npm run check:docs` | Aprovado nos 30 arquivos Markdown do repositório; destinos locais de links/imagens encontrados |
+| Revisão documental complementar | Caminhos, âncoras locais, tabelas, contagens e legendas conferidos; URLs externas não foram auditadas integralmente; o checker não verifica links/imagens em HTML embutido |
+| Java local | **Não executado**: `javac` não está instalado neste ambiente |
+| Java e CI remoto | Validação separada nos checks do commit/PR; o job `java-original` usa Temurin JDK 17 |
+
+Resultados locais não antecipam o resultado do CI remoto. Confira os checks do commit integrado antes de considerar a validação Java concluída.
+
+- Comparação diferencial: **6.048 combinações de filtros** equivalentes à implementação anterior e **23.450 saídas HTML de golpes** idênticas. A primeira pode ser repetida com `npm run benchmark`; a comparação de HTML foi pontual.
+- Navegador: busca `#0025` encontrou Pikachu e `flabebe` encontrou Flabébé. Enter em Unova retornou 156 espécies, com uma única região selecionada.
+- Favoritos: inclusão, remoção, estado vazio com zero resultados, seleção do menu e retorno por Explorar conferidos.
+- Golpes de Charizard em Scarlet Violet: ` FLÁME ` retornou três registros; consulta sem correspondência mostrou estado vazio. Escape fechou a ficha e devolveu o foco.
+- Layout: desktop e frames de 390/320 pixels, com 375/305 pixels úteis, conferidos sem transbordamento horizontal. São viewports simulados, não aparelhos físicos.
+- Quatro capturas reais em JPG: início, regiões, favoritos e comparação dos frames móveis. A otimização não alterou HTML, CSS ou ícones da interface.
+
+### Medição pontual de filtros
+
+Node.js **24.22.1**, Linux x64. Mediana de **nove amostras com 200 chamadas cada**, cache aquecido; referência anterior no commit `efe898cda73436b125204e54cc484af0b6a97db6`.
+
+| Consulta | Antes (ms/chamada) | Depois (ms/chamada) | Razão antes/depois |
+| --- | ---: | ---: | ---: |
+| Texto | 0,4263 | 0,0886 | 4,81× |
+| Texto com acentos | 0,4077 | 0,0890 | 4,58× |
+| Número nacional | 0,3984 | 0,0831 | 4,80× |
+| 790 favoritos | 0,8382 | 0,0754 | 11,11× |
+| Texto e favoritos | 0,9623 | 0,1058 | 9,10× |
+| Sem consulta | 0,0466 | 0,0465 | Praticamente igual |
+
+A medição cobre a função de filtro, não DOM, rede, memória, carregamento inicial ou primeira consulta. Ela não permite afirmar que o site inteiro ficou essa quantidade de vezes mais rápido. Os tempos variam entre execuções e não são usados como critério de aprovação do CI.
+
+As capturas atuais estão na [galeria](imagens/README.md#capturas-atuais). Os JPEGs anteriores foram reconciliados com os arquivos do GitHub e mantidos como histórico. Links, contagens, módulos e guias foram revisados em conjunto.
+
+### Limites
+
+Nenhuma contagem de testes demonstra ausência de defeitos. Testes Node, inspeção visual, CI e publicação são verificações distintas. Não há nesta documentação promessa de auditoria integral de acessibilidade, cobertura de todos os aparelhos, disponibilidade contínua das imagens externas ou atualização automática da PokéAPI.
+
+## Registros históricos
+
+As entradas a seguir descrevem verificações registradas nas entregas anteriores. As menções a capturas renovadas pertencem àquelas etapas; a referência da interface atual são as quatro capturas desta revisão.
 
 ## Botão grafite 1.3.2 — 2026-11-04
 
@@ -82,7 +140,7 @@ A conferência de Markdown é separada de `npm run check`; não foi adicionada c
 
 O [workflow](../.github/workflows/ci.yml) executa a verificação web com Node.js 22 e compila/executa o Java original com JDK 17. Consulte os checks do commit ou PR para confirmar seu resultado. O job Java é uma verificação de compilação e execução da demonstração, não uma suíte unitária completa.
 
-## Capturas e conferência de interface
+## Capturas históricas da revisão documental 1.1.1
 
 As seis novas capturas foram obtidas na aplicação hospedada, em Chromium, na versão 1.1.1:
 

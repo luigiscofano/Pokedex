@@ -10,7 +10,8 @@ A aplicação é estática: HTML, CSS e módulos JavaScript executam no navegado
 | --- | --- | --- |
 | Estrutura e estilo | `web/index.html`, `web/styles.css` | Conteúdo inicial, controles, diálogos, responsividade e identidade visual |
 | Coordenação da interface | `web/js/app.js` | Estado, eventos, URL e coordenação de fichas/abas |
-| Apresentação | `presentation.js`, `detail-panels.js` | Componentes compartilhados e HTML das seis abas |
+| Apresentação | `presentation.js`, `type-icons.js`, `detail-panels.js` | Componentes compartilhados, SVGs dos tipos e HTML das seis abas |
+| Navegação e destaque | `navigation.js`, `featured.js` | Seleção acessível de Explorar/Favoritos e persistência da forma em destaque |
 | Seleção e imagens | `detail-selection.js`, `images.js` | Seletores dependentes, sprites, legendas e fallback |
 | Domínio | `web/js/domain.js` | Filtros, ordenação, tipos, favoritos, lotes e condições de evolução |
 | Dados | `web/js/data.js` | Fetch, cache de promessas, recuperação e seleção de imagens |
@@ -54,6 +55,12 @@ A ficha não consulta uma API remota de atributos a cada clique: ela lê o JSON 
 
 O cache vive na memória da página. Recarregar inicia uma nova sessão de requisições; favoritos usam armazenamento persistente separado. Há estado de carregamento, erro e nova tentativa nas fichas e painéis.
 
+## Busca e custo de consultas
+
+`filterCatalog()` mantém os nomes normalizados em `WeakMap`, por objeto de forma. Alterações em nome, forma ou identificador invalidam a entrada; catálogos descartados não ficam presos ao cache. A seleção de favoritos usa `Set` por consulta e a ordenação atua em uma nova lista. Em Golpes, a consulta e o grupo de versões são preparados uma vez por renderização.
+
+Essas mudanças reduzem trabalho repetido sem mudar o contrato dos filtros. Os [testes](../../tests/README.md) cobrem mutações, catálogos diferentes com o mesmo ID, favoritos alterados e desempates. Medições isoladas não são uma previsão de ganho total no navegador, que também depende de renderização e rede.
+
 ## Regras de dados que devem ser preservadas
 
 - `species` é o número nacional; `pokemon` é a variedade; `id` no catálogo é a forma.
@@ -64,6 +71,8 @@ O cache vive na memória da página. Recarregar inicia uma nova sessão de requi
 - A geração do filtro pertence à espécie. `introduced` é um grupo de versões da forma.
 
 ## Interface e acessibilidade
+
+O seletor de gerações usa um grupo rotulado e botões com `aria-pressed`; carcaça, lente e marcadores decorativos não alteram a regra de filtro. A seleção da navegação acompanha `favoritesOnly`, e o total de resultados é anunciado por uma região de status. As nove regiões formam uma grade de três colunas em telas estreitas.
 
 O diálogo usa `dialog`. Abas expõem seleção e associação ao painel; setas, Home e End permitem navegação. Há foco visível, rótulos e preferência de movimento reduzido no CSS. Tabelas e abas rolam dentro de suas áreas em telas estreitas. Esses recursos foram conferidos em Chromium; não constituem uma auditoria completa de acessibilidade em todos os leitores e dispositivos.
 
@@ -92,4 +101,4 @@ Não há framework, banco de dados, service worker, instalação PWA, sincroniza
 
 ## Convenções de manutenção
 
-A refatoração 1.1.2 aplica responsabilidades menores, nomes descritivos, constantes para valores repetidos e comentários em português. Consulte o [guia de código limpo](clean-code/README.md) e o [mapa completo dos módulos](../../web/js/README.md).
+A organização iniciada na refatoração 1.1.2 mantém responsabilidades menores, nomes descritivos, constantes para valores repetidos e comentários em português. Módulos de destaque e navegação ampliaram essa separação nas entregas seguintes. Consulte o [guia de código limpo](clean-code/README.md) e o [mapa completo dos módulos](../../web/js/README.md).

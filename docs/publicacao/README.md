@@ -38,13 +38,17 @@ Não há rotas de SPA como `/pokemon/6`; a ficha é selecionada na query string.
 
 Quando presente, `.openai/hosting.json` registra a identidade da instalação e `dist` é o diretório estático configurado. Use a identidade existente ao atualizar esta instalação; outra instalação independente deve ter identidade própria.
 
-O pacote publicado deve corresponder ao commit escolhido. Código no GitHub, aprovação de PR e publicação hospedada são etapas distintas. Esta instalação está configurada para **acesso público desde 03/11/2026**, no endereço https://pokedex-luigi-explorer.luigiscofano.chatgpt.site. A audiência é configurada na plataforma e não muda por editar o README ou tornar um repositório público.
+O pacote publicado deve corresponder ao commit escolhido. `package.json` registra a versão do pacote; Sites mantém sua própria sequência de publicações. Não trate esses números como equivalentes nem presuma que uma mudança em `main` já esteja hospedada. Código no GitHub, aprovação de PR e publicação hospedada são etapas distintas. Esta instalação está configurada para **acesso público desde 03/11/2026**, no endereço https://pokedex-luigi-explorer.luigiscofano.chatgpt.site. A audiência é configurada na plataforma e não muda por editar o README ou tornar um repositório público.
+
+No início da revisão de 09/11/2026, a publicação pública era a **versão 16 de Sites**. Esse é um registro da consulta, não uma promessa de que o site siga nessa versão após publicações futuras. O pacote 1.3.3 inclui manutenção posterior; confira a entrega hospedada separadamente.
 
 O [CI](../../.github/workflows/ci.yml) apenas verifica, testa, compila Java e gera o build. Ele não recebe credenciais de hospedagem e **não faz deploy automático**.
 
 ## Conferência no endereço final
 
-- Página inicial com “Temos que pegar!”, descrição e crédito de fã para fãs.
+- Página inicial com “Temos que pegar!”, descrição e crédito de fã para fãs, sem o antigo botão “Começar a explorar” nem “Um universo de descobertas”.
+- Regiões na Pokédex de bolso, estado selecionado e grade de três colunas em tela estreita.
+- Navegação Favoritos/Explorar sincronizada com o catálogo e quantidade encontrada em negrito.
 - Pesquisa `#0025`, seleção de forma alternativa e filtros combinados.
 - Normal/Shiny no catálogo e ficha, incluindo link recarregado com `shiny=1`.
 - Charizard: tipos com símbolos vetoriais e faixas coloridas e multiplicadores de referência.

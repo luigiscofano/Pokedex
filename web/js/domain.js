@@ -59,16 +59,39 @@ function matchesCategory(form, category) {
   return true;
 }
 
-function matchesSearch(form, query) {
+// Reutiliza nomes entre teclas sem reter catálogos descartados. Os campos são
+// conferidos para que uma alteração no mesmo objeto não deixe a busca desatualizada.
+const searchableNames = new WeakMap();
+
+function searchableName(form) {
+  const cached = searchableNames.get(form);
+  if (
+    cached &&
+    cached.name === form.name &&
+    cached.form === form.form &&
+    cached.slug === form.slug
+  ) {
+    return cached.value;
+  }
+  const value = normalize(`${form.name} ${form.form} ${form.slug}`);
+  searchableNames.set(form, {
+    name: form.name,
+    form: form.form,
+    slug: form.slug,
+    value,
+  });
+  return value;
+}
+
+function matchesSearch(form, query, nationalQuery) {
   if (!query) {
     return true;
   }
-  const searchableName = normalize(`${form.name} ${form.form} ${form.slug}`);
   const nationalNumber = String(form.species);
   return (
-    searchableName.includes(query) ||
+    searchableName(form).includes(query) ||
     nationalNumber === query ||
-    nationalNumber === query.replace(/^0+/, '')
+    nationalNumber === nationalQuery
   );
 }
 
@@ -91,23 +114,31 @@ function compareForms(first, second, order) {
 
 export function filterCatalog(catalog, filters) {
   const query = normalize(filters.query || '').replace(/^#0*/, '');
+  const nationalQuery = query.replace(/^0+/, '');
+  const generation = Number(filters.generation);
+  const type = Number(filters.type);
+  // Recria o conjunto por chamada: alterações na lista de favoritos são imediatas,
+  // sem percorrer todos os favoritos para cada forma do catálogo.
+  const favorites = filters.favoritesOnly
+    ? new Set(filters.favorites || [])
+    : null;
   const result = catalog.filter((form) => {
     if (!filters.forms && !form.default) {
       return false;
     }
-    if (filters.generation && form.generation !== Number(filters.generation)) {
+    if (filters.generation && form.generation !== generation) {
       return false;
     }
-    if (filters.type && !form.types.includes(Number(filters.type))) {
+    if (filters.type && !form.types.includes(type)) {
       return false;
     }
     if (!matchesCategory(form, filters.kind)) {
       return false;
     }
-    if (filters.favoritesOnly && !filters.favorites?.includes(form.id)) {
+    if (favorites && !favorites.has(form.id)) {
       return false;
     }
-    return matchesSearch(form, query);
+    return matchesSearch(form, query, nationalQuery);
   });
   return result.sort((first, second) =>
     compareForms(first, second, filters.sort),

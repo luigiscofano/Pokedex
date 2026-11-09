@@ -8,11 +8,11 @@ Explore espécies, descubra formas e conheça cada detalhe da sua próxima avent
 
 [Explorar no navegador · acesso público](https://pokedex-luigi-explorer.luigiscofano.chatgpt.site) · [Como executar](#como-executar) · [Funcionalidades](#funcionalidades-em-imagens) · [Documentação](docs/README.md) · [Contribuir](CONTRIBUTING.md)
 
-![Página inicial da Pokédex com a chamada Temos que pegar e o catálogo nacional](docs/imagens/pokedex-inicio.jpg)
+![Página inicial atual da Pokédex com a chamada Temos que pegar e o destaque personalizável](docs/imagens/pokedex-inicio-atual.jpg)
 
-*Página inicial da versão 1.3.2, capturada no aplicativo real. O site está aberto ao público desde 03/11/2026; o código também pode ser executado localmente.*
+*Captura atual da aplicação em 09/11/2026. O site é público; o código também pode ser executado localmente. A [galeria](docs/imagens/README.md) separa as capturas desta revisão das imagens históricas.*
 
-A interface usa **Chakra Petch nos títulos e na marca** e **Barlow nos textos, controles e rótulos de tipos**. As capturas abaixo mostram essa identidade; a fonte do texto Markdown no GitHub é definida pela própria plataforma.
+A interface usa **Chakra Petch nos títulos e na marca** e **Barlow nos textos, controles e rótulos de tipos**. As novas capturas mostram essa identidade; a fonte do texto Markdown no GitHub é definida pela própria plataforma.
 
 ## O que este projeto faz
 
@@ -28,17 +28,17 @@ O projeto reúne essas consultas em uma única interface e mantém o contexto de
 
 ## Funcionalidades em imagens
 
-As capturas são reais. Cada seção abaixo aponta para um guia de uso e para a área técnica correspondente. A [galeria](docs/imagens/README.md) registra versões e contexto, incluindo imagens históricas.
+As quatro capturas JPG desta revisão mostram início, regiões, favoritos e tela estreita. Os exemplos JPEG dos painéis são históricos e estão identificados como tal: ilustram consultas preservadas, não a apresentação visual atual. A [galeria](docs/imagens/README.md) registra o contexto dos arquivos.
 
 ### 1. Catálogo, pesquisa e filtros
 
 Pesquise por nome, número nacional, `#0025`, zeros à esquerda ou nome de forma. A busca ignora acentos: `flabebe` encontra Flabébé. Combine geração da espécie, tipo, categoria, favoritos e inclusão de formas; ordene por número, nome ou soma dos atributos base.
 
-O catálogo começa com 24 cartões e carrega mais 24 por ação. A soma de atributos ajuda a comparar valores base, mas não prevê o resultado de uma batalha.
+O seletor de regiões tem aparência de **Pokédex de bolso**, com carcaça vermelha discreta e controles integrados à tela LCD. No celular, as nove gerações ficam em uma grade de três colunas. O catálogo começa com 24 cartões e carrega mais 24 por ação; a quantidade de resultados aparece em negrito. A soma de atributos ajuda a comparar valores base, mas não prevê o resultado de uma batalha.
 
-![Quatro formas de Charizard no catálogo, com inclusão de formas e modo Shiny](docs/imagens/pokedex-formas.jpg)
+![Seletor atual de regiões integrado à Pokédex de bolso e catálogo](docs/imagens/pokedex-regioes-atual.jpg)
 
-*Charizard padrão, Mega X, Mega Y e Gigantamax aparecem como entradas distintas quando Incluir formas está ativo. Todas pertencem à mesma espécie nacional.*
+*O filtro usa a geração de origem da espécie. Incluir formas acrescenta as entradas alternativas, sem criar novos números nacionais.*
 
 [Guia do catálogo](docs/usuario/catalogo/README.md) · [Filtros e regras](web/js/domain.js)
 
@@ -48,7 +48,7 @@ A seleção de forma muda o registro consultado. A alternância **Normal/Shiny**
 
 ![Charizard shiny na visão geral, com símbolos vetoriais dos tipos e atributos](docs/imagens/pokedex-shiny.jpg)
 
-*Captura da versão 1.3.2: shiny e faixas com ícones vetoriais, cores vivas e nomes legíveis.*
+*Exemplo histórico de Charizard shiny. A aparência dos controles e dos símbolos pode diferir da interface atual.*
 
 Formas cosméticas usam sprites específicos quando disponíveis. Se a fonte não fornece uma imagem shiny utilizável, a interface avisa; não apresenta a imagem normal como se fosse shiny.
 
@@ -58,11 +58,11 @@ Formas cosméticas usam sprites específicos quando disponíveis. Se a fonte nã
 
 Cada ficha reúne tipos em faixas escuras com símbolos vetoriais, cores vivas e nomes em maiúsculas, dimensões, habilidades normais e ocultas, atributos base, EVs concedidos, grupos de ovos e parâmetros de captura/reprodução. Os valores pertencem à variedade selecionada: Mega Charizard X, por exemplo, tem Fogo/Dragão e atributos diferentes da forma padrão.
 
-A aba Tipos separa fraquezas, resistências, imunidades e melhores eficácias ofensivas dos tipos próprios.
+A aba Tipos separa fraquezas, resistências, imunidades e melhores eficácias ofensivas dos tipos próprios. Os ícones locais de Psíquico, Aço, Sombrio (eclipse) e Lutador (silhueta angular) seguem os desenhos refinados; os nomes continuam legíveis independentemente da cor.
 
 ![Painel de tipos de Charizard com defesa e vantagens ofensivas](docs/imagens/pokedex-tipos.jpg)
 
-*Charizard padrão é Fogo/Voador: recebe 4× de Pedra, ¼× de Planta e 0× de Terra na matriz moderna. As contas não incluem habilidades, itens, clima ou outras condições de batalha.*
+*Exemplo histórico. Charizard padrão é Fogo/Voador: recebe 4× de Pedra, ¼× de Planta e 0× de Terra na matriz moderna. As contas não incluem habilidades, itens, clima ou outras condições de batalha.*
 
 [Como ler a ficha](docs/usuario/fichas/README.md) · [Matemática dos tipos](docs/desenvolvimento/tipos/README.md)
 
@@ -72,7 +72,7 @@ Consulte descrições por versão e idioma. A interface é em português, mas os
 
 ![Descrição de Charizard em inglês para Shield, com seletores de jogo e idioma](docs/imagens/pokedex-textos.jpg)
 
-*Os seletores mantêm o contexto do texto. A descrição pertence à espécie e pode não diferenciar cada forma.*
+*Exemplo histórico. Os seletores mantêm o contexto do texto. A descrição pertence à espécie e pode não diferenciar cada forma.*
 
 [Textos e campos da ficha](docs/usuario/fichas/README.md) · [Dicionário dos dados](web/data/README.md)
 
@@ -82,7 +82,7 @@ Explore a família completa, incluindo ramificações e condições disponíveis
 
 ![Família evolutiva de Eevee](docs/imagens/pokedex-evolucoes.jpg)
 
-*Trecho da família de Eevee; outros ramos ficam acima e abaixo do recorte. A navegação permite abrir as espécies relacionadas.*
+*Exemplo histórico de um trecho da família de Eevee; outros ramos ficam acima e abaixo do recorte. A navegação permite abrir as espécies relacionadas.*
 
 [Guia das evoluções](docs/usuario/fichas/README.md) · [Condições no domínio](web/js/domain.js)
 
@@ -92,7 +92,7 @@ Filtre os encontros por jogo e consulte área, método, nível, chance do slot e
 
 ![Encontros de Pikachu em Red com áreas, níveis e chances por slot](docs/imagens/pokedex-encontros.jpg)
 
-*Pikachu em Red, incluindo registros de Viridian Forest. Ausência de linhas em outra ficha significa ausência de registros nesta base, não impossibilidade de obtenção.*
+*Exemplo histórico de Pikachu em Red, incluindo registros de Viridian Forest. Ausência de linhas em outra ficha significa ausência de registros nesta base, não impossibilidade de obtenção.*
 
 [Encontros e seus limites](docs/usuario/fichas/README.md) · [Cobertura da fonte](docs/FONTES.md)
 
@@ -102,7 +102,7 @@ Selecione o grupo de jogos e pesquise um golpe. A tabela distingue aprendizado p
 
 ![Golpes de Charizard em Scarlet Violet, filtrados pela busca flame](docs/imagens/pokedex-golpes.jpg)
 
-*O exemplo mostra o filtro `flame` em Scarlet Violet. A definição do golpe e o registro de aprendizado são informações relacionadas, com escopos diferentes.*
+*O exemplo histórico mostra o filtro `flame` em Scarlet Violet. A definição do golpe e o registro de aprendizado são informações relacionadas, com escopos diferentes.*
 
 [Guia dos golpes](docs/usuario/fichas/README.md) · [Estruturas de aprendizado](web/data/README.md)
 
@@ -110,11 +110,15 @@ Selecione o grupo de jogos e pesquise um golpe. A tabela distingue aprendizado p
 
 Escolha o botão grafite com Pokébola **Tornar destaque** dentro da ficha de qualquer Pokémon para trocar o Pokémon do início. A forma escolhida fica salva neste navegador; o modo shiny continua global.
 
-![Destaque personalizável](docs/imagens/pokedex-destaque.jpg)
+![Catálogo atual de favoritos com a navegação selecionada](docs/imagens/pokedex-favoritos-atual.jpg)
 
-Os favoritos guardam o ID da forma no navegador, sem conta. Os links podem preservar busca, geração, tipo, inclusão de formas, shiny e ficha selecionada. Aba, ordenação e filtros internos de jogos não são serializados.
+Os favoritos guardam o ID da forma no navegador, sem conta. **Favoritos** fica selecionado enquanto a coleção é exibida; **Explorar** sai desse filtro e volta ao catálogo, preservando os outros filtros. Os links podem preservar busca, geração, tipo, inclusão de formas, shiny e ficha selecionada. Aba, ordenação e filtros internos de jogos não são serializados.
 
 Use `/` para pesquisar, Tab para percorrer controles, setas/Home/End nas abas e Escape para fechar a ficha. Há foco visível, diálogo nativo, preferência de movimento reduzido e áreas de rolagem internas para tabelas em telas estreitas.
+
+![Interface atual da Pokédex em tela estreita](docs/imagens/pokedex-mobile-atual.jpg)
+
+*Viewport móvel da aplicação real. Uma captura responsiva não equivale a testes em aparelhos físicos.*
 
 [Favoritos e contrato dos links](docs/usuario/favoritos-e-links/README.md) · [Primeira exploração](docs/usuario/README.md)
 
@@ -215,7 +219,7 @@ O [manifesto](web/data/manifest.json) registra a revisão `e5b79b2e15d7c50735a94
 
 ### Tecnologias e decisões
 
-HTML, CSS e JavaScript com módulos nativos sustentam a interface. `app.js` coordena estado e renderização; `domain.js` concentra regras testáveis; `data.js` cuida de cargas, cache e URLs de imagens. Módulos menores separam apresentação, painéis, seleção de dados e tratamento de imagens no navegador. Node.js executa ferramentas pequenas e testes; Python importa os CSVs. Java permanece como módulo didático independente.
+HTML, CSS e JavaScript com módulos nativos sustentam a interface. `app.js` coordena estado e renderização; `domain.js` concentra regras testáveis; `data.js` cuida de cargas, cache e URLs de imagens. Módulos menores separam apresentação, painéis, seleção de dados, tratamento de imagens, destaque persistente e seleção da navegação. Node.js executa ferramentas pequenas e testes; Python importa os CSVs. Java permanece como módulo didático independente.
 
 O projeto não usa framework, bundler, banco de dados ou backend de contas. A base versionada facilita auditoria e execução, mas aumenta o tamanho do repositório. O carregamento de fichas por lote e a paginação limitam a quantidade de conteúdo construída de uma vez.
 
@@ -246,7 +250,9 @@ npm test
 npm run build
 ```
 
-São **40 testes automatizados**: 8 de domínio, 6 de integridade da base, 5 de imagens, 3 de carregamento, 7 de painéis/seleção, 5 de apresentação visual e tipografia e 6 de destaque persistente e aparência do botão. A suíte não exige rede nem navegador. A verificação estática confere sintaxe JavaScript, referências locais do HTML e invariantes básicos. O build recria `dist/` a partir de `web/`.
+A suíte contém **66 testes automatizados** de domínio, integridade da base, imagens, carregamento, painéis, apresentação, destaque persistente, navegação, regiões, conteúdo inicial e referências da documentação. A distribuição por arquivo está no [guia de testes](tests/README.md). A suíte não exige rede nem navegador. A verificação estática confere sintaxe JavaScript, referências locais do HTML e dos links/imagens Markdown e invariantes básicos. Âncoras, URLs externas e links/imagens em HTML embutido nos documentos exigem revisão própria. O build recria `dist/` a partir de `web/`.
+
+`npm run check:docs` verifica os destinos locais da documentação separadamente. `npm run benchmark` compara os filtros com a implementação anterior e mede consultas isoladas; não mede o desempenho total da interface.
 
 O GitHub Actions roda os comandos web com Node.js 22 e compila/executa o Java com JDK 17. O CI não faz deploy automático e não substitui revisão visual, testes físicos de dispositivos ou auditoria completa de acessibilidade.
 
@@ -264,7 +270,7 @@ O código no GitHub e a versão hospedada são entregas distintas. A instalaçã
 
 | Situação | Recursos |
 | --- | --- |
-| Implementado | Catálogo, filtros, formas, shiny, seis abas de ficha, favoritos locais, destaque personalizável e links |
+| Implementado | Catálogo, regiões em Pokédex de bolso, filtros, formas, shiny, seis abas de ficha, favoritos locais, destaque personalizável e links |
 | Implementado | Dados versionados, importação, testes, CI e documentação por área |
 | Preservado | Exercício Java original e histórico do projeto |
 | Fora do escopo atual | Contas, sincronização de favoritos, PWA/offline integral e simulador de batalhas |
