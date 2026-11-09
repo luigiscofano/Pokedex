@@ -4,6 +4,14 @@
 
 O catálogo começa com uma forma padrão de cada uma das **1.025 espécies**. São exibidos 24 cartões por vez; **Mostrar mais Pokémon** acrescenta mais 24 resultados. O número no cartão é o número nacional, inclusive quando a forma tem outro identificador interno.
 
+## Escolher a região
+
+O painel lembra uma Pokédex de bolso: carcaça vermelha discreta, tela LCD clara e botões integrados à tela. **Todas as regiões** remove o filtro de geração. Cada região representa a geração de origem da espécie, de Kanto a Paldea; o botão selecionado tem fundo escuro e marcador. Em telas estreitas, as nove opções ficam em uma grade de três colunas.
+
+![Seletor atual de regiões e catálogo](../../imagens/pokedex-regioes-atual.jpg)
+
+A contagem de resultados do catálogo aparece em negrito e é atualizada conforme os filtros. O pequeno número ao lado de uma região no desktop identifica sua geração, não quantos resultados a busca encontrou.
+
 ## Pesquisar sem decorar o nome exato
 
 | Digite | Resultado esperado |
@@ -20,7 +28,7 @@ A pesquisa compara nome, nome da forma e identificador textual. Ela não interpr
 
 | Controle | Efeito |
 | --- | --- |
-| Geração na lateral | Geração de origem da espécie |
+| Região na Pokédex de bolso | Geração de origem da espécie |
 | Tipo | Tipagem da forma selecionável |
 | Categoria | Lendários ou míticos |
 | Ordenar | Número nacional, nome A–Z ou maior soma de atributos base |
@@ -41,7 +49,7 @@ Filtros são combinados. Se você salvou apenas uma forma alternativa e não a e
 
 ![Catálogo de Charizard com quatro formas e Shiny ligado](../../imagens/pokedex-formas.jpg)
 
-*Captura real: busca `charizard`, formas incluídas e modo shiny. Cada cartão continua mostrando o número nacional #0006.*
+*Captura histórica: busca `charizard`, formas incluídas e modo shiny. O layout e alguns símbolos foram atualizados desde essa imagem. Cada cartão continua mostrando o número nacional #0006.*
 
 ## Quando não aparece nenhum resultado
 

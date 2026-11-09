@@ -10,11 +10,11 @@ A preferência fica neste navegador e nesta origem, separada dos favoritos. Ela 
 
 Formas alternativas também podem ser destaque. A opção **Shiny** continua global: muda a aparência da forma escolhida sem trocar o destaque. A disponibilidade das imagens segue as mesmas regras das fichas.
 
-![Mega Charizard X escolhido como destaque](../../imagens/pokedex-destaque.jpg)
-
 ## Guardar uma forma
 
-Clique no coração de um cartão ou em **Salvar favorito** na ficha. Clique novamente para remover. O menu **Favoritos** mostra a lista filtrada; as demais condições de busca continuam ativas. Para enxergar formas alternativas salvas, ative **Incluir formas**.
+Clique no coração de um cartão ou em **Salvar favorito** na ficha. Clique novamente para remover. O menu **Favoritos** mostra a lista filtrada e fica selecionado, com **Explorar** sem seleção. Clicar novamente em Favoritos ou escolher Explorar sai da coleção; as demais condições de busca continuam ativas. Para enxergar formas alternativas salvas, ative **Incluir formas**.
+
+![Favoritos selecionado na navegação e coleção atual](../../imagens/pokedex-favoritos-atual.jpg)
 
 O favorito identifica a forma, não a aparência normal/shiny. Charizard padrão e Mega Charizard X podem ser favoritos distintos; Charizard padrão normal e shiny usam o mesmo favorito.
 
@@ -52,4 +52,4 @@ Categoria, ordenação, favoritos, quantidade de cartões visíveis, aba aberta 
 | Home / End sobre uma aba | Vai à primeira ou última aba |
 | Escape | Fecha o diálogo |
 
-No celular, abas, lista de gerações e tabelas podem ter rolagem horizontal dentro de suas próprias áreas. Use também os rótulos de texto; a informação de tipo não depende somente da cor.
+No celular, as gerações ficam em uma grade de três colunas; abas e tabelas podem ter rolagem horizontal dentro de suas próprias áreas. Use também os rótulos de texto; a informação de tipo não depende somente da cor.

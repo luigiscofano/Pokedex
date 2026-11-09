@@ -253,13 +253,16 @@ export function movesPanel(state) {
   if (!groups.length) {
     return '<div class="empty-state">Nenhum aprendizado de golpe registrado para esta variedade.</div>';
   }
+  // Consulta e grupo não mudam entre linhas; prepare-os uma vez por renderização.
+  const query = normalize(state.moveQuery || '');
+  const group = Number(state.moveGroup);
   const list = variety.moves
     .filter(
       (learnedMove) =>
-        learnedMove[0] === Number(state.moveGroup) &&
+        learnedMove[0] === group &&
         (!state.moveQuery ||
           normalize(state.reference.moves[learnedMove[1]]?.name).includes(
-            normalize(state.moveQuery),
+            query,
           )),
     )
     .sort(

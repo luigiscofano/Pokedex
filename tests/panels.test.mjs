@@ -96,6 +96,26 @@ test('seleção de golpes preserva o jogo escolhido e pesquisa apenas esse reper
   assert.match(movesPanel(state), /Nenhum golpe corresponde/);
 });
 
+test('pesquisa de golpes normaliza acentos e espaços sem alterar estado ou registros', () => {
+  const state = selection(6, 'moves');
+  updatePanelSelection(state);
+  state.moveGroup = String(state.moveGroup);
+  state.moveQuery = 'flame';
+  const rows = (html) => html.match(/<tbody>([\s\S]*?)<\/tbody>/)[1];
+  const expected = rows(movesPanel(state));
+  assert.match(expected, /Flamethrower/);
+  for (const query of [' FLÁME ', 'fla\u0301me']) {
+    state.moveQuery = query;
+    const before = JSON.stringify(state);
+    assert.equal(rows(movesPanel(state)), expected);
+    assert.equal(JSON.stringify(state), before);
+  }
+  state.moveQuery = '';
+  const unfiltered = rows(movesPanel(state));
+  state.moveQuery = '   ';
+  assert.equal(rows(movesPanel(state)), unfiltered);
+});
+
 test('ausência de encontros não é apresentada como impossibilidade de obtenção', () => {
   const html = encountersPanel(selection(1025, 'encounters'));
   assert.match(html, /Sem encontros registrados/);

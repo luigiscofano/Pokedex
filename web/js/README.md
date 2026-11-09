@@ -2,10 +2,11 @@
 
 [Início](../../README.md) · [Arquitetura](../../docs/desenvolvimento/README.md) · [Convenções de código](../../docs/desenvolvimento/clean-code/README.md)
 
-A versão 1.1.2 separa regras, apresentação e efeitos no navegador. Os módulos continuam nativos, sem framework ou dependências de execução.
+Os módulos separam regras, apresentação, persistência e efeitos no navegador. São módulos nativos, sem framework ou dependências npm de execução.
 
 | Módulo | Responsabilidade |
 | --- | --- |
+| [navigation.js](navigation.js) | Estado visual e acessível de Explorar/Favoritos, sincronizado com o catálogo |
 | [featured.js](featured.js) | Escolha da forma em destaque, persistência local e retorno seguro ao padrão |
 | [domain.js](domain.js) | Busca, filtros, ordenação, tipos, favoritos, loteamento e condições de evolução |
 | [data.js](data.js) | JSONs, caches de promessas, recuperação após erro e URLs normal/shiny |
@@ -20,11 +21,11 @@ A versão 1.1.2 separa regras, apresentação e efeitos no navegador. Os módulo
 
 `openDetail()` resolve a forma, carrega a espécie e descarta respostas antigas pelo contador de requisição. `renderDetail()` monta o diálogo; `renderPanel()` ajusta a seleção e delega o HTML ao painel correspondente. A família evolutiva é carregada pelo controlador antes de ser entregue a `evolutionPanel()`.
 
-`updatePanelSelection()` altera explicitamente apenas os seletores dependentes dos registros disponíveis. Os renderizadores recebem o estado já preparado e não o modificam. As linhas de habilidades, atributos, encontros e golpes possuem funções próprias para reduzir o aninhamento dos painéis.
+`updatePanelSelection()` altera explicitamente apenas os seletores dependentes dos registros disponíveis. Os renderizadores recebem o estado já preparado e não o modificam. Em Golpes, consulta normalizada e grupo numérico são calculados uma vez por renderização, antes de filtrar as linhas. As linhas de habilidades, atributos, encontros e golpes possuem funções próprias para reduzir o aninhamento dos painéis.
 
 ## Regras e identidades
 
-`filterCatalog()` combina os critérios e ordena uma nova lista. Categoria, pesquisa e critérios de desempate têm funções próprias. `defenseMatchups()` multiplica fatores; `offenseMatchups()` escolhe a melhor eficácia dos tipos próprios. Valores zero em condições de evolução continuam significativos.
+`filterCatalog()` combina os critérios e ordena uma nova lista, sem alterar o catálogo original. Um `WeakMap` reutiliza os nomes normalizados e verifica `name`, `form` e `slug` para invalidar entradas modificadas; números nacionais são lidos diretamente. Os favoritos viram um `Set` por consulta, refletindo mudanças imediatamente e mantendo a diferença entre IDs numéricos e strings. Categoria, pesquisa e critérios de desempate têm funções próprias. `defenseMatchups()` multiplica fatores; `offenseMatchups()` escolhe a melhor eficácia dos tipos próprios. Valores zero em condições de evolução continuam significativos.
 
 O catálogo usa `id` para forma, `pokemon` para variedade e `species` para número nacional. `artwork()` e `sprite()` recebem um registro do catálogo e usam o campo `pokemon`. `loadFormSprite()` recebe o ID da forma.
 
@@ -36,7 +37,7 @@ O catálogo usa `id` para forma, `pokemon` para variedade e `species` para núme
 
 ## Eventos e apresentação
 
-O controlador instala eventos de catálogo, navegação, diálogos e documento em funções separadas. Handlers nomeados cuidam de cliques, seletores, busca de golpes e teclado. Tamanho das páginas e duração dos avisos têm constantes próprias.
+O controlador instala eventos de catálogo, navegação, diálogos e documento em funções separadas. `navigation.js` atualiza a classe selecionada, `aria-current` e `aria-pressed` a partir de `favoritesOnly`; a contagem de resultados usa texto numérico em `<strong>` dentro de uma região de status. Handlers nomeados cuidam de cliques, seletores, busca de golpes e teclado. Tamanho das páginas e duração dos avisos têm constantes próprias.
 
 Comentários em português explicam seções, contratos e decisões. Os fragmentos de HTML são concatenados sem introduzir novos espaços na saída; o escape permanece centralizado em `presentation.js`.
 

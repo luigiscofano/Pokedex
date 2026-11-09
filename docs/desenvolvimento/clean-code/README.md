@@ -2,7 +2,7 @@
 
 [Início](../../../README.md) · [Arquitetura](../README.md) · [Módulos JavaScript](../../../web/js/README.md) · [Contribuir](../../../CONTRIBUTING.md)
 
-A refatoração 1.1.2 torna explícitas as responsabilidades que antes estavam concentradas em funções longas ou trechos compactos. O objetivo é facilitar leitura, manutenção e revisão, preservando a experiência da Pokédex.
+A organização separa regras, renderização e efeitos para facilitar leitura, manutenção e revisão. Ela começou com a refatoração 1.1.2 e inclui os módulos posteriores de destaque e navegação. Os resultados antigos estão identificados como históricos; a [validação atual](../../VALIDACAO.md) registra o alcance da revisão mais recente.
 
 ## Princípios aplicados
 
@@ -28,6 +28,9 @@ A refatoração 1.1.2 torna explícitas as responsabilidades que antes estavam c
 | Conteúdo das seis abas | [detail-panels.js](../../../web/js/detail-panels.js) |
 | Imagem cosmética, legenda ou fallback | [images.js](../../../web/js/images.js) |
 | Eventos, URL e sequência assíncrona | [app.js](../../../web/js/app.js) |
+| Destaque persistente | [featured.js](../../../web/js/featured.js) |
+| Seleção de Explorar/Favoritos | [navigation.js](../../../web/js/navigation.js) |
+| Símbolos vetoriais dos tipos | [type-icons.js](../../../web/js/type-icons.js) |
 | Transformação dos CSVs | [import-data.py](../../../scripts/import-data.py) |
 | Exercício Java | [Guia de src](../../../src/README.md) |
 
@@ -44,6 +47,12 @@ Os comentários estão em português e explicam **por que uma decisão existe**,
 
 Evite comentários que apenas repitam uma atribuição, índices de seção que ficam desatualizados e código antigo comentado. O histórico Git preserva versões anteriores. Ao mudar um contrato, atualize o comentário e o teste correspondente.
 
+## Manutenção atual
+
+A busca reutiliza texto normalizado por forma com invalidação explícita; favoritos usam um conjunto atualizado a cada consulta. As regras continuam sem mutar o catálogo. O painel de golpes prepara consulta e grupo de versões fora do filtro de linhas. Os comentários explicam o motivo do cache, sua invalidação e os limites de persistência, em vez de narrar cada atribuição.
+
+Esses pontos têm regressões para dados modificados, catálogos distintos, IDs, ordenação e estado preservado. O [registro de validação](../../VALIDACAO.md) separa a suíte permanente de comparações e medições pontuais.
+
 ## Formatação e edição
 
 [.editorconfig](../../../.editorconfig) define UTF-8, LF e indentação. [.prettierrc.json](../../../.prettierrc.json) configura JavaScript, HTML/CSS e SVG; [.prettierignore](../../../.prettierignore) exclui dados gerados, caches e builds.
@@ -58,7 +67,7 @@ Esse comando pode baixar a ferramenta na primeira execução; ela não é uma de
 
 O importador foi formatado com Black 25.9.0. Java mantém indentação de quatro espaços, documentação de contratos e nomes legíveis. Não é necessário instalar esses formatadores para abrir o site ou executar os testes Node.
 
-## Como a preservação foi conferida
+## Evidências históricas da refatoração 1.1.2
 
 - 29 testes permanentes: domínio, integridade da base, imagens, carregamento e painéis/seleção.
 - 504 combinações de filtros comparadas com a implementação anterior.
@@ -71,8 +80,8 @@ As comparações com a versão anterior foram verificações pontuais desta refa
 
 ![Página inicial após a refatoração, com a mesma apresentação da Pokédex](../../imagens/pokedex-refatoracao.jpg)
 
-*Captura real do preview local da versão 1.1.2, após a conferência do fluxo de navegação.*
+*Captura histórica preservada das entregas anteriores. Ela não comprova a aparência atual; o nome do arquivo foi mantido para preservar os links existentes. Consulte a [galeria](../../imagens/README.md).*
 
 ## Limites preservados
 
-Esta entrega não altera o snapshot, cria mecânicas de batalha, acrescenta sincronização de favoritos ou modifica os contratos públicos do Java. O método `porcentagemVida()` continua retornando uma razão, e as operações de vida mantêm os limites históricos descritos no [modelo](../../../src/model/README.md). Mudanças funcionais futuras devem ter escopo e testes próprios.
+A organização atual não altera por si só o snapshot, cria mecânicas de batalha, acrescenta sincronização de favoritos ou modifica os contratos públicos do Java. O método `porcentagemVida()` continua retornando uma razão, e as operações de vida mantêm os limites históricos descritos no [modelo](../../../src/model/README.md). Mudanças funcionais futuras devem ter escopo e testes próprios.

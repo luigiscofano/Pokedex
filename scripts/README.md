@@ -9,7 +9,9 @@ Execute os comandos na raiz do repositório. Node.js 20+ atende ao aplicativo e 
 | `npm run dev` | [serve.mjs](serve.mjs) | Serve `web/` por HTTP, porta 3000 por padrão |
 | `npm run dev -- --port 3001` | `serve.mjs` | Usa outra porta; acesse `http://localhost:3001` |
 | `npm run build` | [build.mjs](build.mjs) | Recria `dist/` como cópia de `web/` |
-| `npm run check` | [check.mjs](check.mjs) | Verifica sintaxe JS, referências locais do HTML e invariantes básicos |
+| `npm run check` | [check.mjs](check.mjs) | Verifica sintaxe JS, referências locais do HTML/Markdown e invariantes básicos |
+| `npm run check:docs` | [check-docs.mjs](check-docs.mjs) | Confere destinos locais dos links e imagens Markdown |
+| `npm run benchmark` | [benchmark-search.mjs](benchmark-search.mjs) | Compara filtros e mede consultas isoladas com cache aquecido |
 | `npm test` | Executor nativo do Node | Executa `tests/*.test.mjs` |
 | `npm run data:refresh` | [import-data.py](import-data.py) | Gera JSONs a partir da revisão fixa da PokéAPI |
 
@@ -19,7 +21,13 @@ Execute os comandos na raiz do repositório. Node.js 20+ atende ao aplicativo e 
 
 ## Build e verificação
 
-O build apaga e recria **somente a saída `dist/`**. Não há minificação ou instalação de dependências. `npm run check` usa `node --check`, confere referências `./` no HTML, a contagem de espécies e o uso de execução dinâmica em todos os módulos JavaScript da interface. Ele não é um validador geral de Markdown, CSS, acessibilidade ou comportamento no navegador.
+O build apaga e recria **somente a saída `dist/`**. Não há minificação ou instalação de dependências. `npm run check` usa `node --check`, confere referências `./` no HTML, a contagem de espécies e o uso de execução dinâmica em todos os módulos JavaScript da interface. Ele também executa `check-docs.mjs`, que confere a existência dos destinos locais dos links/imagens Markdown, inclusive referências, caminhos codificados e parênteses em destinos. O verificador ignora exemplos de código e comentários HTML; URLs externas, âncoras e links/imagens em HTML embutido não são verificados. Ele não é um parser Markdown completo. Nenhuma dessas verificações valida pixels, CSS, acessibilidade integral ou comportamento no navegador.
+
+## Medir consultas de busca
+
+`npm run benchmark` primeiro compara **6.048 combinações de filtros** com a referência anterior à otimização. Em seguida, informa medianas de nove amostras com 200 chamadas por amostra, usando cache aquecido. Os resultados variam com hardware e runtime e não estabelecem um limite de aprovação do CI. A ferramenta não mede DOM, rede, uso de memória ou a primeira consulta.
+
+A implementação de referência existe somente no benchmark, com o commit de origem identificado; ela não entra no aplicativo. O [registro de validação](../docs/VALIDACAO.md) apresenta a medição desta revisão.
 
 ## Importador
 

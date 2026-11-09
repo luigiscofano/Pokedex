@@ -2,52 +2,56 @@
 
 [Início](../../README.md) · [Guia de uso](../usuario/README.md) · [Validação](../VALIDACAO.md)
 
-Estas imagens foram capturadas na aplicação real no preview local em **4 de novembro de 2026**, versão **1.3.2**, usando Chromium. As onze capturas principais foram renovadas para mostrar o destaque dentro da ficha, com botão grafite e Pokébola monocromática, preservando Chakra Petch e Barlow. As versões antigas continuam no histórico Git, não são apresentadas como o estado atual.
+As capturas atuais são as referências visuais desta revisão. As imagens anteriores permanecem como histórico: podem mostrar tipografia, símbolos, textos ou controles já alterados. Não use uma imagem histórica para concluir como a interface aparece hoje.
 
-Os símbolos são SVG e os nomes são texto, não recortes ampliados da referência. As capturas JPEG preservam a resolução fornecida pelo navegador (aproximadamente 1.165 × 747 pixels no desktop); não foram artificialmente ampliadas.
+## Capturas atuais
 
-| Arquivo | Versão | Conteúdo e contexto |
-| --- | --- | --- |
-| [pokedex-refatoracao.jpg](pokedex-refatoracao.jpg) | 1.3.2 | Catálogo inicial com novos tipos; nome do arquivo preservado para links existentes |
-| [pokedex-inicio.jpg](pokedex-inicio.jpg) | 1.3.2 | Página inicial e destaque com Fogo/Voador |
-| [pokedex-formas.jpg](pokedex-formas.jpg) | 1.3.2 | Quatro formas de Charizard com Shiny |
-| [pokedex-tipos.jpg](pokedex-tipos.jpg) | 1.3.2 | Defesa e eficácia de Charizard com símbolos dos 18 tipos |
-| [pokedex-textos.jpg](pokedex-textos.jpg) | 1.3.2 | Charizard, texto em inglês para Shield |
-| [pokedex-evolucoes.jpg](pokedex-evolucoes.jpg) | 1.3.2 | Visão da família evolutiva de Eevee |
-| [pokedex-encontros.jpg](pokedex-encontros.jpg) | 1.3.2 | Pikachu em Red, áreas e chances por slot |
-| [pokedex-golpes.jpg](pokedex-golpes.jpg) | 1.3.2 | Charizard, Scarlet Violet, busca `flame` |
-| [pokedex-shiny.jpg](pokedex-shiny.jpg) | 1.3.2 | Ficha shiny de Charizard com os novos símbolos |
-| [pokedex-ficha.jpg](pokedex-ficha.jpg) | 1.3.2 | Ficha normal e atributos de Charizard |
-| [pokedex-mobile.jpg](pokedex-mobile.jpg) | 1.3.2 | Fichas em frames reais de 320 e 375 pixels; simulação responsiva, não dispositivo físico |
+Capturas da aplicação real em **09/11/2026**, sem reconstrução por desenho ou geração de imagem. A página inicial, as regiões, os favoritos e a visualização estreita documentam estados diferentes da mesma interface.
 
-## Catálogo e formas
+| Arquivo | Conteúdo e contexto |
+| --- | --- |
+| [pokedex-inicio-atual.jpg](pokedex-inicio-atual.jpg) | Início com “Temos que pegar!”, descrição e destaque; sem o antigo CTA ou texto introdutório |
+| [pokedex-regioes-atual.jpg](pokedex-regioes-atual.jpg) | Pokédex de bolso, carcaça vermelha discreta, tela LCD e regiões integradas |
+| [pokedex-favoritos-atual.jpg](pokedex-favoritos-atual.jpg) | Favoritos selecionado no menu, coleção filtrada e quantidade de resultados em negrito |
+| [pokedex-mobile-atual.jpg](pokedex-mobile-atual.jpg) | Frames de 390 e 320 pixels, com regiões em grade; simulação responsiva, não aparelho físico |
 
-![Quatro formas de Charizard no catálogo com Shiny selecionado](pokedex-formas.jpg)
+![Página inicial atual](pokedex-inicio-atual.jpg)
 
-A geração do filtro é a da espécie; as quatro entradas não são quatro números nacionais diferentes.
+![Regiões na Pokédex de bolso](pokedex-regioes-atual.jpg)
 
-## Fichas por contexto
+![Favoritos selecionado](pokedex-favoritos-atual.jpg)
 
-![Tipos e multiplicadores de Charizard](pokedex-tipos.jpg)
+![Layout atual em tela estreita](pokedex-mobile-atual.jpg)
 
-![Texto de Charizard em inglês para Shield](pokedex-textos.jpg)
+O [registro de validação](../VALIDACAO.md) descreve a origem e o alcance da conferência. Uma captura comprova o estado mostrado, não todas as combinações de filtros, dispositivos ou condições de rede.
 
-![Trecho das evoluções de Eevee](pokedex-evolucoes.jpg)
+## Arquivo histórico
 
-![Encontros de Pikachu em Red](pokedex-encontros.jpg)
+Estes arquivos foram preservados das entregas anteriores. As onze capturas gerais estavam documentadas na versão 1.3.2; as capturas de destaque acompanham a evolução 1.3.0–1.3.2. A página inicial dessas etapas ainda tinha controles e textos removidos depois. O [histórico](../../CHANGELOG.md) e a [validação](../VALIDACAO.md) registram esse contexto, sem tratá-lo como a aparência atual.
 
-![Golpes de Charizard em Scarlet Violet filtrados por flame](pokedex-golpes.jpg)
+| Arquivo | Contexto preservado |
+| --- | --- |
+| [pokedex-refatoracao.jpg](pokedex-refatoracao.jpg) | Início de uma etapa anterior da interface |
+| [pokedex-inicio.jpg](pokedex-inicio.jpg) | Início com CTA e texto introdutório posteriormente removidos |
+| [pokedex-formas.jpg](pokedex-formas.jpg) | Quatro formas de Charizard com Shiny |
+| [pokedex-tipos.jpg](pokedex-tipos.jpg) | Defesa e eficácia de Charizard |
+| [pokedex-textos.jpg](pokedex-textos.jpg) | Charizard, texto em inglês para Shield |
+| [pokedex-evolucoes.jpg](pokedex-evolucoes.jpg) | Trecho da família evolutiva de Eevee |
+| [pokedex-encontros.jpg](pokedex-encontros.jpg) | Pikachu em Red, áreas e chances por slot |
+| [pokedex-golpes.jpg](pokedex-golpes.jpg) | Charizard, Scarlet Violet, busca `flame` |
+| [pokedex-shiny.jpg](pokedex-shiny.jpg) | Ficha shiny de Charizard |
+| [pokedex-ficha.jpg](pokedex-ficha.jpg) | Ficha normal, atributos e botão de destaque da interface anterior |
+| [pokedex-mobile.jpg](pokedex-mobile.jpg) | Fichas em frames de 320 e 375 pixels; simulação responsiva |
+| [pokedex-destaque.jpg](pokedex-destaque.jpg) | Início com Mega Charizard X shiny como destaque |
+| [pokedex-destaque-mobile.jpg](pokedex-destaque-mobile.jpg) | Destaque em frames de 320/375 pixels |
+| [pokedex-destaque-catalogo.jpg](pokedex-destaque-catalogo.jpg) | Catálogo sem botão de destaque nos cartões |
+| [pokedex-destaque-grafite.jpg](pokedex-destaque-grafite.jpg) | Botão grafite Tornar destaque dentro da ficha |
+| [pokedex-destaque-ficha.jpg](pokedex-destaque-ficha.jpg) | Estado Em destaque após a seleção |
+
+Os exemplos de consultas nos guias continuam úteis para explicar formas, textos, encontros, golpes e eficácia. A apresentação visual atual deve ser conferida nas capturas desta revisão ou diretamente na aplicação.
 
 ## Atualizar as imagens
 
-Capture uma interação real, escolha um recorte legível, retire informações pessoais e salve com nome descritivo. Atualize a legenda, a versão e os guias que dependem da imagem. Não apresente uma captura histórica como estado atual de um recurso que mudou.
+Capture uma interação real, escolha um recorte legível, retire informações pessoais e salve com nome descritivo. Registre data, origem, viewport e comportamento observado no [registro de validação](../VALIDACAO.md); atualize a legenda e os guias afetados. Não amplie artificialmente uma captura pequena nem apresente uma imagem histórica como estado atual.
 
 As imagens de Pokémon visíveis nas capturas pertencem aos respectivos titulares e são disponibilizadas pelas fontes creditadas. Consulte [fontes e créditos](../FONTES.md).
-
-## Destaque personalizável
-
-- [Início com Mega Charizard X shiny](pokedex-destaque.jpg): recurso incluído em 1.3.0; a aparência do início permanece atual.
-- [Destaque em frames de 320/375 pixels](pokedex-destaque-mobile.jpg): captura do início em 1.3.0, sem controles de ficha.
-- [Catálogo sem botão de destaque](pokedex-destaque-catalogo.jpg): catálogo de 1.3.1; os controles permanecem iguais.
-- [Tornar destaque com Pokébola monocromática](pokedex-destaque-grafite.jpg): ficha final 1.3.2.
-- [Em destaque após seleção](pokedex-destaque-ficha.jpg): ficha final 1.3.2.
