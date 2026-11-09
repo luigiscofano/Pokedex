@@ -150,8 +150,9 @@ h3 {
 .topbar nav button {
   padding: 9px 0;
 }
-.nav-active {
+.topbar nav .nav-active {
   border-bottom: 2px solid var(--red);
+  font-weight: 700;
 }
 #favorite-count {
   font-size: 11px;
@@ -229,49 +230,6 @@ h1 em {
 .primary:hover {
   background: #c5362a;
 }
-/* Botão de partida: mesma carcaça e tecla física da Pokédex de bolso. */
-.pocket-start {
-  display: inline-block;
-  max-width: 100%;
-  margin-top: 26px;
-  padding: 7px 7px 5px;
-  border: 2px solid #293330;
-  border-radius: 13px;
-  background: #d94735;
-  box-shadow: 2px 4px 0 #80382e, 3px 5px 0 1px #293330;
-}
-.pocket-start .pocket-start-button {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 48px;
-  margin: 0 0 5px;
-  padding: 12px 17px;
-  border: 2px solid #293330;
-  border-radius: 7px;
-  background: #f5dc87;
-  color: #252d2f;
-  box-shadow: 0 4px 0 #73352b;
-  font-size: 14px;
-  font-weight: 700;
-  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
-}
-.pocket-start-button > span {
-  font-size: 23px;
-  line-height: 1;
-}
-.pocket-start-button:hover {
-  background: #ffe6a0;
-}
-.pocket-start-button:active {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 #73352b;
-}
-.pocket-start-button:focus-visible {
-  outline: 3px solid #253e4a;
-  outline-offset: 4px;
-}
-.pocket-start-trim,
 .pocket-dex-trim {
   display: flex;
   align-items: center;
@@ -280,9 +238,6 @@ h1 em {
   color: #592e27;
   font: 700 8px var(--font-heading);
   letter-spacing: 0.7px;
-}
-.pocket-start-trim {
-  padding: 4px 7px 0;
 }
 .pocket-vents {
   display: block;
@@ -582,6 +537,9 @@ h1 em {
 #result-count {
   font-size: 10px;
   color: var(--muted);
+}
+#result-count strong {
+  font-weight: 700;
 }
 .search-bar {
   display: flex;
@@ -1702,9 +1660,6 @@ tr:last-child td {
   }
   .hero h1 {
     font-size: 40px;
-    margin-top: 20px;
-  }
-  .hero .pocket-start {
     margin-top: 20px;
   }
   .hero-numbers {

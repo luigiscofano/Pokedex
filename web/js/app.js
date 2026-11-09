@@ -24,6 +24,7 @@ import {
 } from './detail-panels.js';
 import { findFeatured, readFeatured, writeFeatured } from './featured.js';
 import { updatePanelSelection } from './detail-selection.js';
+import { updateCatalogNavigation } from './navigation.js';
 
 // Paginação e duração dos avisos são centralizadas para evitar valores dispersos.
 const CATALOG_PAGE_SIZE = 24;
@@ -161,13 +162,14 @@ function renderCatalog() {
   document
     .querySelectorAll('#pokemon-grid [data-form-image]')
     .forEach((image) => imageObserver.observe(image));
-  $('#result-count').textContent =
-    `${formatNumber(list.length)} ${state.forms ? 'formas' : 'Pokémon'} encontrados`;
+  $('#result-count').innerHTML =
+    `<strong>${formatNumber(list.length)}</strong> ${state.forms ? 'formas' : 'Pokémon'} encontrados`;
   $('#page-count').textContent = list.length
     ? `Mostrando ${Math.min(state.limit, list.length)} de ${formatNumber(list.length)}`
     : '';
   $('#load-more').hidden = list.length <= state.limit;
   $('#favorite-count').textContent = state.favorites.length;
+  updateCatalogNavigation($('#explore-nav'), $('#favorites-nav'), state.favoritesOnly);
   $('#catalog-title').innerHTML =
     `${state.favoritesOnly ? 'Seus favoritos' : state.generation ? GENERATIONS[state.generation] : 'Pokédex Nacional'}<span>.</span>`;
   document.querySelectorAll('[data-generation]').forEach((button) => {
@@ -488,6 +490,9 @@ function installCatalogEvents() {
 }
 
 function installNavigationEvents() {
+  $('#explore-nav').addEventListener('click', () => {
+    applyFilter('favoritesOnly', false);
+  });
   $('#featured-open').addEventListener('click', () =>
     openDetail(
       state.featured,

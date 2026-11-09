@@ -9,8 +9,10 @@ const [html, css, app, catalogJSON] = await Promise.all([
 ]);
 const catalog = JSON.parse(catalogJSON);
 
-test('Pokédex de bolso mantém o link nativo e o grupo de regiões acessível', () => {
-  assert.match(html, /class="primary pocket-start-button" href="#catalog"/);
+test('Pokédex de bolso mantém o grupo de regiões acessível sem o botão de partida', () => {
+  assert.doesNotMatch(html, /Começar a explorar|pocket-start/);
+  assert.doesNotMatch(css, /pocket-start/);
+  assert.match(html, /href="#catalog" id="explore-nav"/);
   assert.match(html, /id="catalog"/);
   assert.match(html, /class="pocket-dex" role="group" aria-labelledby="region-label"/);
   assert.match(html, /data-generation="0" aria-pressed="true"/);
@@ -39,9 +41,7 @@ test('nove gerações continuam cobrindo as 1025 espécies sem sobreposição', 
 
 test('controles de bolso incluem foco, alvo de toque e grade estreita sem rolagem horizontal', () => {
   assert.match(css, /\.pocket-dex \.region:focus-visible/);
-  assert.match(css, /\.pocket-start-button:focus-visible/);
   assert.match(css, /min-height: 44px/);
   assert.match(css, /\.pocket-screen #regions\s*\{[^}]*grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);
-  assert.ok(!html.includes('class="primary pocket-start-button" onclick='));
 });
