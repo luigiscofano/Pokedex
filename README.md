@@ -42,7 +42,11 @@ Pesquise por nome, número nacional, `#0025`, zeros à esquerda ou nome de forma
 
 O seletor de regiões tem aparência de **Pokédex de bolso**, com carcaça vermelha discreta e controles integrados à tela LCD. No celular, as nove gerações ficam em uma grade de três colunas. O catálogo começa com 24 cartões e carrega mais 24 por ação; a quantidade de resultados aparece em negrito. A soma de atributos ajuda a comparar valores base, mas não prevê o resultado de uma batalha.
 
-![Seletor atual de regiões integrado à Pokédex de bolso e catálogo](docs/imagens/pokedex-regioes-atual.jpg)
+![Seletor de gerações em formato de Pokédex, com Johto selecionado](docs/imagens/pokedex-seletor-geracoes.png)
+
+![Pokémon de Johto organizados em cartões](docs/imagens/pokedex-grade-johto.png)
+
+*Capturas fornecidas pelo autor em 16/11/2026, sem cursor visível.*
 
 *O filtro usa a geração de origem da espécie. Incluir formas acrescenta as entradas alternativas, sem criar novos números nacionais.*
 
@@ -76,9 +80,9 @@ A aba Tipos separa fraquezas, resistências, imunidades e melhores eficácias of
 
 Consulte descrições por versão e idioma. A interface é em português, mas os textos da franquia preservam os idiomas disponíveis na fonte. O projeto não apresenta traduções inventadas como descrições oficiais.
 
-![Descrição de Charizard em inglês para Shield, com seletores de jogo e idioma](docs/imagens/pokedex-textos.jpg)
+![Crabominable com texto em inglês de Ultra Moon](docs/imagens/pokedex-crabominable-textos.png)
 
-*Exemplo histórico. Os seletores mantêm o contexto do texto. A descrição pertence à espécie e pode não diferenciar cada forma.*
+*Captura fornecida pelo autor em 16/11/2026. Os seletores mantêm o contexto do texto. A descrição pertence à espécie e pode não diferenciar cada forma.*
 
 [Textos e campos da ficha](docs/usuario/fichas/README.md) · [Dicionário dos dados](web/data/README.md)
 
