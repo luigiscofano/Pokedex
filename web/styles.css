@@ -101,9 +101,13 @@ h3 {
   align-items: center;
   gap: 11px;
 }
-.brand-dot {
-  color: var(--red);
-  margin-left: -11px;
+.brand img {
+  width: clamp(38px, 5vw, 54px);
+  height: auto;
+  flex-shrink: 0;
+}
+.brand span {
+  white-space: nowrap;
 }
 .pokeball {
   display: inline-block;

@@ -1,4 +1,4 @@
-# Aplicação web
+# Rota 001 · Aplicação web
 
 [Início](../README.md) · [Arquitetura](../docs/desenvolvimento/README.md) · [Guia de uso](../docs/usuario/README.md)
 
@@ -8,7 +8,8 @@ Esta pasta contém o código-fonte da Pokédex que roda no navegador. Execute `n
 | --- | --- |
 | [index.html](index.html) | Cabeçalho, chamada “Temos que pegar!”, controles, rodapé e diálogos |
 | [styles.css](styles.css) | Layout, responsividade, tipos com símbolos vetoriais e faixas coloridas, foco e movimento reduzido |
-| [icon.svg](icon.svg) | Ícone vetorial da interface e placeholder de imagens |
+| [Insígnia Rota 001](../docs/identidade/README.md) | Marca do cabeçalho e do rodapé, com versão reduzida para a aba do navegador |
+| [icon.svg](icon.svg) | Imagem de reserva para o catálogo |
 | [js/](js/README.md) | Regras, dados e coordenação da interface |
 | [data/](data/README.md) | Snapshot local, manifesto e fichas por espécie |
 

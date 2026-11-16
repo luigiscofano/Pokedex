@@ -1,4 +1,6 @@
-# Pokédex · Temos que pegar!
+# Rota 001 · Pokédex de fã
+
+<a href="docs/identidade/README.md"><img src="web/marca/rota-001-256.png" width="144" height="144" alt="Insígnia Rota 001" /></a>
 
 **Uma Pokédex de fã, feita por Luigi Scofano de Araujo para outros fãs de Pokémon.**
 
@@ -13,6 +15,10 @@ Explore espécies, descubra formas e conheça cada detalhe da sua próxima avent
 *Captura atual da aplicação em 09/11/2026. O site é público; o código também pode ser executado localmente. A [galeria](docs/imagens/README.md) separa as capturas desta revisão das imagens históricas.*
 
 A interface usa **Chakra Petch nos títulos e na marca** e **Barlow nos textos, controles e rótulos de tipos**. As novas capturas mostram essa identidade; a fonte do texto Markdown no GitHub é definida pela própria plataforma.
+
+## Insígnia Rota 001
+
+A trilha dourada atravessa a grama alta até a placa vermelha da primeira rota. O número 001 também identifica Bulbasaur na Pokédex Nacional. [Conheça a insígnia e baixe a arte original](docs/identidade/README.md).
 
 ## O que este projeto faz
 
