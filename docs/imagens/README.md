@@ -4,7 +4,17 @@
 
 As capturas atuais são as referências visuais desta revisão. As imagens anteriores permanecem como histórico: podem mostrar tipografia, símbolos, textos ou controles já alterados. Não use uma imagem histórica para concluir como a interface aparece hoje.
 
-## Capturas atuais
+## Capturas fornecidas em 16/11/2026
+
+Três recortes reais enviados pelo autor, inspecionados sem cursor visível e preservados sem edição. A grade e o seletor não incluem o cabeçalho; portanto não comprovam a marca do topo. A ficha mostra Rota 001 desfocada ao fundo. A captura antiga da página inicial ainda aguarda substituição.
+
+![Catálogo de Johto: Pokémon organizados em cartões, com tipos e favoritos. Captura enviada em 16/11/2026.](pokedex-grade-johto.png)
+
+![Seletor de gerações na barra lateral em formato de Pokédex, com Johto selecionado. Captura de 16/11/2026.](pokedex-seletor-geracoes.png)
+
+![Ficha de Crabominable na aba Textos dos jogos, com inglês e Ultra Moon selecionados. Captura de 16/11/2026.](pokedex-crabominable-textos.png)
+
+## Capturas de 09/11/2026
 
 Capturas da aplicação real em **09/11/2026**, sem reconstrução por desenho ou geração de imagem. A página inicial, as regiões, os favoritos e a visualização estreita documentam estados diferentes da mesma interface.
 
