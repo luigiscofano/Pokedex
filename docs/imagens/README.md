@@ -6,7 +6,11 @@ As capturas atuais são as referências visuais desta revisão. As imagens anter
 
 ## Capturas fornecidas em 16/11/2026
 
-Três recortes reais enviados pelo autor, inspecionados sem cursor visível e preservados sem edição. A grade e o seletor não incluem o cabeçalho; portanto não comprovam a marca do topo. A ficha mostra Rota 001 desfocada ao fundo. A captura antiga da página inicial ainda aguarda substituição.
+![Página inicial com a marca Rota 001](pokedex-inicio-rota001.png)
+
+A captura da home foi preservada integralmente em PNG (1811 × 741), sem recorte, redesenho ou recompressão com perda. Substitui a imagem da marca anterior na abertura do README.
+
+Três recortes adicionais reais enviados pelo autor, inspecionados sem cursor visível e preservados sem edição. A grade e o seletor não incluem o cabeçalho; portanto não comprovam a marca do topo. A ficha mostra Rota 001 desfocada ao fundo. A página inicial com Rota 001 foi adicionada em seguida, também enviada pelo autor e sem cursor visível.
 
 ![Catálogo de Johto: Pokémon organizados em cartões, com tipos e favoritos. Captura enviada em 16/11/2026.](pokedex-grade-johto.png)
 
@@ -25,7 +29,7 @@ Capturas da aplicação real em **09/11/2026**, sem reconstrução por desenho o
 | [pokedex-favoritos-atual.jpg](pokedex-favoritos-atual.jpg) | Favoritos selecionado no menu, coleção filtrada e quantidade de resultados em negrito |
 | [pokedex-mobile-atual.jpg](pokedex-mobile-atual.jpg) | Frames de 390 e 320 pixels, com regiões em grade; simulação responsiva, não aparelho físico |
 
-![Página inicial atual](pokedex-inicio-atual.jpg)
+A captura [pokedex-inicio-atual.jpg](pokedex-inicio-atual.jpg) fica apenas como arquivo histórico da marca anterior.
 
 ![Regiões na Pokédex de bolso](pokedex-regioes-atual.jpg)
 
