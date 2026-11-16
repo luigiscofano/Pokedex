@@ -68,3 +68,7 @@ Os guias são organizados por objetivo. O README inicial apresenta o projeto; os
 Ao mudar um comportamento, atualize o guia do assunto e os exemplos afetados. Use o manifesto como referência de contagens e revisão dos dados. Atualize a versão das capturas quando necessário; uma imagem antiga pode permanecer como histórico, desde que identificada.
 
 A documentação distingue recursos implementados de ideias futuras, testes automáticos de conferências manuais e a versão do código da publicação hospedada. Isso permite revisar cada entrega sem depender do contexto de uma conversa.
+
+## Identidade visual
+
+[Insígnia Rota 001 e arquivos da marca](identidade/README.md)
