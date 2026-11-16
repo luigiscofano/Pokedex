@@ -10,9 +10,9 @@ Explore espécies, descubra formas e conheça cada detalhe da sua próxima avent
 
 [Explorar no navegador · acesso público](https://pokedex-luigi-explorer.luigiscofano.chatgpt.site) · [Como executar](#como-executar) · [Funcionalidades](#funcionalidades-em-imagens) · [Documentação](docs/README.md) · [Contribuir](CONTRIBUTING.md)
 
-![Página inicial atual da Pokédex com a chamada Temos que pegar e o destaque personalizável](docs/imagens/pokedex-inicio-atual.jpg)
+![Página inicial atual da Pokédex com a chamada Temos que pegar e o destaque personalizável](docs/imagens/pokedex-inicio-rota001.png)
 
-*Captura atual da aplicação em 09/11/2026. O site é público; o código também pode ser executado localmente. A [galeria](docs/imagens/README.md) separa as capturas desta revisão das imagens históricas.*
+*Captura real fornecida pelo autor em 16/11/2026, com a marca Rota 001 e sem cursor visível. O site é público; o código também pode ser executado localmente. A [galeria](docs/imagens/README.md) separa as capturas desta revisão das imagens históricas.*
 
 A interface usa **Chakra Petch nos títulos e na marca** e **Barlow nos textos, controles e rótulos de tipos**. As novas capturas mostram essa identidade; a fonte do texto Markdown no GitHub é definida pela própria plataforma.
 
