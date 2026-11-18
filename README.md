@@ -18,21 +18,42 @@ A interface usa **Chakra Petch nos títulos e na marca** e **Barlow nos textos, 
 
 ## Insígnia Rota 001
 
+<details>
+<summary>Expandir insígnia Rota 001</summary>
+
 A trilha dourada atravessa a grama alta até a placa vermelha da primeira rota. O número 001 também identifica Bulbasaur na Pokédex Nacional. [Conheça a insígnia e baixe a arte original](docs/identidade/README.md).
 
+
+</details>
+
 ## O que este projeto faz
+
+<details>
+<summary>Expandir o que este projeto faz</summary>
 
 A Pokédex reúne **1.025 espécies nacionais, 1.351 variedades e 1.579 formas catalogadas** em uma aplicação web. É possível pesquisar por nome ou número, comparar formas, alternar imagens Normal/Shiny, consultar atributos e tipos, explorar famílias evolutivas e procurar textos, encontros e golpes por jogo.
 
 O repositório também preserva o **exercício Java original de 2023**, que começou com uma classe `Pokemon`, tipos enumerados e uma demonstração de objetos e coleções. Hoje há duas partes independentes: o site em `web/` e o exercício de terminal em `src/`. Você pode usar uma sem executar a outra.
 
+
+</details>
+
 ## Qual problema resolve
+
+<details>
+<summary>Expandir qual problema resolve</summary>
 
 Uma espécie pode ter formas com atributos diferentes, descrições que variam entre jogos, vários caminhos evolutivos e maneiras distintas de aprender golpes. Consultar essas informações sem distinguir espécie, forma e versão produz respostas incompletas.
 
 O projeto reúne essas consultas em uma única interface e mantém o contexto de cada registro. A proposta é tornar a exploração agradável, preservar a origem das informações e mostrar quando a base não tem uma resposta.
 
+
+</details>
+
 ## Funcionalidades em imagens
+
+<details>
+<summary>Expandir funcionalidades em imagens</summary>
 
 As quatro capturas JPG desta revisão mostram início, regiões, favoritos e tela estreita. Os exemplos JPEG dos painéis são históricos e estão identificados como tal: ilustram consultas preservadas, não a apresentação visual atual. A [galeria](docs/imagens/README.md) registra o contexto dos arquivos.
 
@@ -132,7 +153,13 @@ Use `/` para pesquisar, Tab para percorrer controles, setas/Home/End nas abas e 
 
 [Favoritos e contrato dos links](docs/usuario/favoritos-e-links/README.md) · [Primeira exploração](docs/usuario/README.md)
 
+
+</details>
+
 ## Como executar
+
+<details>
+<summary>Expandir como executar</summary>
 
 ### Requisitos
 
@@ -186,7 +213,13 @@ java -cp build/classes Main
 
 A demonstração cria quatro objetos, aplica dano à cópia e imprime os resultados. Não é necessário compilar Java para usar o site. O [guia Java](src/README.md) explica saída, construtores, coleções e limites do modelo.
 
+
+</details>
+
 ## Cobertura real dos dados
+
+<details>
+<summary>Expandir cobertura real dos dados</summary>
 
 | Medida | Snapshot versionado |
 | --- | ---: |
@@ -213,7 +246,13 @@ O [manifesto](web/data/manifest.json) registra a revisão `e5b79b2e15d7c50735a94
 
 [Origem e atualização](docs/dados/README.md) · [Esquema dos JSONs](web/data/README.md) · [Créditos e cobertura](docs/FONTES.md)
 
+
+</details>
+
 ## Como o projeto está organizado
+
+<details>
+<summary>Expandir como o projeto está organizado</summary>
 
 | Caminho | Responsabilidade | Guia |
 | --- | --- | --- |
@@ -235,7 +274,13 @@ O projeto não usa framework, bundler, banco de dados ou backend de contas. A ba
 
 [Arquitetura, fluxo e concorrência](docs/desenvolvimento/README.md) · [Organização e comentários do código](docs/desenvolvimento/clean-code/README.md)
 
+
+</details>
+
 ## O que desenvolvi e aprendi
+
+<details>
+<summary>Expandir o que desenvolvi e aprendi</summary>
 
 A evolução do projeto conecta o exercício inicial de objetos a uma aplicação navegável com dados reais e responsabilidades separadas.
 
@@ -250,7 +295,13 @@ A evolução do projeto conecta o exercício inicial de objetos a uma aplicaçã
 
 A implementação da interface e das ferramentas é parte deste projeto. Os dados, textos e ilustrações da franquia têm origem externa, identificada nos créditos.
 
+
+</details>
+
 ## Validação
+
+<details>
+<summary>Expandir validação</summary>
 
 Execute na raiz:
 
@@ -268,7 +319,13 @@ O GitHub Actions roda os comandos web com Node.js 22 e compila/executa o Java co
 
 [Roteiro manual e cobertura](tests/README.md) · [Evidências e limites](docs/VALIDACAO.md) · [Workflow](.github/workflows/ci.yml)
 
+
+</details>
+
 ## Build e publicação
+
+<details>
+<summary>Expandir build e publicação</summary>
 
 `npm run build` gera `dist/`. Publique o conteúdo dessa pasta em uma hospedagem estática, incluindo módulos e todos os JSONs. Não publique caches, saídas Java ou credenciais. Preserve caminhos relativos, MIME adequado e query strings.
 
@@ -276,7 +333,13 @@ O código no GitHub e a versão hospedada são entregas distintas. A instalaçã
 
 [Guia completo de publicação](docs/publicacao/README.md)
 
+
+</details>
+
 ## Estado atual
+
+<details>
+<summary>Expandir estado atual</summary>
 
 | Situação | Recursos |
 | --- | --- |
@@ -288,7 +351,13 @@ O código no GitHub e a versão hospedada são entregas distintas. A instalaçã
 
 Possíveis extensões são ideias, não recursos disponíveis ou compromissos de entrega. O [histórico de mudanças](CHANGELOG.md) distingue as versões já implementadas.
 
+
+</details>
+
 ## Documentação
+
+<details>
+<summary>Expandir documentação</summary>
 
 Comece pela [central de documentação](docs/README.md), que propõe caminhos de leitura. Os guias mais detalhados explicam uso das fichas, arquitetura, dados, testes e Java; READMEs curtos orientam pastas com responsabilidades menores.
 
@@ -298,10 +367,19 @@ Comece pela [central de documentação](docs/README.md), que propõe caminhos de
 - **Quero estudar Java:** [exercício original](src/README.md), [modelo](src/model/README.md) e [enumeração](src/model/enums/README.md).
 - **Quero revisar ou publicar:** [testes](tests/README.md), [CI](.github/README.md), [publicação](docs/publicacao/README.md) e [solução de problemas](docs/solucao-de-problemas/README.md).
 
+
+</details>
+
 ## Autoria, créditos e direitos
+
+<details>
+<summary>Expandir autoria, créditos e direitos</summary>
 
 Projeto de **Luigi Scofano de Araujo**, feito de fã para outros fãs de Pokémon. A aplicação é independente, voltada a estudo e portfólio, sem afiliação oficial.
 
 Dados: [PokéAPI](https://pokeapi.co/docs/v2/) e [PokeAPI/pokeapi](https://github.com/PokeAPI/pokeapi). Ilustrações e sprites: [PokeAPI/sprites](https://github.com/PokeAPI/sprites). Metadados de formas cosméticas: [PokeAPI/api-data](https://github.com/PokeAPI/api-data).
 
 Pokémon, seus nomes, personagens, textos e imagens pertencem aos respectivos titulares. Este repositório não adiciona uma nova licença geral de redistribuição sobre materiais da franquia. Consulte [fontes, créditos e cobertura](docs/FONTES.md) para distinguir a implementação do aplicativo dos recursos de terceiros.
+
+</details>
+
